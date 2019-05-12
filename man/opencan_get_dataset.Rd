@@ -4,8 +4,22 @@
 \alias{opencan_get_dataset}
 \title{Query OpenCan portal for a specific dataset}
 \usage{
-opencan_get_dataset()
+opencan_get_dataset(record_id,
+  domain = "https://open.canada.ca/data/en/api/3/", format = TRUE)
+}
+\arguments{
+\item{record_id}{Id of the wanated dataset, of the form
+"4a2929ce-d6b1-49b0-b520-63be0859c552"}
+
+\item{domain}{Domain name for the OpenCan API being querried}
+
+\item{format}{Whether the function should return a formatted output}
+}
+\value{
+If format is TRUE, will return a list of the results, else it will return
+the unformatted json R object from jsonlite::fromJSON
 }
 \description{
-Query OpenCan portal for a specific dataset
+Query for a given dataset with an ID. Th ID can be found at the Open
+Canada website
 }
