@@ -7,6 +7,23 @@ A R package to interact with the Open Canada API, to search and download dataset
 The code is under GPL-3 license. 
 All the data is under Open Government License (http://open.canada.ca/en/open-government-licence-canada). 
 
+## To install
+
+You will need the `devtools` package to install from source. 
+
+```R
+devtools::install_github("vlucet/ropencan")
+```
+
 ## List of functionalities 
 
-The function `opencan_search` performs basic queries and outputs a `data.frame` with all the query results. 
+The function `opencan_search` performs basic queries and outputs a `tibble` with all the query results. 
+
+```R
+library(ropencan)
+library(dplyr)
+
+search <- opencan_search(keywords = c("dfo", "fish"))
+search %>%
+  glimpse()
+```
