@@ -36,4 +36,4 @@ search %>%
 #### ~ WIP ~
 
 The tibble returned by `opencan_search` comprises a column formed of a list of tables. Those tables list the available datasets and file format availables. 
-A function `opencan_get_???` will return this infor for a given record and will allow the suer to download `.CSV` files and possibly `.shp` spatial data files. 
+A function `opencan_get_???` will return this information for a given record and will allow the user to download `.CSV` files and possibly `.shp` spatial data files. 
