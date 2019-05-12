@@ -6,7 +6,7 @@
 \usage{
 opencan_search(keywords,
   domain = "https://open.canada.ca/data/en/api/3/", format = TRUE,
-  row_size = 10000)
+  row_size = 1000)
 }
 \arguments{
 \item{keywords}{A set of keywords to query}
@@ -15,12 +15,14 @@ opencan_search(keywords,
 
 \item{format}{Whether the function should return a formatted output}
 
-\item{row_size}{The number of row in the JSON object to return from the solr query}
+\item{row_size}{The number of rows in the JSON object to return from the solr query, by
+default set at the maximum, 1000}
 }
 \value{
 If format is TRUE, will return a formatted dataframe, else it will return
 the unformatted json R object from jsonlite::fromJSON
 }
 \description{
-Query OpenCan portal for datasets matching keywords
+As indicated in the API documentation, only the first 1000 datasets
+matching records will be displayed.
 }
