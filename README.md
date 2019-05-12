@@ -21,7 +21,7 @@ devtools::install_github("vlucet/ropencan")
 
 The function `opencan_search` performs basic queries and outputs a `tibble` with all the query results. 
 
-```R
+``` R
 library(ropencan)
 library(dplyr)
 
