@@ -17,6 +17,8 @@ devtools::install_github("vlucet/ropencan")
 
 ## List of functionalities 
 
+### Search for records on the open portal that matches some keywords 
+
 The function `opencan_search` performs basic queries and outputs a `tibble` with all the query results. 
 
 ```R
@@ -27,3 +29,9 @@ search <- opencan_search(keywords = c("dfo", "fish"))
 search %>%
   glimpse()
 ```
+
+### Extract available file formats for a given record from a search 
+#### ~ WIP ~
+
+The tibble returned by `opencan_search` comprises a column formed of a list of tables. Those tables list the available datasets and file format availables. 
+A function `opencan_get_???` will return this infor for a given record and will allow the suer to download `.CSV` files and possibly `.shp` spatial data files. 
