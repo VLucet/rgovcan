@@ -14,6 +14,10 @@ opencan_search(keywords,
 
 \item{format}{Whether the function should return a formatted output}
 }
+\value{
+If `format` is `TRUE`, will return a formatted dataframe, else it will return
+the unformatted json R object from `jsonlite::fromJSON`
+}
 \description{
 Query OpenCan portal for datasets matching keywords
 }
