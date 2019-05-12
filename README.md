@@ -11,7 +11,7 @@ All the data is under Open Government License (http://open.canada.ca/en/open-gov
 
 You will need the `devtools` package to install from source. 
 
-```R
+```r
 devtools::install_github("vlucet/ropencan")
 ```
 
@@ -21,7 +21,7 @@ devtools::install_github("vlucet/ropencan")
 
 The function `opencan_search` performs basic queries and outputs a `tibble` with all the query results. 
 
-``` R
+```r
 library(ropencan)
 library(dplyr)
 
