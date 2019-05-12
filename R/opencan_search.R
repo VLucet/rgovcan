@@ -36,7 +36,7 @@ opencan_search <- function(keywords,
     # Extract dataframe
     query_results <- output_json$result$results
     #
-    # More formtting of the results needed, for now outputs dataframe
+    # More formtting of the results needed, for now outputs a dataframe
     #
     query_out <- query_results
 
