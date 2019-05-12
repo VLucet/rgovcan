@@ -2,6 +2,6 @@
 #'
 #' @export
 
-opencan_get_dataset <- function(){
+opencan_get_dataset <- function(query){
   NULL
 }
