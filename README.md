@@ -1,6 +1,6 @@
 # ropencan
 
-~ In development, contributions and participation welcome ~
+### ~ In development, contributions and participation welcome ~
 
 A R package to interact with the Open Canada API, to search and download datasets. It is our hope that we will be able to bring this package up to the standard of a `ropensci` packages. 
 
