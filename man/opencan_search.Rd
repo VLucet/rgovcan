@@ -5,7 +5,8 @@
 \title{Query OpenCan portal for datasets matching keywords}
 \usage{
 opencan_search(keywords,
-  domain = "https://open.canada.ca/data/en/api/3/", format = TRUE)
+  domain = "https://open.canada.ca/data/en/api/3/", format = TRUE,
+  row_size = 10000)
 }
 \arguments{
 \item{keywords}{A set of keywords to query}
@@ -13,10 +14,12 @@ opencan_search(keywords,
 \item{domain}{Domain name for the OpenCan API being querried}
 
 \item{format}{Whether the function should return a formatted output}
+
+\item{row_size}{The number of row in the JSON object to return from the solr query}
 }
 \value{
-If `format` is `TRUE`, will return a formatted dataframe, else it will return
-the unformatted json R object from `jsonlite::fromJSON`
+If format is TRUE, will return a formatted dataframe, else it will return
+the unformatted json R object from jsonlite::fromJSON
 }
 \description{
 Query OpenCan portal for datasets matching keywords
