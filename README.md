@@ -1,4 +1,4 @@
-# ropencan: an interface between R and the Canadian Open Government database
+# ropencan: an interface between R and the Canadian Open Government database <img src="logo.png" align="right" width=140/>
 
 ### ~ In development, contributions and participation welcome ~
 
