@@ -14,7 +14,7 @@ Hex Logo done with `hexSticker`: https://github.com/GuangchuangYu/hexSticker
 You will need the `devtools` package to install from source. 
 
 ```r
-devtools::install_github("vlucet/ropencan")
+devtools::install_github("vlucet/rgovcan")
 ```
 
 ## List of functionalities 
