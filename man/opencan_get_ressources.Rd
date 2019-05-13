@@ -11,9 +11,9 @@ opencan_get_ressources(record_id = NULL, query_results = NULL,
 \item{record_id}{Id of the wanated dataset, of the form
 "4a2929ce-d6b1-49b0-b520-63be0859c552"}
 
-\item{domain}{Domain name for the OpenCan API being querried}
+\item{query_results}{The results of a call to `opencan_search`}
 
-\item{query_resultsThe}{results of a call to `opencan_search`}
+\item{domain}{Domain name for the OpenCan API being querried}
 }
 \value{
 If format is TRUE, will return a dataframe of available file formats for a
