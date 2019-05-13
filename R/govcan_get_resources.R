@@ -19,17 +19,37 @@ govcan_get_resources <- function(record_id = NULL,
                                  format_resources = FALSE) {
 
 
-  # if a record ID is directly given to the function
+  # If a record ID is directly given to the function
   if (!is.null(record_id)){
     resources_output <- govcan_get_record(record_id = record_id,
-                                  format_resources = format_resources,
-                                  only_resources = TRUE)
-    # Multipel cases ou query
-    } else if (!is.null(query_results)){
+                                          format_resources = format_resources,
+                                          only_resources = TRUE)
+    # If a query results is already given
+  } else if (!is.null(query_results)){
+
     if (inherits(query_results, "list")){
-      resources_output <- dplyr::as_tibble(query_results$resources)
-      } else if(inherits(query_results, "data.frame")){
-      resources_output <- query_results$resources
+
+      # Add stuff here
+
+    } else if (inherits(query_results, "data.frame")){
+
+      if ("resources" %in% names(query_results)){
+        if (format_resources == TRUE){
+          # Find way to format to go from list of dataframes to dataframes
+        } else{
+          resources_output <- query_results$resources
+        }
+      } else {
+        resources_output <- query_results
+      }
+
+    } else if (inherits(query_results, "ckan_package")){
+      if (format_resources == TRUE){
+        # Cannot format here
+        warning("A list of resources from a ckan_package cannot be formated to a data.frame.")
+      } else{
+        resources_output <- query_results$resources
+      }
     }
   }
   resources_output
