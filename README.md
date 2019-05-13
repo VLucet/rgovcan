@@ -21,4 +21,4 @@ devtools::install_github("vlucet/rgovcan")
 
 ## List of functionalities 
 
-~ Packahe is being migrated to using `ckanr`, a summary of functionalities will be added to this `readme` soon enough ~
+~ Package is being adapted to using `ckanr`, a summary of functionalities will be added to this `readme` soon enough ~
