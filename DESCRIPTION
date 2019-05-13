@@ -1,4 +1,4 @@
-Package: ropencan
+Package: rgovcan
 Type: Package
 Title: A package to search for and download data from the the Canadian Open Government portal
 Version: 0.1.0
