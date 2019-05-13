@@ -19,8 +19,8 @@ opencan_search(keywords,
 default set at the maximum, 1000}
 }
 \value{
-If format is TRUE, will return a formatted dataframe, else it will return
-the unformatted json R object from jsonlite::fromJSON
+If format is TRUE, will return a formatted tibble of the results, else it will
+return the unformatted json R object from jsonlite::fromJSON
 }
 \description{
 As indicated in the API documentation, only the first 1000 datasets

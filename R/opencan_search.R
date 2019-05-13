@@ -9,8 +9,8 @@
 #' @param row_size The number of rows in the JSON object to return from the solr query, by
 #' default set at the maximum, 1000
 #'
-#' @return If format is TRUE, will return a formatted dataframe, else it will return
-#' the unformatted json R object from jsonlite::fromJSON
+#' @return If format is TRUE, will return a formatted tibble of the results, else it will
+#' return the unformatted json R object from jsonlite::fromJSON
 #'
 #' @export
 
@@ -40,18 +40,21 @@ opencan_search <- function(keywords,
           " records found for keywords: ", paste(keywords, collapse = ", "))
 
   # Warn if more records than can be get were found
-  if (output_json$result$count >1000){
+  if (output_json$result$count > 1000){
     warning("Only the first 1000 matching records can be retrieved from a single query",
             call. = FALSE)
+  }
+
+  if (output_json$result$count > row_size){
+    warning(paste0(output_json$result$count), " matching records were found, but only ",
+            row_size, " were returned")
   }
 
   if (format == TRUE) {
 
     # Extract dataframe
     query_results <- dplyr::as_tibble(output_json$result$results)
-
-    ## More formtting of the results might be needed, for now outputs a tibble
-
+    ## More formatting of the results might be needed, for now outputs a tibble
     query_out <- query_results
 
   } else {
