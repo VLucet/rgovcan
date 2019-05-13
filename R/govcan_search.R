@@ -1,7 +1,7 @@
 #' Query OpenCan portal for datasets matching keywords
 #'
-#' @description As indicated in the API documentation, only the first 1000 datasets
-#' matching records will be displayed.
+#' @description This function wraps ckanr::package_search() to search for any records
+#' matching a given set of jeywords within the open Canada portal
 #'
 #' @param keywords (character) A set of keywords to query
 #' @param records (numeric) The number of matching records to return from the CKAn query
@@ -11,7 +11,7 @@
 #' of the results as a tibble or an unformatted list (default) of CKAN packages
 #' @param ... More arguments to be passed on to ckanr::package_search()
 #'
-#' @return If format_results is TRUE, will return only the results of the search, else it
+#' @return If only_results is TRUE, will return only the results of the search, else it
 #' will return all the output of the CKAN query. If format_results is true, the results
 #' are formatted to a tibble when possible.
 #'
@@ -41,6 +41,9 @@ govcan_search <- function(keywords,
                                          rows = records,
                                          as = as,
                                          ... = NULL)
+  if (format_results == TRUE) {
+    query_results$results <- dplyr::as_tibble(query_results$results)
+  }
 
   # Message how many records were found
   message("CKAN query: ", query_results$count,
@@ -54,7 +57,7 @@ govcan_search <- function(keywords,
 
   # Only output results if required
   if (only_results == TRUE) {
-    query_out <- dplyr::as_tibble(query_results$results)
+    query_out <- query_results$results
   } else {
     query_out <- query_results
   }

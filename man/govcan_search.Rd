@@ -21,11 +21,11 @@ of the results as a tibble or an unformatted list (default) of CKAN packages}
 \item{...}{More arguments to be passed on to ckanr::package_search()}
 }
 \value{
-If format_results is TRUE, will return only the results of the search, else it
+If only_results is TRUE, will return only the results of the search, else it
 will return all the output of the CKAN query. If format_results is true, the results
 are formatted to a tibble when possible.
 }
 \description{
-As indicated in the API documentation, only the first 1000 datasets
-matching records will be displayed.
+This function wraps ckanr::package_search() to search for any records
+matching a given set of jeywords within the open Canada portal
 }

@@ -1,0 +1,58 @@
+#' Query OpenCan portal for a specific record (i.e. a CKAN package)
+#'
+#' @description This function wraps ckanr::package_show() to access a specific record
+#' (or package, in CKAN terms) given its unique id
+#'
+#' @param record_id (character) The id of the wanted dataset, which can be found with a
+#' search using govcan_search, or on https://open.canada.ca/en. The id is of the form
+#' "4a2929ce-d6b1-49b0-b520-63be0859c552"
+#' @param only_resources (logical) Whether the function should return only the resources
+#' (list of files available for download)
+#' @param format_resources (logical) Whether the function should return a formatted output
+#' of the resources as a tibble or an unformatted data.frame (default) of resources
+#' @param ... More arguments to be passed on to ckanr::package_show()
+#'
+#' @return If only_resources is TRUE, will return only the list of data files (resources)
+#' associated with the record querried else it will return all the output of the CKAN query.
+#' If only_resources is true, the resources are formatted to a tibble when possible.
+#'
+#' @export
+
+govcan_get_record <- function(record_id,
+                              only_resources = FALSE,
+                              format_resources = FALSE,
+                              ... = NULL){
+  # Search message
+  message("Searching for dataset with id: ", record_id)
+
+  # Perform the query
+  if (format_resources == TRUE) {
+    as = "table"
+  } else {
+    as = "list"
+  }
+  query_results <- ckanr::package_show(id = record_id,
+                                       as = as,
+                                       ... = NULL)
+
+  # Messgae the title of the record
+  message(paste0("Record found: \"", query_results$title, "\""))
+
+  # Only output resources if required
+  if (only_resources == TRUE) {
+    if (as == "list"){
+      query_out <- query_results$resources
+    } else if (as == "table"){
+      query_out <- dplyr::as_tibble(query_results$resources)
+    }
+  } else {
+    if (as == "list"){
+      query_out <- query_results
+    } else if (as == "table"){
+      query_results$resources <- dplyr::as_tibble(query_results$resources)
+      query_out <- query_results
+    }
+    query_out <- query_results
+  }
+  query_out
+}

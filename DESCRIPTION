@@ -1,13 +1,13 @@
 Package: rgovcan
 Type: Package
-Title: A package to search for and download data from the the Canadian Open Government portal
+Title: A package to search for and download data from the Canadian Open Government portal
 Version: 0.1.0
 Author: Valentin Lucet [aut, cre]
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: Valentin Lucet <valentin.lucet@mail.mcgill.ca>
 Description: ropencan allows users to serach for existing dataset on the Governement of Canada
     open data portal.
 Imports:
-    ckanr, jsonlite, httr, dplyr, tidyr, purrr
+    ckanr, dplyr, tidyr, purrr
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
