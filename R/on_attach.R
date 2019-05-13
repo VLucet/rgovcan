@@ -1,5 +1,4 @@
 .onAttach <- function(libname, pkgname) {
-  # to show a startup message
-  packageStartupMessage("rgovcan package attached")
-  ckanr::ckanr_setup(url = "http://open.canada.ca/data/en")
+  packageStartupMessage("rgovcan package attached, ckanr url set to https://open.canada.ca/data/en")
+  ckanr::ckanr_setup(url = "https://open.canada.ca/data/en")
 }

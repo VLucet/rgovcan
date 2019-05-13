@@ -1,4 +1,4 @@
-#' Query OpenCan portal for a specific dataset
+#' Query OpenCan portal for a specific dataset (i.e. a specific)
 #'
 #' @description Query for a given dataset with an ID. Th ID can be found at the Open
 #' Canada website
@@ -13,7 +13,7 @@
 #'
 #' @export
 
-opencan_get_dataset <- function(record_id,
+govcan_get_dataset <- function(record_id,
                                 domain = "https://open.canada.ca/data/en/api/3/",
                                 format = TRUE){
   # Search message

@@ -14,13 +14,13 @@
 #'
 #' @export
 
-opencan_get_ressources <- function(record_id = NULL,
+govcan_get_ressources <- function(record_id = NULL,
                                    query_results = NULL,
                                    domain = "https://open.canada.ca/data/en/api/3/") {
 
   if (!is.null(record_id)){
 
-    results <- opencan_get_dataset(id = record_id)
+    results <- govcan_get_dataset(id = record_id)
     resources_output <- dplyr::as_tibble(results$resources)
 
   } else if (!is.null(query_results)){
