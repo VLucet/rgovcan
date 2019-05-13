@@ -1,4 +1,4 @@
-# ropencan: an interface between R and the Canadian Open Government Portal <img src="inst/ropencan_hex.png" align="right" width=140/>
+# rgovcan: an interface between R and the Canadian Open Government Portal <img src="inst/ropencan_hex.png" align="right" width=140/>
 
 ### ~ In development, contributions and participation welcome ~
 
