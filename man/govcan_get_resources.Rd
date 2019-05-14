@@ -4,23 +4,21 @@
 \alias{govcan_get_resources}
 \title{Obtain the list of accessible data files (resources) for a given record (package)}
 \usage{
-govcan_get_resources(record_id = NULL, query_results = NULL,
-  format_resources = FALSE)
+govcan_get_resources(record_id = NULL, query_results = NULL)
 }
 \arguments{
 \item{record_id}{(character) Id of the wanated dataset, of the form
 "4a2929ce-d6b1-49b0-b520-63be0859c552"}
 
 \item{query_results}{(list or data.frame) The results of a call to opencan_search()}
-
-\item{format_resources}{(logical) Whether the function should return a formatted output
-of the resources as a tibble or an unformatted list (default) of CKAN packages}
 }
 \value{
 If format is TRUE, will return a tibble of available file formats for a
 given datset or query, else it will return an equivalent list (default).
 }
 \description{
-Return either a list or a formatted tibble listing all available data
-files (resources) for a given record (package)
+To sue this function, it isimportant to have retrieved records with the
+default options of the otehr functions in this package. This function returns either a
+formatted tibble (default) or a list of all available data files (resources) for a
+given record (package)
 }

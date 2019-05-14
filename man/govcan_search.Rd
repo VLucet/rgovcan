@@ -4,8 +4,8 @@
 \alias{govcan_search}
 \title{Query OpenCan portal for datasets matching keywords}
 \usage{
-govcan_search(keywords, records = 10, only_results = FALSE,
-  format_results = FALSE, ... = NULL)
+govcan_search(keywords, records = 10, only_results = TRUE,
+  format_results = TRUE, ... = NULL)
 }
 \arguments{
 \item{keywords}{(character) A set of keywords to query}
@@ -13,17 +13,19 @@ govcan_search(keywords, records = 10, only_results = FALSE,
 \item{records}{(numeric) The number of matching records to return from the CKAn query
 (number of rows in the JSON output)}
 
-\item{only_results}{(logical) Whether the function should return only the results}
+\item{only_results}{(logical) Whether the function should return only the results
+(default, recommanded to be able to use other functions in the package)}
 
 \item{format_results}{(logical) Whether the function should return a formatted output
-of the results as a tibble or an unformatted list (default) of CKAN packages}
+of the results as a tibble (default) or an unformatted version under the form of
+CKAN packages contaning lists}
 
 \item{...}{More arguments to be passed on to ckanr::package_search()}
 }
 \value{
 If only_results is TRUE, will return only the results of the search, else it
-will return all the output of the CKAN query. If format_results is true, the results
-are formatted to a tibble when possible.
+will return all the output of the CKAN query. If format_results is TRUE, the results
+are formatted to a tibble.
 }
 \description{
 This function wraps ckanr::package_search() to search for any records
