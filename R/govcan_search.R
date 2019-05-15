@@ -1,28 +1,28 @@
 #' Query OpenCan portal for datasets matching keywords
 #'
 #' @description This function wraps ckanr::package_search() to search for any records
-#' matching a given set of jeywords within the open Canada portal
+#' matching a given set of keywords within the Open Canada Portal
 #'
-#' @param keywords (character) A set of keywords to query
-#' @param records (numeric) The number of matching records to return from the CKAn query
-#' (number of rows in the JSON output)
+#' @param keywords (character vector) A set of keywords to query
+#' @param records (numeric) The number of matching records to return from the CKAN query
+#' (number of rows in the JSON output), default to 10
 #' @param only_results (logical) Whether the function should return only the results
-#' (default, recommanded to be able to use other functions in the package)
+#' without the query metadata (default is TRUE)
 #' @param format_results (logical) Whether the function should return a formatted output
-#' of the results as a tibble (default) or an unformatted version under the form of
-#' CKAN packages contaning lists
+#' of the results as a tibble  or an unformatted version under the form of a list of
+#' CKAN packages (default is FALSE)
 #' @param ... More arguments to be passed on to ckanr::package_search()
 #'
-#' @return If only_results is TRUE, will return only the results of the search, else it
-#' will return all the output of the CKAN query. If format_results is TRUE, the results
-#' are formatted to a tibble.
+#' @return If only_results is TRUE and format_results is FALSE (recommended), will return
+#' only the results of the search as a CKAN_package_stack. If only_results is FALSE,
+#' will return a list including also the query metadata. If format_results is TRUE, the
+#' function formats the output as a data.frame (not CKAN packages)
 #'
 #' @export
-
 govcan_search <- function(keywords,
                           records = 10,
                           only_results = TRUE,
-                          format_results = TRUE,
+                          format_results = FALSE,
                           ... = NULL) {
 
   # Search message
@@ -36,7 +36,7 @@ govcan_search <- function(keywords,
   # Perform query
   if (format_results == TRUE) {
     as = "table"
-  } else {
+  } else if (format_results == FALSE){
     as = "list"
   }
   query_results <- ckanr::package_search(q = keywords_collated,
@@ -57,11 +57,20 @@ govcan_search <- function(keywords,
             records, " records were returned")
   }
 
-  # Only output results if required (not recommanded)
+  # Only output results if required
   if (only_results == TRUE) {
-    query_out <- query_results$results
+    if (as == "list"){
+      query_out <- new_ckan_package_stack(query_results$results)
+    } else {
+      query_out <- query_results$results
+    }
   } else {
-    query_out <- query_results
+    if (as == "list"){
+      query_out <- query_results
+    } else if (as == "table"){
+      query_out <- query_results
+    }
   }
+
   query_out
 }
