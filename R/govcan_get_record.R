@@ -7,10 +7,10 @@
 #' search using govcan_search, or on https://open.canada.ca/en. The id is of the form
 #' "4a2929ce-d6b1-49b0-b520-63be0859c552"
 #' @param format_resources (logical) Whether the function should return a formatted output
-#' of the resources as a tibble (default, recommanded to be able to use other functions
-#' in the package) or an unformatted list of resources
+#' of the resources as a tibble or an unformatted list of resources (default is FALSE)
 #' @param only_resources (logical) Whether the function should return only the resources
-#' from the record (list of files available for download)
+#' from the record (list of files available for download). Resources can also be accessed
+#' with govcan_show_ressources
 #' @param ... More arguments to be passed on to ckanr::package_show()
 #'
 #' @return If only_resources is TRUE, will return only the list of data files (resources)
@@ -19,8 +19,11 @@
 #'
 #' @export
 
+
+# NEED TO REFORMAT THIS
+
 govcan_get_record <- function(record_id,
-                              format_resources = TRUE,
+                              format_resources = FALSE,
                               only_resources = FALSE,
                               ... = NULL){
   # Search message
