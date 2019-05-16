@@ -7,7 +7,7 @@ Maintainer: Valentin Lucet <valentin.lucet@mail.mcgill.ca>
 Description: ropencan allows users to serach for existing dataset on the Governement of Canada
     open data portal.
 Imports:
-    ckanr, dplyr, tidyr, purrr
+    ckanr, dplyr, tidyr, purrr, data.table
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true

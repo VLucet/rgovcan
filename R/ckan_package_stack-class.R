@@ -1,4 +1,6 @@
-# Class ckan_package_stack
+#' ckan_package_stack class and helpers
+#'
+#' @param x a list
 
 new_ckan_package_stack <- function(x = list()){
   structure(x,

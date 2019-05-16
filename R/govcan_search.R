@@ -1,4 +1,4 @@
-#' Query OpenCan portal for datasets matching keywords
+#' Query OpenCan portal for datasets (CKAN packages) matching keywords
 #'
 #' @description This function wraps ckanr::package_search() to search for any records
 #' matching a given set of keywords within the Open Canada Portal

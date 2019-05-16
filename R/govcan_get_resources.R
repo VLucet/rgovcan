@@ -1,9 +1,7 @@
 #' Query OpenCan portal for resources matching a specific record (i.e. a CKAN package)
 #'
-#' @description To sue this function, it isimportant to have retrieved records with the
-#' default options of the otehr functions in this package. This function returns either a
-#' formatted tibble (default) or a list of all available data files (resources) for a
-#' given record (package)
+#' @description This function returns either a formatted tibble (default) or a list of
+#' all available data files (resources) for a given record (package)
 #'
 #' @param record_id (character) Id of the wanated dataset, of the form
 #' "4a2929ce-d6b1-49b0-b520-63be0859c552"
@@ -15,12 +13,14 @@
 #' @export
 
 govcan_get_resources <- function(record_id = NULL,
-                                 query_results = NULL) {
+                                 query_results = NULL,
+                                 ... = NULL) {
 
   # If a record ID is directly given to the function
   if (!is.null(record_id)){
     resources_output <- govcan_get_record(record_id = record_id,
-                                          only_resources = TRUE)
+                                          only_resources = TRUE,
+                                          ... = NULL)
   } else if (!is.null(query_results)){
     if ("results" %in% names(query_results)) {
       resources_output <- query_results$results$resources

@@ -2,7 +2,7 @@
 % Please edit documentation in R/govcan_search.R
 \name{govcan_search}
 \alias{govcan_search}
-\title{Query OpenCan portal for datasets matching keywords}
+\title{Query OpenCan portal for datasets (CKAN packages) matching keywords}
 \usage{
 govcan_search(keywords, records = 10, only_results = TRUE,
   format_results = FALSE, ... = NULL)

@@ -4,7 +4,8 @@
 \alias{govcan_get_resources}
 \title{Query OpenCan portal for resources matching a specific record (i.e. a CKAN package)}
 \usage{
-govcan_get_resources(record_id = NULL, query_results = NULL)
+govcan_get_resources(record_id = NULL, query_results = NULL,
+  ... = NULL)
 }
 \arguments{
 \item{record_id}{(character) Id of the wanated dataset, of the form
@@ -17,8 +18,6 @@ If format is TRUE, will return a tibble of available file formats for a
 given datset or query, else it will return an equivalent list (default).
 }
 \description{
-To sue this function, it isimportant to have retrieved records with the
-default options of the otehr functions in this package. This function returns either a
-formatted tibble (default) or a list of all available data files (resources) for a
-given record (package)
+This function returns either a formatted tibble (default) or a list of
+all available data files (resources) for a given record (package)
 }
