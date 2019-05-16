@@ -11,15 +11,9 @@ new_ckan_resource_stack <- function(x = list()){
 print.ckan_resource_stack <- function(x, ...) {
   cat("<CKAN Resource Stack with", dim(x), "Resource> \n")
   cat(" \n")
-  if (dim(x)> 5) {
-    cat("  First 5 resource:  \n")
-    cat(" \n")
-    purrr::map(x[1:5], print_ckan_resource_custom)
-  } else {
-    cat("  Resources:  \n")
-    cat(" \n")
-    purrr::map(x[1:dim(x)], print_ckan_resource_custom)
-  }
+  cat("  Resources:  \n")
+  cat(" \n")
+  purrr::map(x[1:dim(x)], print_ckan_resource_custom)
 }
 
 # Custom printing function for packages inside a stack
