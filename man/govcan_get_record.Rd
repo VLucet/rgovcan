@@ -4,7 +4,7 @@
 \alias{govcan_get_record}
 \title{Query OpenCan portal for a specific record (i.e. a CKAN package)}
 \usage{
-govcan_get_record(record_id, format_resources = TRUE,
+govcan_get_record(record_id, format_resources = FALSE,
   only_resources = FALSE, ... = NULL)
 }
 \arguments{
@@ -13,11 +13,11 @@ search using govcan_search, or on https://open.canada.ca/en. The id is of the fo
 "4a2929ce-d6b1-49b0-b520-63be0859c552"}
 
 \item{format_resources}{(logical) Whether the function should return a formatted output
-of the resources as a tibble (default, recommanded to be able to use other functions
-in the package) or an unformatted list of resources}
+of the resources as a tibble or an unformatted list of resources (default is FALSE)}
 
 \item{only_resources}{(logical) Whether the function should return only the resources
-from the record (list of files available for download)}
+from the record (list of files available for download). Resources can also be accessed
+with govcan_show_ressources}
 
 \item{...}{More arguments to be passed on to ckanr::package_show()}
 }

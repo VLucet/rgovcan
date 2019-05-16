@@ -18,10 +18,6 @@
 #' If format_resources is TRUE, the resources are formatted to a tibble.
 #'
 #' @export
-
-
-# NEED TO REFORMAT THIS
-
 govcan_get_record <- function(record_id,
                               format_resources = FALSE,
                               only_resources = FALSE,

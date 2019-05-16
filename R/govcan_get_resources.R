@@ -1,4 +1,4 @@
-#' Obtain the list of accessible data files (resources) for a given record (package)
+#' Query OpenCan portal for resources matching a specific record (i.e. a CKAN package)
 #'
 #' @description To sue this function, it isimportant to have retrieved records with the
 #' default options of the otehr functions in this package. This function returns either a

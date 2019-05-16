@@ -8,7 +8,7 @@ new_ckan_package_stack <- function(x = list()){
 #' @export
 print.ckan_package_stack <- function(x, ...) {
   cat("<CKAN Package Stack with", dim(x), "Packages> \n")
-  cat("==================================== \n")
+  cat(" \n")
   if (dim(x)> 5) {
     cat("  First 5 packages:  \n")
     cat(" \n")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/govcan_get_resources.R
 \name{govcan_get_resources}
 \alias{govcan_get_resources}
-\title{Obtain the list of accessible data files (resources) for a given record (package)}
+\title{Query OpenCan portal for resources matching a specific record (i.e. a CKAN package)}
 \usage{
 govcan_get_resources(record_id = NULL, query_results = NULL)
 }
