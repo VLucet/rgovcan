@@ -11,17 +11,25 @@
 #'
 #' @export
 govcan_get_resources <- function(x){
-  UseMethod("govcan_show_resources")
+  UseMethod("govcan_get_resources")
 }
 
 #' @export
 govcan_get_resources.ckan_package_stack <- function(x){
-  purrr::map(x, govcan_show_resources)
+  purrr::map(x, govcan_get_resources)
 }
 
 #' @export
 govcan_get_resources.ckan_package <- function(x){
   resource_list <-  x$resources
+  resource_stack <- map(resource_list, ckanr::as.ckan_resource)
+  new_ckan_resource_stack(resource_stack)
+}
+
+#' @export
+govcan_get_resources.character <- function(x){
+  resource_list <- govcan_get_record(record_id = x, only_resources = TRUE,
+                                     format_resources = FALSE)
   resource_stack <- map(resource_list, ckanr::as.ckan_resource)
   new_ckan_resource_stack(resource_stack)
 }
