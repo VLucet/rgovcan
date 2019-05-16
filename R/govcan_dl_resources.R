@@ -49,9 +49,9 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
 
   if (length(wanted_indices) > 0 ){
     if (where == "session"){
-      ckanr::fetch(resources$url, store = "session")
+      map(resources, ~ckanr::fetch(.x$url, store = "session"))
     } else if (where != "session"){
-      ckanr::fetch(resources$url, store = "disk", path = where)
+      map(resources, ~ckanr::fetch(.x$url, store = "disk", path = where))
     }
   }
 }
