@@ -5,7 +5,7 @@
 #' or to a stack of packages
 #'
 #' @param x An object of the class ckan_package_stack or ckan_package, or an id of
-#' a pecific record or (i.e. a CKAN package)
+#' a specific record or (i.e. a CKAN package)
 #'
 #' @return A object of class ckan_resource_stack or list of ckan_resource_stack objetcs
 #'
