@@ -22,7 +22,7 @@ govcan_get_resources.ckan_package_stack <- function(x){
 #' @export
 govcan_get_resources.ckan_package <- function(x){
   resource_list <-  x$resources
-  resource_stack <- map(resource_list, ckanr::as.ckan_resource)
+  resource_stack <- purrr::map(resource_list, ckanr::as.ckan_resource)
   new_ckan_resource_stack(resource_stack)
 }
 

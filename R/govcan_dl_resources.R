@@ -56,7 +56,7 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
                                                     file_formats = c("CSV"),
                                                     where = getwd()){
 
-  all_formats <- unlist(map(resources, ~.x$format))
+  all_formats <- unlist(purrr::map(resources, ~.x$format))
   wanted_indices <- which(all_formats %in% file_formats)
 
   if (length(wanted_indices) > 0 ){
@@ -92,7 +92,8 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
 # Helpers function for govcan_dl_resources
 
 get_resource_name <- function(resource_tmp){
-  name_extracted <- unlist(stringr::str_extract_all(resource_tmp$name,boundary("word")))
+  name_extracted <- unlist(stringr::str_extract_all(resource_tmp$name,
+                                                    stringr::boundary("word")))
   extension <- resource_tmp$format
 
   if (extension == "SHP"){
@@ -112,12 +113,12 @@ create_storing_path <- function(where, resource_name){
 }
 
 write_import_messgae <- function(resource_tmp){
-  cat("Dataset ", resource_tmp$name, " imported succefully to session")
+  cat("Dataset ", resource_tmp$name, " imported successfully to session")
 }
 
 write_dl_messgae <- function(resource_tmp, path){
   cat(" ---------------------------------------------------------------- \n")
-  cat("",resource_tmp$format, "file named", resource_tmp$name, "downloaded succefully to session \n")
+  cat("",resource_tmp$format, "file named", resource_tmp$name, "downloaded successfully \n")
   cat(" path to file is:", path, "\n")
   cat(" ---------------------------------------------------------------- \n")
 }
