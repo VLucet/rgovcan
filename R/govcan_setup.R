@@ -4,7 +4,7 @@
 #' "https://open.canada.ca/data/en"
 #'
 #' @export
-govcan_setup <- function(){
-  message("ckanr url set to https://open.canada.ca/data/en")
-  ckanr::ckanr_setup(url = "https://open.canada.ca/data/en")
+govcan_setup <- function(url = "https://open.canada.ca/data/en"){
+  message(paste0("ckanr url set to ", url))
+  ckanr::ckanr_setup(url = url)
 }

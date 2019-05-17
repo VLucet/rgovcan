@@ -12,3 +12,4 @@ new_ckan_package_stack(x = list())
 \description{
 ckan_package_stack class and helpers
 }
+\keyword{internal}

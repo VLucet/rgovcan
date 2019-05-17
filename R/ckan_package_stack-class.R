@@ -1,6 +1,7 @@
 #' ckan_package_stack class and helpers
 #'
 #' @param x a list
+#' @keywords internal
 
 new_ckan_package_stack <- function(x = list()){
   structure(x,

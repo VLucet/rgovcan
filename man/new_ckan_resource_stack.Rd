@@ -12,3 +12,4 @@ new_ckan_resource_stack(x = list())
 \description{
 ckan_resource_stack class and helpers
 }
+\keyword{internal}

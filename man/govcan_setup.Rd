@@ -4,7 +4,7 @@
 \alias{govcan_setup}
 \title{Set or reset the ckanr URL to the Open Canada portal URl "https://open.canada.ca/data/en"}
 \usage{
-govcan_setup()
+govcan_setup(url = "https://open.canada.ca/data/en")
 }
 \description{
 Set or reset the ckanr URL to the Open Canada portal URl
