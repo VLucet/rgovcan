@@ -1,0 +1,5 @@
+language: R
+warnings_are_errors: false
+
+script:
+  - R CMD build .
