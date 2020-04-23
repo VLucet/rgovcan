@@ -13,3 +13,5 @@ LazyData: true
 RoxygenNote: 7.1.0
 Authors@R: person("Valentin", "Lucet", email = "valentin.lucet@mail.mcgill.ca",
     role = c("aut", "cre"))
+           person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca",
+    role = c("ctb"))
