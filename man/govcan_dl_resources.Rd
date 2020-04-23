@@ -2,10 +2,16 @@
 % Please edit documentation in R/govcan_dl_resources.R
 \name{govcan_dl_resources}
 \alias{govcan_dl_resources}
+\alias{govcan_dl_resources.ckan_resource}
+\alias{govcan_dl_resources.ckan_resource_stack}
 \title{Download the resources attached to a specific record or (i.e. a CKAN package)
-or to a stack of packages,}
+or to a stack of packages}
 \usage{
-govcan_dl_resources(resources, ...)
+govcan_dl_resources(resources, file_formats, where, ...)
+
+\method{govcan_dl_resources}{ckan_resource}(resources, file_formats = c("CSV"), where = getwd(), ...)
+
+\method{govcan_dl_resources}{ckan_resource_stack}(resources, file_formats = c("CSV"), where = getwd(), ...)
 }
 \arguments{
 \item{resources}{An object of the class ckan_package_stack or ckan_package, or an id of
@@ -22,8 +28,17 @@ donwloaded, any of :
 
 \item{where}{(string) One of "session" is files have to be charged in the session
 or a path to the folder in which to download the files}
+
+\item{...}{extra argument(s)}
 }
 \description{
-Download resources attached to a specific record or (i.e. a CKAN package)
-or to a stack of packages
+Download resources attached to a specific record or (i.e. a CKAN
+package) or to a stack of packages.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{ckan_resource}: Method for ckan_resource objects.
+
+\item \code{ckan_resource_stack}: Method for ckan_resource_stack objects.
+}}
+

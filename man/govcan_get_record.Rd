@@ -4,8 +4,12 @@
 \alias{govcan_get_record}
 \title{Query OpenCan portal for a specific record (i.e. a CKAN package)}
 \usage{
-govcan_get_record(record_id, format_resources = FALSE,
-  only_resources = FALSE, ... = NULL)
+govcan_get_record(
+  record_id,
+  format_resources = FALSE,
+  only_resources = FALSE,
+  ... = NULL
+)
 }
 \arguments{
 \item{record_id}{(character) The id of the wanted dataset, which can be found with a
@@ -23,7 +27,7 @@ with govcan_show_ressources}
 }
 \value{
 If only_resources is TRUE, will return only the list of data files (resources)
-associated with the record querried else it will return all the output of the CKAN query.
+associated with the record queried else it will return all the output of the CKAN query.
 If format_resources is TRUE, the resources are formatted to a tibble.
 }
 \description{

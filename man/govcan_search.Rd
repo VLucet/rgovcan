@@ -4,8 +4,13 @@
 \alias{govcan_search}
 \title{Query OpenCan portal for datasets (CKAN packages) matching keywords}
 \usage{
-govcan_search(keywords, records = 10, only_results = TRUE,
-  format_results = FALSE, ... = NULL)
+govcan_search(
+  keywords,
+  records = 10,
+  only_results = TRUE,
+  format_results = FALSE,
+  ... = NULL
+)
 }
 \arguments{
 \item{keywords}{(character vector) A set of keywords to query}
@@ -17,7 +22,7 @@ govcan_search(keywords, records = 10, only_results = TRUE,
 without the query metadata (default is TRUE)}
 
 \item{format_results}{(logical) Whether the function should return a formatted output
-of the results as a tibble  or an unformatted version under the form of a list of
+of the results as a tibble or an unformatted version under the form of a list of
 CKAN packages (default is FALSE)}
 
 \item{...}{More arguments to be passed on to ckanr::package_search()}
