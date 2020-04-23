@@ -357,7 +357,7 @@ dfo_resources # outputs a list of `resource_stack`s
 5.  Finally, you can download the resources with `govcan_dl_resources`.
     These can either be stored to a certain directory or load into
     session (\* this option might fail due to current issues with
-    `ckanr::fetch`).
+    `ckanr::ckan_fetch`).
 
 <!-- end list -->
 

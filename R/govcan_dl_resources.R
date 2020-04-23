@@ -1,8 +1,8 @@
 #' Download the resources attached to a specific record or (i.e. a CKAN package)
-#' or to a stack of packages,
-#'
-#' @description Download resources attached to a specific record or (i.e. a CKAN package)
 #' or to a stack of packages
+#'
+#' @description Download resources attached to a specific record or (i.e. a CKAN
+#' package) or to a stack of packages.
 #'
 #' @param resources An object of the class ckan_package_stack or ckan_package, or an id of
 #' a specific record or (i.e. a CKAN package), or an object of type ckan_resource or
@@ -16,34 +16,36 @@
 #' }
 #' @param where (string) One of "session" is files have to be charged in the session
 #' or a path to the folder in which to download the files
+#' @param ... extra argument(s)
 #'
 #' @export
-govcan_dl_resources <- function(resources,
+govcan_dl_resources <- function(resources, file_formats, where,
                                 ...) {
   UseMethod("govcan_dl_resources")
 }
 
+#' @describeIn govcan_dl_resources Method for ckan_resource objects.
 #' @export
-govcan_dl_resources.ckan_resource <- function(resource,
+govcan_dl_resources.ckan_resource <- function(resources,
                                               file_formats = c("CSV"),
-                                              where = getwd()){
-  all_formats <- unlist(resource$format)
+                                              where = getwd(), ...){
+  all_formats <- unlist(resources$format)
   wanted_indices <- (all_formats %in% file_formats)
 
   if (wanted_indices == TRUE){
     if (where == "session"){
 
       message("Warning: the session option is currently not working well due to issues in ckanr")
-      ckanr::fetch(resource$url, store = "session")
-      write_import_messgae(resource)
+      ckanr::ckan_fetch(resources$url, store = "session")
+      write_import_message(resources)
 
     } else if (where != "session"){
 
-      resource_name <- get_resource_name(resource)
+      resource_name <- get_resource_name(resources)
       path <- create_storing_path(where, resource_name)
 
-      ckanr::fetch(resource$url, store = "disk", path = path)
-      write_dl_messgae(resource, path)
+      ckanr::ckan_fetch(resources$url, store = "disk", path = path)
+      write_dl_message(resources, path)
 
     }
   } else {
@@ -51,15 +53,16 @@ govcan_dl_resources.ckan_resource <- function(resource,
   }
 }
 
+#' @describeIn govcan_dl_resources Method for ckan_resource_stack objects.
 #' @export
 govcan_dl_resources.ckan_resource_stack <- function(resources,
                                                     file_formats = c("CSV"),
-                                                    where = getwd()){
+                                                    where = getwd(), ...){
 
   all_formats <- unlist(purrr::map(resources, ~.x$format))
   wanted_indices <- which(all_formats %in% file_formats)
 
-  if (length(wanted_indices) > 0 ){
+  if (length(wanted_indices) > 0){
     if (where == "session"){
 
       message("Warning: the session option is currently not working well due to issues in ckanr")
@@ -67,8 +70,8 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
       for (resource in wanted_indices){
         resource_tmp <-  resources[[resource]]
 
-        ckanr::fetch(resource_tmp$url, store = "session")
-        write_import_messgae(resource_tmp)
+        ckanr::ckan_fetch(resource_tmp$url, store = "session")
+        write_import_message(resource_tmp)
       }
 
     } else if (where != "session"){
@@ -80,8 +83,8 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
         resource_name <- get_resource_name(resource_tmp)
         path <- create_storing_path(where, resource_name)
 
-        ckanr::fetch(resource_tmp$url, store = "disk", path = path)
-        write_dl_messgae(resource_tmp, path)
+        ckanr::ckan_fetch(resource_tmp$url, store = "disk", path = path)
+        write_dl_message(resource_tmp, path)
 
       }
     }
@@ -112,11 +115,11 @@ create_storing_path <- function(where, resource_name){
   path
 }
 
-write_import_messgae <- function(resource_tmp){
+write_import_message <- function(resource_tmp){
   cat("Dataset ", resource_tmp$name, " imported successfully to session")
 }
 
-write_dl_messgae <- function(resource_tmp, path){
+write_dl_message <- function(resource_tmp, path){
   cat(" ---------------------------------------------------------------- \n")
   cat("",resource_tmp$format, "file named", resource_tmp$name, "downloaded successfully \n")
   cat(" path to file is:", path, "\n")

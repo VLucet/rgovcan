@@ -6,7 +6,8 @@
 new_ckan_package_stack <- function(x = list()){
   structure(x,
             class = "ckan_package_stack",
-            dim = length(x))}
+            dim = length(x))
+}
 
 #' @export
 print.ckan_package_stack <- function(x, ...) {

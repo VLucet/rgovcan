@@ -1,6 +1,7 @@
 #' ckan_resource_stack class and helpers
 #'
 #' @param x a list
+#' @param ... ignored.
 #' @keywords internal
 
 new_ckan_resource_stack <- function(x = list()){

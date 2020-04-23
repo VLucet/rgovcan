@@ -9,7 +9,7 @@
 #' @param only_results (logical) Whether the function should return only the results
 #' without the query metadata (default is TRUE)
 #' @param format_results (logical) Whether the function should return a formatted output
-#' of the results as a tibble  or an unformatted version under the form of a list of
+#' of the results as a tibble or an unformatted version under the form of a list of
 #' CKAN packages (default is FALSE)
 #' @param ... More arguments to be passed on to ckanr::package_search()
 #'
@@ -30,8 +30,8 @@ govcan_search <- function(keywords,
           paste(keywords, collapse = ", "))
 
   # Collate all keywords
-  keywords_collated <- paste0(keywords,"+", collapse = "")
-  keywords_collated <- substr(keywords_collated,1, nchar(keywords_collated)-1)
+  keywords_collated <- paste0(keywords, "+", collapse = "")
+  keywords_collated <- substr(keywords_collated, 1, nchar(keywords_collated)-1)
 
   # Perform query
   if (format_results == TRUE) {

@@ -8,6 +8,8 @@ new_ckan_resource_stack(x = list())
 }
 \arguments{
 \item{x}{a list}
+
+\item{...}{ignored.}
 }
 \description{
 ckan_resource_stack class and helpers
