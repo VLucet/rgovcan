@@ -6,7 +6,7 @@ Author: Valentin Lucet [aut, cre]
 Maintainer: Valentin Lucet <valentin.lucet@mail.mcgill.ca>
 Description: rgovcan allows users to search for existing dataset on the Canadian Open Government portal (<https://open.canada.ca/en>).
 Imports:
-    ckanr, dplyr, tidyr, purrr, stringr
+    ckanr, dplyr, purrr, stringr
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true

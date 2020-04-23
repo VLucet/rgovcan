@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  md_document:
+    variant: gfm
 ---
 
 ```{r setup, include=FALSE}
@@ -42,10 +44,10 @@ govcan_setup()
 
 2. A typical workflow with `rgovcan` can start with running `govcan_search` on a given set of keywords. This yields a `stack` of `ckan_packages` (object of class `ckan_package_stack`).
 ```{r}
-?govcan_search
 dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 dfo_search # outputs a `ckan_package_stack`
 ```
+see `?govcan_search` for further details.
 
 3. Another possibility is to start with a package id corresponding to an actual record and retrieve a `ckan_package`.
 ```{r}
@@ -68,9 +70,10 @@ dfo_resources # outputs a list of `resource_stack`s
 5. Finally, you can download the resources with `govcan_dl_resources`. These can either be stored to a certain directory or load into session (* this option might fail due to current issues with `ckanr::ckan_fetch`).
 
 ```{r}
-?govcan_dl_resources
 path <- "tmp/data/"
 dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, file_formats = c("JSON", "CSV", "SHP"), where = path)
 # govcan_dl_resources(res_pel, file_formats = c("JSON", "CSV", "SHP"), where = "session")
 ```
+
+see `?govcan_dl_resources` for further details.
