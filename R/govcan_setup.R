@@ -1,4 +1,5 @@
-#' Set or reset the ckanr URL to the Open Canada portal URL "https://open.canada.ca/data/en"
+# ' Set or reset the ckanr URL to the Open Canada portal URL
+# <https://open.canada.ca/data/en>
 #'
 #' @description Set or reset the ckanr URL to the Open Canada portal URL
 #' <https://open.canada.ca/data/en>

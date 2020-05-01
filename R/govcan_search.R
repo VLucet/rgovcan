@@ -1,23 +1,23 @@
 #' Query OpenCan portal for datasets (CKAN packages) matching keywords
 #'
-#' @description This function wraps [ckanr::package_search()] to search for any records
-#' matching a given set of keywords within the Open Canada Portal
+#' @description This function wraps [ckanr::package_search()] to search for any
+#' records matching a given set of keywords within the Open Canada Portal
 #'
 #' @param keywords (character vector) A set of keywords to query
-#' @param records (numeric) The number of matching records to return from the CKAN query
-#' (number of rows in the JSON output), default to 10
-#' @param only_results (logical) Whether the function should return only the results
-#' without the query metadata (default is `TRUE`)
-#' @param format_results (logical) Whether the function should return a formatted output
-#' of the results as a tibble or an unformatted version under the form of a list of
-#' CKAN packages (default is `FALSE`)
+#' @param records (numeric) The number of matching records to return from the
+#' CKAN query (number of rows in the JSON output), default to 10
+#' @param only_results (logical) Whether the function should return only the
+#' results without the query metadata (default is `TRUE`)
+#' @param format_results (logical) Whether the function should return a
+#' formatted output of the results as a tibble or an unformatted version under
+#' the form of a list of CKAN packages (default is `FALSE`)
 #' @param ... More arguments to be passed on to [ckanr::package_search()]
 #'
-#' @return If only_results is `TRUE` and format_results is `FALSE`
+#' @return If `only_results` is `TRUE` and `format_results` is `FALSE`
 #' (recommended), will return only the results of the search as a
-#' CKAN_package_stack. If only_results is FALSE, will return a list including
-#' also the query metadata. If format_results is `TRUE`, the function formats
-#' the output as a data.frame (not CKAN packages).
+#' `CKAN_package_stack`. If `only_results` is `FALSE`, will return a list
+#' including also the query metadata. If format_results is `TRUE`, the function
+#' formats the output as a data.frame (not CKAN packages).
 #'
 #' @export
 govcan_search <- function(keywords,
@@ -36,11 +36,7 @@ govcan_search <- function(keywords,
     nchar(keywords_collated) - 1)
 
   # Perform query
-  if (format_results) {
-    as = "table"
-  } else {
-    as = "list"
-  }
+  as <- ifelse(format_results, "table", "list")
   query_results <- ckanr::package_search(q = keywords_collated,
                                          rows = records,
                                          as = as,
