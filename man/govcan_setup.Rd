@@ -11,5 +11,5 @@ govcan_setup(url = "https://open.canada.ca/data/en")
 }
 \description{
 Set or reset the ckanr URL to the Open Canada portal URL
-"https://open.canada.ca/data/en"
+\url{https://open.canada.ca/data/en}
 }

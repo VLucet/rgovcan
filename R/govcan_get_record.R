@@ -13,9 +13,9 @@
 #' with govcan_show_ressources
 #' @param ... More arguments to be passed on to ckanr::package_show()
 #'
-#' @return If only_resources is TRUE, will return only the list of data files (resources)
+#' @return If only_resources is `TRUE`, will return only the list of data files (resources)
 #' associated with the record queried else it will return all the output of the CKAN query.
-#' If format_resources is TRUE, the resources are formatted to a tibble.
+#' If format_resources is `TRUE`, the resources are formatted to a tibble.
 #'
 #' @export
 govcan_get_record <- function(record_id,
@@ -26,7 +26,7 @@ govcan_get_record <- function(record_id,
   message("Searching for dataset with id: ", record_id)
 
   # Perform the query
-  if (format_resources == TRUE) {
+  if (format_resources) {
     as = "table"
   } else {
     as = "list"
@@ -35,11 +35,11 @@ govcan_get_record <- function(record_id,
                                        as = as,
                                        ... = NULL)
 
-  # Messgae the title of the record
-  message(paste0("Record found: \"", query_results$title, "\""))
+  # Message the title of the record
+  msgInfo(paste0("Record found: \"", query_results$title, "\""))
 
   # Only output resources if required
-  if (only_resources == TRUE) {
+  if (only_resources) {
     if (as == "list"){
       query_out <- query_results$resources
     } else if (as == "table"){

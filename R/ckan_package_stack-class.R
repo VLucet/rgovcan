@@ -11,15 +11,15 @@ new_ckan_package_stack <- function(x = list()){
 
 #' @export
 print.ckan_package_stack <- function(x, ...) {
-  cat("<CKAN Package Stack with", dim(x), "Packages> \n")
-  cat(" \n")
-  if (dim(x)> 5) {
+  cli::cat_rule(paste("<CKAN Package Stack with", dim(x), "Packages>"))
+  cli::cat_line()
+  if (dim(x) > 5) {
     cat("  First 5 packages:  \n")
-    cat(" \n")
-    purrr::map(x[1:5], print_ckan_package_custom)
+    cli::cat_line()
+    purrr::map(x[seq_len(5)], print_ckan_package_custom)
   } else {
     cat("  Packages:  \n")
-    cat(" \n")
+    cli::cat_line()
     purrr::map(x[1:dim(x)], print_ckan_package_custom)
   }
 }

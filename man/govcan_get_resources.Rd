@@ -2,17 +2,17 @@
 % Please edit documentation in R/govcan_get_resources.R
 \name{govcan_get_resources}
 \alias{govcan_get_resources}
-\title{Display or Query resources attached to a specific record or (i.e. a CKAN package)
-or to a stack of packages,}
+\title{Display or Query resources attached to a specific record or (i.e. a CKAN
+package) or to a stack of packages}
 \usage{
 govcan_get_resources(x)
 }
 \arguments{
-\item{x}{An object of the class ckan_package_stack or ckan_package, or an id
-of a specific record or (i.e. a CKAN package).}
+\item{x}{An object of the class \code{ckan_package_stack} or \code{ckan_package}, or an
+id of a specific record or (i.e. a CKAN package).}
 }
 \value{
-A object of class ckan_resource_stack or list of ckan_resource_stack objetcs
+A object of class \code{ckan_resource_stack} or list of ckan_resource_stack objects.
 }
 \description{
 Display resources attached to a specific record or (i.e. a CKAN package)

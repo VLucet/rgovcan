@@ -8,19 +8,16 @@
 #' a specific record or (i.e. a CKAN package), or an object of type ckan_resource or
 #' ckan_resource_stack
 #' @param file_formats (character vector) A character vector with file formats to be
-#' donwloaded, any of :
-#' \enumerate{
-#'   \item CSV
-#'   \item JSON
-#'   \item SHP
-#' }
+#' downloaded, any of :
+#'   * CSV
+#'   * JSON
+#'   * SHP
 #' @param where (string) One of "session" is files have to be charged in the session
 #' or a path to the folder in which to download the files
 #' @param ... extra argument(s)
 #'
 #' @export
-govcan_dl_resources <- function(resources, file_formats, where,
-                                ...) {
+govcan_dl_resources <- function(resources, file_formats, where, ...) {
   UseMethod("govcan_dl_resources")
 }
 
@@ -32,7 +29,7 @@ govcan_dl_resources.ckan_resource <- function(resources,
   all_formats <- unlist(resources$format)
   wanted_indices <- (all_formats %in% file_formats)
 
-  if (wanted_indices == TRUE){
+  if (wanted_indices){
     if (where == "session"){
 
       message("Warning: the session option is currently not working well due to issues in ckanr")
@@ -62,7 +59,7 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
   all_formats <- unlist(purrr::map(resources, ~.x$format))
   wanted_indices <- which(all_formats %in% file_formats)
 
-  if (length(wanted_indices) > 0){
+  if (length(wanted_indices)){
     if (where == "session"){
 
       message("Warning: the session option is currently not working well due to issues in ckanr")
@@ -78,7 +75,7 @@ govcan_dl_resources.ckan_resource_stack <- function(resources,
 
       for (resource in wanted_indices){
 
-        resource_tmp <-  resources[[resource]]
+        resource_tmp <- resources[[resource]]
 
         resource_name <- get_resource_name(resource_tmp)
         path <- create_storing_path(where, resource_name)
@@ -108,7 +105,7 @@ get_resource_name <- function(resource_tmp){
 
 create_storing_path <- function(where, resource_name){
   if (where == "wd"){
-    path <- paste0(getwd(),"/", resource_name)
+    path <- paste0(getwd(), "/", resource_name)
   } else {
     path <- paste0(where, resource_name)
   }
@@ -120,8 +117,8 @@ write_import_message <- function(resource_tmp){
 }
 
 write_dl_message <- function(resource_tmp, path){
-  cat(" ---------------------------------------------------------------- \n")
+  cli::cat_rule()
   cat("",resource_tmp$format, "file named", resource_tmp$name, "downloaded successfully \n")
   cat(" path to file is:", path, "\n")
-  cat(" ---------------------------------------------------------------- \n")
+  cli::cat_rule()
 }

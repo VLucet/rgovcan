@@ -6,11 +6,14 @@
 v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Travis-CI Build
 Status](https://travis-ci.org/VLucet/rgovcan.svg?branch=master)](https://travis-ci.org/vlucet/rgovcan)
+![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)
 
-A R package to interact with the Open Canada API, to search and download
-datasets. It is our hope that we will be able to bring this package up
-to the standard of a `ropensci` packages (see this issue on
-`ropensci/wishlist` <https://github.com/ropensci/wishlist/issues/27>).
+A R package to interact with the Open Canada API (see
+<https://open.canada.ca/en/access-our-application-programming-interface-api>),
+to search and download datasets. It is our hope that we will be able to
+bring this package up to the standard of a `ropensci` packages (see this
+issue on `ropensci/wishlist`
+<https://github.com/ropensci/wishlist/issues/27>).
 
 This package makes extensive use of `ckanr` to access the Canadian
 government’s CKAN REST API.
@@ -23,11 +26,11 @@ Hex Logo done with `hexSticker`:
 
 ## Installation
 
-Until release to CRAN, you will need to use `devtools` to install from
+Until release to CRAN, you will need to use `remotes` to install from
 source.
 
 ``` r
-devtools::install_github("vlucet/rgovcan")
+remotes::install_github("vlucet/rgovcan")
 ```
 
 ## Usage
@@ -43,20 +46,20 @@ library("rgovcan")
 
     ## rgovcan package - alpha release - attached
 
-    ## ckanr url set to https://open.canada.ca/data/en
+    ## ℹ ckanr url set to https://open.canada.ca/data/en
 
 If you happen to change the default url, you can reset it back to the
-default with `govcan_setup`.
+default with `govcan_setup()`.
 
 ``` r
 govcan_setup()
 ```
 
-    ## ckanr url set to https://open.canada.ca/data/en
+    ## ℹ ckanr url set to https://open.canada.ca/data/en
 
 2.  A typical workflow with `rgovcan` can start with running
     `govcan_search` on a given set of keywords. This yields a `stack` of
-    `ckan_packages` (object of class `ckan_package_stack`).
+    `ckan_packages()` (object of class `ckan_package_stack`).
 
 <!-- end list -->
 
@@ -66,18 +69,18 @@ dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 
     ## Searching the Open Portal for records matching: dfo
 
-    ## CKAN query: 260 records found for keywords: dfo
+    ## CKAN query: 263 records found for keywords: dfo
 
-    ## 260 matching records were found, 10 records were returned
+    ## 263 matching records were found, 10 records were returned
 
 ``` r
 dfo_search # outputs a `ckan_package_stack`
 ```
 
-    ## <CKAN Package Stack with 10 Packages> 
-    ##  
+    ## ── <CKAN Package Stack with 10 Packages> ───────────────────────────────────────
+    ## 
     ##   First 5 packages:  
-    ##  
+    ## 
     ## <CKAN Package> 5cfd93bd-b3ee-4b0b-8816-33d388f6811d 
     ##   Title: DFO sea lice audits of BC marine finfish aquaculture sites
     ## <CKAN Package> 4dc95665-3d44-428c-bb26-12f981c57060 
@@ -103,7 +106,7 @@ id_search <- govcan_get_record(record_id = id)
 
     ## Searching for dataset with id: 7ac5fe02-308d-4fff-b805-80194f8ddeb4
 
-    ## Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"
+    ## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"
 
 ``` r
 id_search # outputs a `ckan_package`
@@ -111,7 +114,7 @@ id_search # outputs a `ckan_package`
 
     ## <CKAN Package> 7ac5fe02-308d-4fff-b805-80194f8ddeb4 
     ##   Title: Pacific Region Commercial Salmon Fishery In-season Catch Estimates
-    ##   Creator/Modified: 2018-09-21T12:18:04.128562 / 2020-04-21T20:33:30.110523
+    ##   Creator/Modified: 2018-09-21T12:18:04.128562 / 2020-04-30T17:49:14.169519
     ##   Resources (up to 5): Data Dictionary, Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019, Data Dictionary, Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019, Pacific Region Commercial Salmon Fishery In-season Catch Estimates
     ##   Tags (up to 5): 
     ##   Groups (up to 5):
@@ -130,22 +133,22 @@ id_resources # outputs a `resource_stack`
 ```
 
     ## <CKAN Resource Stack with 5 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
-    ## <CKAN Resource> 593847c4-053d-420c-8429-650ced30e136 
+    ## 
+    ## <CKAN Resource> 0c1b2697-4ba6-4b66-b70f-72445d00443b 
     ##   Name: Data Dictionary
     ##   Format: HTML
-    ## <CKAN Resource> 443c62bb-2a85-44fe-bea7-ebf49e65e3da 
+    ## <CKAN Resource> eb138d6a-1a8b-4907-af91-c9c728fe9531 
     ##   Name: Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019
     ##   Format: CSV
-    ## <CKAN Resource> 0186ca95-35fe-4f20-9751-3b92105bf550 
+    ## <CKAN Resource> f3e7fa0f-65d5-408d-919c-0e31a26251f2 
     ##   Name: Data Dictionary
     ##   Format: CSV
-    ## <CKAN Resource> d94bc8f4-6cce-432f-a229-cd1cb749854d 
+    ## <CKAN Resource> 9374bf48-9f71-4216-9b2a-ddf295b30046 
     ##   Name: Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019
     ##   Format: ESRI REST
-    ## <CKAN Resource> a2f471ac-ee48-4da1-96c4-49973f9cfe67 
+    ## <CKAN Resource> 53b268cb-d734-4432-8798-aa9f6ddbd637 
     ##   Name: Pacific Region Commercial Salmon Fishery In-season Catch Estimates
     ##   Format: ESRI REST
 
@@ -158,9 +161,9 @@ dfo_resources # outputs a list of `resource_stack`s
 
     ## [[1]]
     ## <CKAN Resource Stack with 6 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> 96852f26-a35d-4c4a-abe0-20a77aee8c93 
     ##   Name: DFO sea lice audits of BC marine finfish aquaculture sites, 2011 ongoing
     ##   Format: CSV
@@ -182,9 +185,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[2]]
     ## <CKAN Resource Stack with 4 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> 26c2c849-b033-4092-8993-e1f50514d096 
     ##   Name: DFO’s fish health monitoring activities at BC aquaculture sites, 2011 and ongoing
     ##   Format: CSV
@@ -200,9 +203,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[3]]
     ## <CKAN Resource Stack with 6 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> b49ab71b-ec00-4e85-813b-d508c32166db 
     ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
     ##   Format: CSV
@@ -224,9 +227,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[4]]
     ## <CKAN Resource Stack with 6 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> f51236a0-4ccc-4fd1-9fd0-f4a109065732 
     ##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing
     ##   Format: CSV
@@ -248,9 +251,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[5]]
     ## <CKAN Resource Stack with 3 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> bb01c294-9f21-44ed-bd73-341f18d25419 
     ##   Name: Oceans Protection Plan Extent- Data Dictionary
     ##   Format: HTML
@@ -263,9 +266,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[6]]
     ## <CKAN Resource Stack with 3 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> baa41cff-9357-4d41-86f1-26cf4d330040 
     ##   Name: Federal Marine Bioregions
     ##   Format: FGDB/GDB
@@ -278,9 +281,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[7]]
     ## <CKAN Resource Stack with 7 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> a5d3af15-dade-4aa6-a4c5-7396c1ac5915 
     ##   Name: Science Advisory Report 2016/039
     ##   Format: HTML
@@ -305,9 +308,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[8]]
     ## <CKAN Resource Stack with 2 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> 983a70a0-435a-4ba4-aaaf-6efa0def06ac 
     ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (English)
     ##   Format: ESRI REST
@@ -317,9 +320,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[9]]
     ## <CKAN Resource Stack with 4 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> 299b5db6-a4f8-4905-a16b-4a4b79887f90 
     ##   Name: Data Dictionary
     ##   Format: CSV
@@ -335,9 +338,9 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ## [[10]]
     ## <CKAN Resource Stack with 6 Resource> 
-    ##  
+    ## 
     ##   Resources:  
-    ##  
+    ## 
     ## <CKAN Resource> 519d6e21-c5dd-430e-a1f9-4784e4eb8188 
     ##   Name: Data Dictionary
     ##   Format: CSV
@@ -375,14 +378,14 @@ dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, file_formats = c("JSON", "CSV", "SHP"), where = path)
 ```
 
-    ##  ---------------------------------------------------------------- 
+    ## ────────────────────────────────────────────────────────────────────────────────
     ##  CSV file named Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 downloaded successfully 
     ##  path to file is: tmp/data/CommercialSalmonInSeasonCatchEstimatesInPiecesFrom2004To2019.CSV 
-    ##  ---------------------------------------------------------------- 
-    ##  ---------------------------------------------------------------- 
+    ## ────────────────────────────────────────────────────────────────────────────────
+    ## ────────────────────────────────────────────────────────────────────────────────
     ##  CSV file named Data Dictionary downloaded successfully 
     ##  path to file is: tmp/data/DataDictionary.CSV 
-    ##  ----------------------------------------------------------------
+    ## ────────────────────────────────────────────────────────────────────────────────
 
 ``` r
 # govcan_dl_resources(res_pel, file_formats = c("JSON", "CSV", "SHP"), where = "session")
