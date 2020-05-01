@@ -5,9 +5,9 @@ Version: 0.1.0
 Description: rgovcan allows users to search for existing dataset on the Canadian Open Government portal (<https://open.canada.ca/en>).
 Authors@R: c(
     person("Valentin", "Lucet", email = "valentin.lucet@mail.mcgill.ca",
-    role = c("aut")),
+    role = c("aut", "cre")),
     person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca",
-    comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre"))
+    comment = c(ORCID = "0000-0001-6619-9874"), role = c("ctb"))
     )
 Imports:
     cli, ckanr, crayon, dplyr, purrr, stringr
