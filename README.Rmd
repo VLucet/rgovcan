@@ -13,8 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Travis-CI Build Status](https://travis-ci.org/VLucet/rgovcan.svg?branch=master)](https://travis-ci.org/vlucet/rgovcan)
+![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)
 
-A R package to interact with the Open Canada API, to search and download datasets. It is our hope that we will be able to bring this package up to the standard of a `ropensci` packages (see this issue on `ropensci/wishlist` https://github.com/ropensci/wishlist/issues/27).
+A R package to interact with the Open Canada API (see <https://open.canada.ca/en/access-our-application-programming-interface-api>), to search and download datasets. It is our hope that we will be able to bring this package up to the standard of a `ropensci` packages (see this issue on `ropensci/wishlist` https://github.com/ropensci/wishlist/issues/27).
 
 This package makes extensive use of `ckanr` to access the Canadian government's CKAN REST API.
 
@@ -25,10 +26,10 @@ Hex Logo done with `hexSticker`: https://github.com/GuangchuangYu/hexSticker
 
 ## Installation
 
-Until release to CRAN, you will need to use `devtools` to install from source.
+Until release to CRAN, you will need to use `remotes` to install from source.
 
 ```r
-devtools::install_github("vlucet/rgovcan")
+remotes::install_github("vlucet/rgovcan")
 ```
 
 ## Usage
@@ -37,12 +38,12 @@ devtools::install_github("vlucet/rgovcan")
 ```{r}
 library("rgovcan")
 ```
-If you happen to change the default url, you can reset it back to the default with `govcan_setup`.
+If you happen to change the default url, you can reset it back to the default with `govcan_setup()`.
 ```{r}
 govcan_setup()
 ```
 
-2. A typical workflow with `rgovcan` can start with running `govcan_search` on a given set of keywords. This yields a `stack` of `ckan_packages` (object of class `ckan_package_stack`).
+2. A typical workflow with `rgovcan` can start with running `govcan_search` on a given set of keywords. This yields a `stack` of `ckan_packages()` (object of class `ckan_package_stack`).
 ```{r}
 dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 dfo_search # outputs a `ckan_package_stack`

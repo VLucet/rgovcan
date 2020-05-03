@@ -1,13 +1,13 @@
-#' Display or Query resources attached to a specific record or (i.e. a CKAN package)
-#' or to a stack of packages,
+#' Display or Query resources attached to a specific record or (i.e. a CKAN
+#' package) or to a stack of packages
 #'
 #' @description Display resources attached to a specific record or (i.e. a CKAN package)
 #' or to a stack of packages
 #'
-#' @param x An object of the class ckan_package_stack or ckan_package, or an id
-#' of a specific record or (i.e. a CKAN package).
+#' @param x An object of the class `ckan_package_stack` or `ckan_package`, or an
+#' id of a specific record or (i.e. a CKAN package).
 #'
-#' @return A object of class ckan_resource_stack or list of ckan_resource_stack objetcs
+#' @return A object of class `ckan_resource_stack` or list of ckan_resource_stack objects.
 #'
 #' @export
 govcan_get_resources <- function(x){
@@ -21,7 +21,7 @@ govcan_get_resources.ckan_package_stack <- function(x){
 
 #' @export
 govcan_get_resources.ckan_package <- function(x){
-  resource_list <-  x$resources
+  resource_list <- x$resources
   resource_stack <- purrr::map(resource_list, ckanr::as.ckan_resource)
   new_ckan_resource_stack(resource_stack)
 }

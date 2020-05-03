@@ -1,20 +1,21 @@
 #' ckan_resource_stack class and helpers
 #'
-#' @param x a list
+#' @param x a list.
 #' @param ... ignored.
 #' @keywords internal
 
 new_ckan_resource_stack <- function(x = list()){
   structure(x,
             class = "ckan_resource_stack",
-            dim = length(x))}
+            dim = length(x))
+}
 
 #' @export
 print.ckan_resource_stack <- function(x, ...) {
   cat("<CKAN Resource Stack with", dim(x), "Resource> \n")
-  cat(" \n")
+  cli::cat_line()
   cat("  Resources:  \n")
-  cat(" \n")
+  cli::cat_line()
   purrr::map(x[1:dim(x)], print_ckan_resource_custom)
 }
 

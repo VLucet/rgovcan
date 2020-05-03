@@ -26,9 +26,9 @@ with govcan_show_ressources}
 \item{...}{More arguments to be passed on to ckanr::package_show()}
 }
 \value{
-If only_resources is TRUE, will return only the list of data files (resources)
+If only_resources is \code{TRUE}, will return only the list of data files (resources)
 associated with the record queried else it will return all the output of the CKAN query.
-If format_resources is TRUE, the resources are formatted to a tibble.
+If format_resources is \code{TRUE}, the resources are formatted to a tibble.
 }
 \description{
 This function wraps ckanr::package_show() to access a specific record

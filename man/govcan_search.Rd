@@ -19,21 +19,22 @@ govcan_search(
 (number of rows in the JSON output), default to 10}
 
 \item{only_results}{(logical) Whether the function should return only the results
-without the query metadata (default is TRUE)}
+without the query metadata (default is \code{TRUE})}
 
 \item{format_results}{(logical) Whether the function should return a formatted output
 of the results as a tibble or an unformatted version under the form of a list of
-CKAN packages (default is FALSE)}
+CKAN packages (default is \code{FALSE})}
 
-\item{...}{More arguments to be passed on to ckanr::package_search()}
+\item{...}{More arguments to be passed on to \code{\link[ckanr:package_search]{ckanr::package_search()}}}
 }
 \value{
-If only_results is TRUE and format_results is FALSE (recommended), will return
-only the results of the search as a CKAN_package_stack. If only_results is FALSE,
-will return a list including also the query metadata. If format_results is TRUE, the
-function formats the output as a data.frame (not CKAN packages)
+If only_results is \code{TRUE} and format_results is \code{FALSE}
+(recommended), will return only the results of the search as a
+CKAN_package_stack. If only_results is FALSE, will return a list including
+also the query metadata. If format_results is \code{TRUE}, the function formats
+the output as a data.frame (not CKAN packages).
 }
 \description{
-This function wraps ckanr::package_search() to search for any records
+This function wraps \code{\link[ckanr:package_search]{ckanr::package_search()}} to search for any records
 matching a given set of keywords within the Open Canada Portal
 }

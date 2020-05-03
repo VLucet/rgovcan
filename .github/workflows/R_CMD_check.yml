@@ -4,11 +4,11 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    
+
     # From r-lib/actions
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-    strategy: 
+    strategy:
       fail-fast: false
       matrix:
         config:
@@ -22,62 +22,63 @@ jobs:
           # - {os: ubuntu-16.04, r: 'devel', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}  # r-lib/actions not supported (setup-r R version)
           - {os: ubuntu-18.04, r: '3.6', cran: "https://demo.rstudiopm.com/all/__linux__/bionic/latest"}
           #- {os: ubuntu-18.04, r: 'devel', cran: "https://demo.rstudiopm.com/all/__linux__/bionic/latest"} # r-lib/actions not supported (setup-r R versin)
-    
+
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
-    
+
     steps:
       - uses: actions/checkout@v2
-        
+
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
       - uses: r-lib/actions/setup-pandoc@master
-      
+
       - uses: r-lib/actions/setup-tinytex@v1
         if: runner.os != 'Windows'
-      
+
       #- name: Install GDAL + qpdf / Linux
       #  if: runner.os == 'Linux'
       #  run: |
       #    sudo apt-get install libgdal-dev
       #    sudo apt-get install qpdf
-      #    
+      #
       #- name: Install GDAL + qpdf / Mac OS
       #  if: runner.os == 'macOS'
       #  run: |
-      #    brew install gdal 
+      #    brew install gdal
       #    brew install qpdf
-          
+
       # From r-lib/actions
-      - name: Cache R packages
-        if: runner.os != 'Windows'
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-
-          
+      # - name: Cache R packages
+      #   if: runner.os != 'Windows'
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ${{ env.R_LIBS_USER }}
+      #     key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('depends.Rds') }}
+      #     restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-
+
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
-        
+
       - name: Check
-        env: 
+        env:
           NOT_CRAN: true
         continue-on-error: true
         run: rcmdcheck::rcmdcheck(build_args = c("--no-build-vignettes"), args = c("--no-manual"), error_on = "error")
         shell: Rscript {0}
-        
+
       - name: Check as CRAN
-        env: 
+        if: runner.os == 'Windows'
+        env:
           NOT_CRAN: false
         run: rcmdcheck::rcmdcheck(args = c("--no-manual","--as-cran"), error_on = "error")
         shell: Rscript {0}
-        
+
       - name: Upload check results
         if: failure()
         uses: actions/upload-artifact@master

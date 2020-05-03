@@ -19,11 +19,11 @@ a specific record or (i.e. a CKAN package), or an object of type ckan_resource o
 ckan_resource_stack}
 
 \item{file_formats}{(character vector) A character vector with file formats to be
-donwloaded, any of :
-\enumerate{
-  \item CSV
-  \item JSON
-  \item SHP
+downloaded, any of :
+\itemize{
+\item CSV
+\item JSON
+\item SHP
 }}
 
 \item{where}{(string) One of "session" is files have to be charged in the session
