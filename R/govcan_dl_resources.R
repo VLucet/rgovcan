@@ -4,17 +4,17 @@
 #' @description Download resources attached to a specific record or (i.e. a CKAN
 #' package) or to a stack of packages.
 #'
-#' @param resources An object of the class ckan_package_stack or ckan_package, or an id of
-#' a specific record or (i.e. a CKAN package), or an object of type ckan_resource or
-#' ckan_resource_stack
-#' @param file_formats (character vector) A character vector with file formats to be
-#' downloaded, any of :
+#' @param resources An object of the class ckan_package_stack or ckan_package,
+#' or an id of a specific record or (i.e. a CKAN package), or an object of type
+#' ckan_resource or ckan_resource_stack.
+#' @param file_formats (character vector) A character vector with file formats
+#' to be downloaded, any of :
 #'   * CSV
 #'   * JSON
 #'   * SHP
-#' @param where (string) One of "session" is files have to be charged in the session
-#' or a path to the folder in which to download the files
-#' @param ... extra argument(s)
+#' @param where (string) One of "session" is files have to be charged in the
+#' session or a path to the folder in which to download the files.
+#' @param ... extra argument(s).
 #'
 #' @export
 govcan_dl_resources <- function(resources, file_formats, where, ...) {
@@ -46,7 +46,7 @@ govcan_dl_resources.ckan_resource <- function(resources,
 
     }
   } else {
-    message("Nothing matching, no download")
+    msgWarning("No match, no download!")
   }
 }
 
