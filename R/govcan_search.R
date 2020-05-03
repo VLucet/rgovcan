@@ -24,11 +24,11 @@ govcan_search <- function(keywords,
                           records = 10,
                           only_results = TRUE,
                           format_results = FALSE,
-                          ... = NULL) {
+                          ...) {
 
   # Search message
-  message("Searching the Open Portal for records matching: ",
-          paste(keywords, collapse = ", "))
+  kwds <- paste(keywords, collapse = ", ")
+  msgInfo("Searching the Open Portal for records matching:", kwds)
 
   # Collate all keywords
   keywords_collated <- paste0(keywords, "+", collapse = "")
@@ -40,32 +40,33 @@ govcan_search <- function(keywords,
   query_results <- ckanr::package_search(q = keywords_collated,
                                          rows = records,
                                          as = as,
-                                         ... = NULL)
+                                         ...)
   if (format_results) {
     query_results$results <- dplyr::as_tibble(query_results$results)
   }
 
   # Message how many records were found
-  message("CKAN query: ", query_results$count,
-          " records found for keywords: ", paste(keywords, collapse = ", "))
+  msgInfo("CKAN query:", style_bold(query_results$count),
+    "records found for keywords:", kwds)
 
   # Message if more records than can be get were found
-  if (query_results$count > records){
-    message(paste0(query_results$count), " matching records were found, ",
-            records, " records were returned")
+  if (query_results$count > records) {
+    msgInfo(style_bold(query_results$count), "matching records were found,",
+            style_bold(records), "records were returned")
   }
+
 
   # Only output results if required
   if (only_results) {
-    if (as == "list"){
+    if (as == "list") {
       query_out <- new_ckan_package_stack(query_results$results)
     } else {
       query_out <- query_results$results
     }
   } else {
-    if (as == "list"){
+    if (as == "list") {
       query_out <- query_results
-    } else if (as == "table"){
+    } else if (as == "table") {
       query_out <- query_results
     }
   }

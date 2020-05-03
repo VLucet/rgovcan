@@ -9,7 +9,7 @@ govcan_search(
   records = 10,
   only_results = TRUE,
   format_results = FALSE,
-  ... = NULL
+  ...
 )
 }
 \arguments{
