@@ -77,7 +77,7 @@ dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 dfo_search # outputs a `ckan_package_stack`
 ```
 
-    ## ── <CKAN Package Stack with 10 Packages> ───────────────────────────────────────
+    ## ── <CKAN Package Stack with 10 Packages> ────────────────────────────────────────────────────────────────────────────────
     ## 
     ##   First 5 packages:  
     ## 
@@ -378,14 +378,14 @@ dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, file_formats = c("JSON", "CSV", "SHP"), where = path)
 ```
 
-    ## ────────────────────────────────────────────────────────────────────────────────
+    ## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ##  CSV file named Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 downloaded successfully 
     ##  path to file is: tmp/data/CommercialSalmonInSeasonCatchEstimatesInPiecesFrom2004To2019.CSV 
-    ## ────────────────────────────────────────────────────────────────────────────────
-    ## ────────────────────────────────────────────────────────────────────────────────
+    ## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ##  CSV file named Data Dictionary downloaded successfully 
     ##  path to file is: tmp/data/DataDictionary.CSV 
-    ## ────────────────────────────────────────────────────────────────────────────────
+    ## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ``` r
 # govcan_dl_resources(res_pel, file_formats = c("JSON", "CSV", "SHP"), where = "session")
