@@ -14,22 +14,22 @@ govcan_dl_resources(resources, file_formats, where, ...)
 \method{govcan_dl_resources}{ckan_resource_stack}(resources, file_formats = c("CSV"), where = getwd(), ...)
 }
 \arguments{
-\item{resources}{An object of the class ckan_package_stack or ckan_package, or an id of
-a specific record or (i.e. a CKAN package), or an object of type ckan_resource or
-ckan_resource_stack}
+\item{resources}{An object of the class ckan_package_stack or ckan_package,
+or an id of a specific record or (i.e. a CKAN package), or an object of type
+ckan_resource or ckan_resource_stack.}
 
-\item{file_formats}{(character vector) A character vector with file formats to be
-downloaded, any of :
+\item{file_formats}{(character vector) A character vector with file formats
+to be downloaded, any of :
 \itemize{
 \item CSV
 \item JSON
 \item SHP
 }}
 
-\item{where}{(string) One of "session" is files have to be charged in the session
-or a path to the folder in which to download the files}
+\item{where}{(string) One of "session" is files have to be charged in the
+session or a path to the folder in which to download the files.}
 
-\item{...}{extra argument(s)}
+\item{...}{extra argument(s).}
 }
 \description{
 Download resources attached to a specific record or (i.e. a CKAN

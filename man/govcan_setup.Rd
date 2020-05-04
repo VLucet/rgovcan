@@ -2,7 +2,7 @@
 % Please edit documentation in R/govcan_setup.R
 \name{govcan_setup}
 \alias{govcan_setup}
-\title{Set or reset the ckanr URL to the Open Canada portal URL "https://open.canada.ca/data/en"}
+\title{Set or reset the ckanr URL}
 \usage{
 govcan_setup(url = "https://open.canada.ca/data/en")
 }

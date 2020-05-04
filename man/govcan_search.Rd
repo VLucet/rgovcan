@@ -9,32 +9,32 @@ govcan_search(
   records = 10,
   only_results = TRUE,
   format_results = FALSE,
-  ... = NULL
+  ...
 )
 }
 \arguments{
 \item{keywords}{(character vector) A set of keywords to query}
 
-\item{records}{(numeric) The number of matching records to return from the CKAN query
-(number of rows in the JSON output), default to 10}
+\item{records}{(numeric) The number of matching records to return from the
+CKAN query (number of rows in the JSON output), default to 10}
 
-\item{only_results}{(logical) Whether the function should return only the results
-without the query metadata (default is \code{TRUE})}
+\item{only_results}{(logical) Whether the function should return only the
+results without the query metadata (default is \code{TRUE})}
 
-\item{format_results}{(logical) Whether the function should return a formatted output
-of the results as a tibble or an unformatted version under the form of a list of
-CKAN packages (default is \code{FALSE})}
+\item{format_results}{(logical) Whether the function should return a
+formatted output of the results as a tibble or an unformatted version under
+the form of a list of CKAN packages (default is \code{FALSE})}
 
 \item{...}{More arguments to be passed on to \code{\link[ckanr:package_search]{ckanr::package_search()}}}
 }
 \value{
-If only_results is \code{TRUE} and format_results is \code{FALSE}
+If \code{only_results} is \code{TRUE} and \code{format_results} is \code{FALSE}
 (recommended), will return only the results of the search as a
-CKAN_package_stack. If only_results is FALSE, will return a list including
-also the query metadata. If format_results is \code{TRUE}, the function formats
-the output as a data.frame (not CKAN packages).
+\code{CKAN_package_stack}. If \code{only_results} is \code{FALSE}, will return a list
+including also the query metadata. If format_results is \code{TRUE}, the function
+formats the output as a data.frame (not CKAN packages).
 }
 \description{
-This function wraps \code{\link[ckanr:package_search]{ckanr::package_search()}} to search for any records
-matching a given set of keywords within the Open Canada Portal
+This function wraps \code{\link[ckanr:package_search]{ckanr::package_search()}} to search for any
+records matching a given set of keywords within the Open Canada Portal
 }

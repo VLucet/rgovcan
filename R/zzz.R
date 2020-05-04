@@ -1,4 +1,5 @@
 #' @importFrom crayon blue red green yellow
+#' @importFrom cli style_bold
 
 msgInfo <- function(...) {
   txt <- paste(cli::symbol$info, ...)
