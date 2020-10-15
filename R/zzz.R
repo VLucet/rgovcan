@@ -1,24 +1,27 @@
 #' @importFrom crayon blue red green yellow
 #' @importFrom cli style_bold
 
-msgInfo <- function(...) {
+msgInfo <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$info, ...)
-  message(blue(txt))
+  message(blue(txt), appendLF = appendLF)
   invisible(txt)
 }
-msgError <- function(...) {
+
+msgError <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$cross, ...)
-  message(red(txt))
+  message(red(txt), appendLF = appendLF)
   invisible(txt)
 }
-msgSuccess <- function(...) {
+
+msgSuccess <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$tick, ...)
-  message(green(txt))
+  message(green(txt), appendLF = appendLF)
   invisible(txt)
 }
-msgWarning <- function(...) {
+
+msgWarning <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$warning, ...)
-  message(yellow(txt))
+  message(yellow(txt), appendLF = appendLF)
   invisible(txt)
 }
 
