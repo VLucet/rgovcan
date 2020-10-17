@@ -13,7 +13,6 @@
 #' @param id_as_filename (logical) Use the resource identifier as file name. This is particularly useful when two different resources have the same filename. 
 #' @param ... Curl arguments passed on to crul::verb-GET (see [ckanr::ckan_fetch()]).
 #'
-#'
 #' @details
 #' file names handled internally.
 
@@ -57,9 +56,9 @@ govcan_dl_resources.ckan_resource <- function(resources,
       fl <- extract_filename(url)
       if (!is.null(fl)) {
         if (id_as_filename) {
-          flp <- paste0(path, .Platform$file.sep, resources$id, ".", 
-            extract_extension(fl))
-        } else flp <- paste0(path, .Platform$file.sep, fl)
+          flp <- normalizePath(paste0(path, .Platform$file.sep, resources$id, ".", 
+            extract_extension(fl)))
+        } else flp <- normalizePath(paste0(path, .Platform$file.sep, fl))
         if (file.exists(flp)) {
           # prevents from downloading the same file several times
           msgWarning("skipped (already downloaded).")
@@ -132,9 +131,10 @@ empty_entry <- function(store = NA_character_,
   )
 }
 
-extract_filename <- function(x) {
+extract_filename <- function(x, sep = "/") {
   # extract the last part of the path or url 
-  tmp <- sub(".*/(.+)$", "\\1", x)
+  pat <- paste0(".*", sep, "(.+)$")
+  tmp <- sub(pat, "\\1", x)
   # check whether it contains file basename + file extension 
   # the regex below should cover 99% of common file extensions
   if (grepl('[[:graph:]]+\\.[[:alnum:]\\+-\\!]+$', tmp)) {
@@ -145,3 +145,4 @@ extract_filename <- function(x) {
 extract_extension <- function(x) {
   sub('[[:graph:]]+\\.([[:alnum:]\\+-\\!]+)$', "\\1", x)
 }
+

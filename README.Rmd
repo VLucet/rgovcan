@@ -36,22 +36,28 @@ remotes::install_github("vlucet/rgovcan")
 ## Usage
 
 1. First, load the package. The default `ckanr` url will be set to the Open Canada Portal.
+
 ```{r}
 library("rgovcan")
 ```
+
 If you happen to change the default url, you can reset it back to the default with `govcan_setup()`.
+
 ```{r}
 govcan_setup()
 ```
 
 2. A typical workflow with `rgovcan` can start with running `govcan_search()` on a given set of keywords. This yields a `stack` of `ckan_packages()` (object of class `ckan_package_stack`).
+
 ```{r}
 dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 dfo_search # outputs a `ckan_package_stack`
 ```
+
 see `?govcan_search` for further details.
 
 3. Another possibility is to start with a package id corresponding to an actual record and retrieve a `ckan_package`.
+
 ```{r}
 id <- "7ac5fe02-308d-4fff-b805-80194f8ddeb4" # Package ID
 id_search <- govcan_get_record(record_id = id)
@@ -63,7 +69,9 @@ id_search # outputs a `ckan_package`
 id_resources <- govcan_get_resources(id_search)
 id_resources # outputs a `resource_stack`
 ```
+
 Or a list of stacks if called onto a `ckan_package_stack`.
+
 ```{r}
 dfo_resources <- govcan_get_resources(dfo_search)
 dfo_resources # outputs a list of `resource_stack`s
@@ -74,8 +82,7 @@ dfo_resources # outputs a list of `resource_stack`s
 ```{r}
 path <- "tmp/data/"
 dir.create(path, recursive = TRUE)
-govcan_dl_resources(id_resources, file_formats = c("JSON", "CSV", "SHP"), where = path)
-# govcan_dl_resources(res_pel, file_formats = c("JSON", "CSV", "SHP"), where = "session")
+govcan_dl_resources(id_resources, path = path)
 ```
 
 see `?govcan_dl_resources` for further details.
