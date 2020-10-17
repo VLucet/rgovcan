@@ -1,5 +1,5 @@
 #' @importFrom crayon blue red green yellow
-#' @importFrom cli style_bold
+#' @importFrom cli style_bold style_underline
 
 msgInfo <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$info, ...)
@@ -25,3 +25,11 @@ msgWarning <- function(..., appendLF = TRUE) {
   invisible(txt)
 }
 
+# convert null to na recursively
+null_to_na <- function(x) {
+    if (is.list(x)) {
+        return(lapply(x, null_to_na))
+    } else {
+        return(ifelse(is.null(x), NA, x))
+    }
+}

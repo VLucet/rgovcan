@@ -4,41 +4,63 @@
 \alias{govcan_dl_resources}
 \alias{govcan_dl_resources.ckan_resource}
 \alias{govcan_dl_resources.ckan_resource_stack}
+\alias{govcan_dl_resources.character}
+\alias{govcan_dl_resources.ckan_package}
+\alias{govcan_dl_resources.ckan_package_stack}
 \title{Download the resources attached to a specific record or (i.e. a CKAN package)
 or to a stack of packages}
 \usage{
-govcan_dl_resources(resources, file_formats, where, ...)
+govcan_dl_resources(resources, excluded, included, path, id_as_filename, ...)
 
-\method{govcan_dl_resources}{ckan_resource}(resources, file_formats = c("CSV"), where = getwd(), ...)
+\method{govcan_dl_resources}{ckan_resource}(
+  resources,
+  excluded = NULL,
+  included = NULL,
+  path = ".",
+  id_as_filename = FALSE,
+  ...
+)
 
-\method{govcan_dl_resources}{ckan_resource_stack}(resources, file_formats = c("CSV"), where = getwd(), ...)
+\method{govcan_dl_resources}{ckan_resource_stack}(resources, ...)
+
+\method{govcan_dl_resources}{character}(resources, ...)
+
+\method{govcan_dl_resources}{ckan_package}(resources, ...)
+
+\method{govcan_dl_resources}{ckan_package_stack}(resources, ...)
 }
 \arguments{
-\item{resources}{An object of the class ckan_package_stack or ckan_package,
-or an id of a specific record or (i.e. a CKAN package), or an object of type
-ckan_resource or ckan_resource_stack.}
+\item{resources}{An object of class \code{ckan_package_stack} or \code{ckan_package},
+or a specific resource id, or (i.e. a CKAN package), or an object of type
+\code{ckan_resource} or \code{ckan_resource_stack}.}
 
-\item{file_formats}{(character vector) A character vector with file formats
-to be downloaded, any of :
-\itemize{
-\item CSV
-\item JSON
-\item SHP
-}}
+\item{excluded}{(vector of characters) Files of this format(s) will \emph{not} be downloaded (\code{NULL} ignores this filter and is the default value).}
 
-\item{where}{(string) One of "session" is files have to be charged in the
-session or a path to the folder in which to download the files.}
+\item{included}{(vector of characters) Only the files of this format(s) will be downloaded (\code{NULL} ignores this filter and is the default value).}
 
-\item{...}{extra argument(s).}
+\item{path}{(character) name indicating where to store the data (default is the current working directory).}
+
+\item{id_as_filename}{(logical) Use the resource identifier as file name. This is particularly useful when two different resources have the same filename.}
+
+\item{...}{Curl arguments passed on to crul::verb-GET (see \code{\link[ckanr:ckan_fetch]{ckanr::ckan_fetch()}}).}
 }
 \description{
 Download resources attached to a specific record or (i.e. a CKAN
 package) or to a stack of packages.
 }
+\details{
+file names handled internally.
+}
 \section{Methods (by class)}{
 \itemize{
 \item \code{ckan_resource}: Method for ckan_resource objects.
 
-\item \code{ckan_resource_stack}: Method for ckan_resource_stack objects.
+\item \code{ckan_resource_stack}: Method for \code{ckan_resource_stack} objects.
+
+\item \code{character}: Method for \code{character} objects.
+
+\item \code{ckan_package}: Method for \code{ckan_package} objects.
+
+\item \code{ckan_package_stack}: Method for \code{ckan_package_stack} objects.
 }}
 
