@@ -22,7 +22,7 @@ CKAN query (number of rows in the JSON output), default to 10}
 results without the query metadata (default is \code{TRUE})}
 
 \item{format_results}{(logical) Whether the function should return a
-formatted output of the results as a tibble or an unformatted version under
+formatted output of the results as a \code{tibble} or an unformatted version under
 the form of a list of CKAN packages (default is \code{FALSE})}
 
 \item{...}{More arguments to be passed on to \code{\link[ckanr:package_search]{ckanr::package_search()}}}

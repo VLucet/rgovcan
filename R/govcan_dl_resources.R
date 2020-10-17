@@ -120,7 +120,10 @@ govcan_dl_resources.ckan_package_stack <- function(resources, ...) {
 
 # HELPERS
 
-empty_entry <- function(store = NULL, fmt = NULL, data = NULL, path = NULL) {
+empty_entry <- function(store = NA_character_, 
+                        fmt = NA_character_, 
+                        data = NULL, 
+                        path = NA_character_) {
   list(
     store = store,
     fmt = fmt,

@@ -9,7 +9,7 @@
 #' @param only_results (logical) Whether the function should return only the
 #' results without the query metadata (default is `TRUE`)
 #' @param format_results (logical) Whether the function should return a
-#' formatted output of the results as a tibble or an unformatted version under
+#' formatted output of the results as a `tibble` or an unformatted version under
 #' the form of a list of CKAN packages (default is `FALSE`)
 #' @param ... More arguments to be passed on to [ckanr::package_search()]
 #'
