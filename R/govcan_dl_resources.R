@@ -57,9 +57,9 @@ govcan_dl_resources.ckan_resource <- function(resources,
       if (!is.null(fl)) {
         if (id_as_filename) {
           fl <- paste0(resources$id, ".", extract_extension(fl))
-          flp <- file.path(path, fl)
+          flp <- normalizePath(file.path(path, fl), mustWork = FALSE)
         } else {
-          flp <- file.path(path, fl)
+          flp <- normalizePath(file.path(path, fl), mustWork = FALSE)
         }
         if (file.exists(flp)) {
           # prevents from downloading the same file several times
