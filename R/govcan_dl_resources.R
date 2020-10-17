@@ -56,9 +56,11 @@ govcan_dl_resources.ckan_resource <- function(resources,
       fl <- extract_filename(url)
       if (!is.null(fl)) {
         if (id_as_filename) {
-          flp <- normalizePath(paste0(path, .Platform$file.sep, resources$id, ".", 
-            extract_extension(fl)))
-        } else flp <- normalizePath(paste0(path, .Platform$file.sep, fl))
+          fl <- paste0(resources$id, ".", extract_extension(fl))
+          flp <- file.path(path, fl)
+        } else {
+          flp <- file.path(path, fl)
+        }
         if (file.exists(flp)) {
           # prevents from downloading the same file several times
           msgWarning("skipped (already downloaded).")

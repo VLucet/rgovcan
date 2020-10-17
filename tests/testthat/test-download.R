@@ -20,8 +20,8 @@ test_that("test download", {
   expect_true(identical(res, res2))
   expect_true(is.na(res3$path[res3$fmt == "xls"]))
   expect_true(all(is.na(res4$path[res4$fmt != "csv"])))
-  expect_true(file.exists(paste0(dir, .Platform$file.sep, 
-    res5$id[res5$fmt == "csv"], ".", "csv")))
+  expect_true(file.exists(file.path(dir, 
+    paste0(res5$id[res5$fmt == "csv"], ".", "csv"))))
 })
 
 
