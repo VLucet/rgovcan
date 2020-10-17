@@ -26,6 +26,11 @@ jobs:
       RSPM: ${{ matrix.config.rspm }}
 
     steps:
+      - name: SetVar
+        run: |
+          echo "::set-env name=TMP::$env:USERPROFILE\AppData\Local\Temp"
+          echo "::set-env name=TEMP::$env:USERPROFILE\AppData\Local\Temp"
+          
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@master
@@ -35,6 +40,7 @@ jobs:
 
       - uses: r-lib/actions/setup-tinytex@v1
         if: runner.os != 'Windows'
+      
 
       #- name: Install GDAL + qpdf / Linux
       #  if: runner.os == 'Linux'
