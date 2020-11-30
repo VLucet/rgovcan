@@ -22,7 +22,7 @@ CKAN query (number of rows in the JSON output), default to 10}
 results without the query metadata (default is \code{TRUE})}
 
 \item{format_results}{(logical) Whether the function should return a
-formatted output of the results as a tibble or an unformatted version under
+formatted output of the results as a \code{tibble} or an unformatted version under
 the form of a list of CKAN packages (default is \code{FALSE})}
 
 \item{...}{More arguments to be passed on to \code{\link[ckanr:package_search]{ckanr::package_search()}}}
@@ -31,8 +31,8 @@ the form of a list of CKAN packages (default is \code{FALSE})}
 If \code{only_results} is \code{TRUE} and \code{format_results} is \code{FALSE}
 (recommended), will return only the results of the search as a
 \code{CKAN_package_stack}. If \code{only_results} is \code{FALSE}, will return a list
-including also the query metadata. If format_results is \code{TRUE}, the function
-formats the output as a data.frame (not CKAN packages).
+including also the query metadata. If \code{format_results} is \code{TRUE}, the
+function formats the output as a data.frame (not CKAN packages).
 }
 \description{
 This function wraps \code{\link[ckanr:package_search]{ckanr::package_search()}} to search for any

@@ -4,121 +4,147 @@
 #' @description Download resources attached to a specific record or (i.e. a CKAN
 #' package) or to a stack of packages.
 #'
-#' @param resources An object of the class ckan_package_stack or ckan_package,
-#' or an id of a specific record or (i.e. a CKAN package), or an object of type
-#' ckan_resource or ckan_resource_stack.
-#' @param file_formats (character vector) A character vector with file formats
-#' to be downloaded, any of :
-#'   * CSV
-#'   * JSON
-#'   * SHP
-#' @param where (string) One of "session" is files have to be charged in the
-#' session or a path to the folder in which to download the files.
-#' @param ... extra argument(s).
+#' @param resources An object of class `ckan_package_stack` or `ckan_package`,
+#' or a specific resource id, or (i.e. a CKAN package), or an object of type
+#' `ckan_resource` or `ckan_resource_stack`.
+#' @param excluded (vector of characters) Files of this format(s) will *not* be downloaded (`NULL` ignores this filter and is the default value).
+#' @param included (vector of characters) Only the files of this format(s) will be downloaded (`NULL` ignores this filter and is the default value).
+#' @param path (character) name indicating where to store the data (default is the current working directory).
+#' @param id_as_filename (logical) Use the resource identifier as file name. This is particularly useful when two different resources have the same filename. 
+#' @param ... Curl arguments passed on to crul::verb-GET (see [ckanr::ckan_fetch()]).
 #'
+#' @details
+#' file names handled internally.
+
 #' @export
-govcan_dl_resources <- function(resources, file_formats, where, ...) {
+govcan_dl_resources <- function(resources,
+                                excluded,
+                                included,
+                                path,
+                                id_as_filename,
+                                ...) {
   UseMethod("govcan_dl_resources")
 }
 
 #' @describeIn govcan_dl_resources Method for ckan_resource objects.
 #' @export
 govcan_dl_resources.ckan_resource <- function(resources,
-                                              file_formats = c("CSV"),
-                                              where = getwd(), ...){
-  all_formats <- unlist(resources$format)
-  wanted_indices <- (all_formats %in% file_formats)
+                                              excluded = NULL,
+                                              included = NULL,
+                                              path = ".",
+                                              id_as_filename = FALSE,
+                                              ...) {
+  fmt <- tolower(resources$format)
+  url <- resources$url
 
-  if (wanted_indices){
-    if (where == "session"){
+  msgInfo(resources$name, paste0("(", fmt, ")"), "",
+    appendLF = FALSE)
 
-      message("Warning: the session option is currently not working well due to issues in ckanr")
-      ckanr::ckan_fetch(resources$url, store = "session")
-      write_import_message(resources)
-
-    } else if (where != "session"){
-
-      resource_name <- get_resource_name(resources)
-      path <- create_storing_path(where, resource_name)
-
-      ckanr::ckan_fetch(resources$url, store = "disk", path = path)
-      write_dl_message(resources, path)
-
-    }
+  if (grepl("^ftp://", url)) {
+    out <- empty_entry()
+    msgWarning("skipped (ftp not supported yet).")
   } else {
-    msgWarning("No match, no download!")
+    # select type of files to be downloaded
+    tmp <- TRUE
+    if (!is.null(excluded))
+      tmp <- !(fmt %in% tolower(excluded))
+    if (!is.null(included))
+      tmp <- fmt %in% tolower(included)
+
+    if (tmp) {
+      # extract filename from url 
+      fl <- extract_filename(url)
+      if (!is.null(fl)) {
+        if (id_as_filename) {
+          fl <- paste0(resources$id, ".", extract_extension(fl))
+          flp <- normalizePath(file.path(path, fl), mustWork = FALSE)
+        } else {
+          flp <- normalizePath(file.path(path, fl), mustWork = FALSE)
+        }
+        if (file.exists(flp)) {
+          # prevents from downloading the same file several times
+          msgWarning("skipped (already downloaded).")
+          out <- empty_entry("disk", fmt = fmt, path = flp)
+        } else {
+          out <- ckanr::ckan_fetch(url, format = fmt,
+              store = "disk", path = flp)
+          msgSuccess()
+        }
+      } else {
+        out <- empty_entry(fmt = fmt)
+        msgWarning("skipped (not supported).")
+      }
+    } else {
+      out <- empty_entry(fmt = fmt)
+      msgWarning("skipped (format not selected).")
+    }
   }
+
+  out$url <- url
+  out$package_id <- resources$package_id
+  out$id <- resources$id
+  out <- null_to_na(out)
+  out <- as.data.frame(out)
+  class(out) <- c("tbl_df", "tbl", "data.frame")
+  ord <- c("id", "package_id", "url", "path", "fmt")
+  out[, c(ord, setdiff(names(out), ord))]
 }
 
-#' @describeIn govcan_dl_resources Method for ckan_resource_stack objects.
+#' @describeIn govcan_dl_resources Method for `ckan_resource_stack` objects.
 #' @export
-govcan_dl_resources.ckan_resource_stack <- function(resources,
-                                                    file_formats = c("CSV"),
-                                                    where = getwd(), ...){
-
-  all_formats <- unlist(purrr::map(resources, ~.x$format))
-  wanted_indices <- which(all_formats %in% file_formats)
-
-  if (length(wanted_indices)){
-    if (where == "session"){
-
-      message("Warning: the session option is currently not working well due to issues in ckanr")
-
-      for (resource in wanted_indices){
-        resource_tmp <-  resources[[resource]]
-
-        ckanr::ckan_fetch(resource_tmp$url, store = "session")
-        write_import_message(resource_tmp)
-      }
-
-    } else if (where != "session"){
-
-      for (resource in wanted_indices){
-
-        resource_tmp <- resources[[resource]]
-
-        resource_name <- get_resource_name(resource_tmp)
-        path <- create_storing_path(where, resource_name)
-
-        ckanr::ckan_fetch(resource_tmp$url, store = "disk", path = path)
-        write_dl_message(resource_tmp, path)
-
-      }
-    }
-  }
+govcan_dl_resources.ckan_resource_stack <- function(resources, ...) {
+  out <- lapply(resources, govcan_dl_resources, ...)
+  do.call(rbind, out)
 }
 
 
-# Helpers function for govcan_dl_resources
-
-get_resource_name <- function(resource_tmp){
-  name_extracted <- unlist(stringr::str_extract_all(resource_tmp$name,
-                                                    stringr::boundary("word")))
-  extension <- resource_tmp$format
-
-  if (extension == "SHP"){
-    extension <- "zip"
-  }
-
-  resource_name <- paste0(c(name_extracted, ".", extension),collapse = "")
+#' @describeIn govcan_dl_resources Method for `character` objects.
+#' @export
+govcan_dl_resources.character <- function(resources, ...) {
+  govcan_dl_resources(govcan_get_resources(resources), ...)
 }
 
-create_storing_path <- function(where, resource_name){
-  if (where == "wd"){
-    path <- paste0(getwd(), "/", resource_name)
-  } else {
-    path <- paste0(where, resource_name)
-  }
-  path
+#' @describeIn govcan_dl_resources Method for `ckan_package` objects.
+#' @export
+govcan_dl_resources.ckan_package <- function(resources, ...) {
+    govcan_dl_resources(resources$id, ...)
 }
 
-write_import_message <- function(resource_tmp){
-  cat("Dataset ", resource_tmp$name, " imported successfully to session")
+#' @describeIn govcan_dl_resources Method for `ckan_package_stack` objects.
+#' @export
+govcan_dl_resources.ckan_package_stack <- function(resources, ...) {
+    out <- lapply(lapply(resources, `[[`, "id"), govcan_dl_resources, ...)
+    do.call(rbind, out)
 }
 
-write_dl_message <- function(resource_tmp, path){
-  cli::cat_rule()
-  cat("",resource_tmp$format, "file named", resource_tmp$name, "downloaded successfully \n")
-  cat(" path to file is:", path, "\n")
-  cli::cat_rule()
+
+
+# HELPERS
+
+empty_entry <- function(store = NA_character_, 
+                        fmt = NA_character_, 
+                        data = NULL, 
+                        path = NA_character_) {
+  list(
+    store = store,
+    fmt = fmt,
+    data = data,
+    path = path
+  )
 }
+
+extract_filename <- function(x, sep = "/") {
+  # extract the last part of the path or url 
+  pat <- paste0(".*", sep, "(.+)$")
+  tmp <- sub(pat, "\\1", x)
+  # check whether it contains file basename + file extension 
+  # the regex below should cover 99% of common file extensions
+  if (grepl('[[:graph:]]+\\.[[:alnum:]\\+-\\!]+$', tmp)) {
+    tmp
+  } else NULL
+}
+
+extract_extension <- function(x) {
+  sub('[[:graph:]]+\\.([[:alnum:]\\+-\\!]+)$', "\\1", x)
+}
+

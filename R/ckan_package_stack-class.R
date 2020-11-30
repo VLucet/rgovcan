@@ -20,7 +20,7 @@ print.ckan_package_stack <- function(x, ...) {
   } else {
     cat("  Packages:  \n")
     cli::cat_line()
-    purrr::map(x[1:dim(x)], print_ckan_package_custom)
+    purrr::map(x[seq_len(dim(x))], print_ckan_package_custom)
   }
 }
 

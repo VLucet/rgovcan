@@ -9,15 +9,15 @@
 #' @param only_results (logical) Whether the function should return only the
 #' results without the query metadata (default is `TRUE`)
 #' @param format_results (logical) Whether the function should return a
-#' formatted output of the results as a tibble or an unformatted version under
+#' formatted output of the results as a `tibble` or an unformatted version under
 #' the form of a list of CKAN packages (default is `FALSE`)
 #' @param ... More arguments to be passed on to [ckanr::package_search()]
 #'
 #' @return If `only_results` is `TRUE` and `format_results` is `FALSE`
 #' (recommended), will return only the results of the search as a
 #' `CKAN_package_stack`. If `only_results` is `FALSE`, will return a list
-#' including also the query metadata. If format_results is `TRUE`, the function
-#' formats the output as a data.frame (not CKAN packages).
+#' including also the query metadata. If `format_results` is `TRUE`, the 
+#' function formats the output as a data.frame (not CKAN packages).
 #'
 #' @export
 govcan_search <- function(keywords,
@@ -31,9 +31,7 @@ govcan_search <- function(keywords,
   msgInfo("Searching the Open Portal for records matching:", kwds)
 
   # Collate all keywords
-  keywords_collated <- paste0(keywords, "+", collapse = "")
-  keywords_collated <- substr(keywords_collated, 1,
-    nchar(keywords_collated) - 1)
+  keywords_collated <- paste(keywords, collapse = "+")
 
   # Perform query
   as <- ifelse(format_results, "table", "list")
@@ -41,6 +39,7 @@ govcan_search <- function(keywords,
                                          rows = records,
                                          as = as,
                                          ...)
+                                         
   if (format_results) {
     query_results$results <- dplyr::as_tibble(query_results$results)
   }
