@@ -9,6 +9,6 @@
 
 govcan_setup <- function(url = "https://open.canada.ca/data/en"){
   ckanr::ckanr_setup(url = url)
-  msgInfo("ckanr url set to", ckanr::ckan_info()$site_url)
+  msgInfo("ckanr url set to", suppressWarnings(ckanr::ckan_info()$site_url))
   invisible(url)
 }

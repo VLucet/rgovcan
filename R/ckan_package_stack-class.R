@@ -16,11 +16,11 @@ print.ckan_package_stack <- function(x, ...) {
   if (dim(x) > 5) {
     cat("  First 5 packages:  \n")
     cli::cat_line()
-    purrr::map(x[seq_len(5)], print_ckan_package_custom)
+    Map(print_ckan_package_custom, x[seq_len(5)])
   } else {
     cat("  Packages:  \n")
     cli::cat_line()
-    purrr::map(x[seq_len(dim(x))], print_ckan_package_custom)
+    Map(print_ckan_package_custom, x[seq_len(dim(x))])
   }
 }
 

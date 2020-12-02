@@ -31,24 +31,24 @@ govcan_get_record <- function(record_id,
   } else {
     as = "list"
   }
-  query_results <- ckanr::package_show(id = record_id,
+  query_results <- suppressWarnings(ckanr::package_show(id = record_id,
                                        as = as,
-                                       ... = NULL)
+                                       ... = NULL))
 
   # Message the title of the record
   msgInfo(paste0("Record found: \"", query_results$title, "\""))
 
   # Only output resources if required
   if (only_resources) {
-    if (as == "list"){
+    if (as == "list") {
       query_out <- query_results$resources
-    } else if (as == "table"){
+    } else if (as == "table") {
       query_out <- dplyr::as_tibble(query_results$resources)
     }
   } else {
-    if (as == "list"){
+    if (as == "list") {
       query_out <- query_results
-    } else if (as == "table"){
+    } else if (as == "table") {
       query_results$resources <- dplyr::as_tibble(query_results$resources)
       query_out <- query_results
     }

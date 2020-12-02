@@ -16,13 +16,13 @@ govcan_get_resources <- function(x){
 
 #' @export
 govcan_get_resources.ckan_package_stack <- function(x){
-  purrr::map(x, govcan_get_resources)
+  Map(govcan_get_resources, x)
 }
 
 #' @export
 govcan_get_resources.ckan_package <- function(x){
   resource_list <- x$resources
-  resource_stack <- purrr::map(resource_list, ckanr::as.ckan_resource)
+  resource_stack <- Map(ckanr::as.ckan_resource, resource_list)
   new_ckan_resource_stack(resource_stack)
 }
 
@@ -30,6 +30,6 @@ govcan_get_resources.ckan_package <- function(x){
 govcan_get_resources.character <- function(x){
   resource_list <- govcan_get_record(record_id = x, only_resources = TRUE,
                                      format_resources = FALSE)
-  resource_stack <- purrr::map(resource_list, ckanr::as.ckan_resource)
+  resource_stack <- Map(ckanr::as.ckan_resource, resource_list)
   new_ckan_resource_stack(resource_stack)
 }
