@@ -49,7 +49,7 @@ Download resources attached to a specific record or (i.e. a CKAN
 package) or to a stack of packages.
 }
 \details{
-file names handled internally.
+File names are handled internally.
 }
 \section{Methods (by class)}{
 \itemize{

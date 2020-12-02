@@ -14,7 +14,7 @@
 #' @param ... Curl arguments passed on to crul::verb-GET (see [ckanr::ckan_fetch()]).
 #'
 #' @details
-#' file names handled internally.
+#' File names are handled internally.
 
 #' @export
 govcan_dl_resources <- function(resources,
@@ -66,8 +66,8 @@ govcan_dl_resources.ckan_resource <- function(resources,
           msgWarning("skipped (already downloaded).")
           out <- empty_entry("disk", fmt = fmt, path = flp)
         } else {
-          out <- ckanr::ckan_fetch(url, format = fmt,
-              store = "disk", path = flp)
+          out <- suppressWarnings(ckanr::ckan_fetch(url, format = fmt,
+              store = "disk", path = flp))
           msgSuccess()
         }
       } else {
