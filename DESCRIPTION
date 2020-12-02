@@ -10,7 +10,7 @@ Authors@R: c(
     comment = c(ORCID = "0000-0001-6619-9874"), role = c("ctb"))
     )
 Imports:
-    cli, ckanr, crayon, crul, dplyr, purrr
+    cli, ckanr, crayon, crul, dplyr
 Suggests: 
     testthat
 Remotes: 
