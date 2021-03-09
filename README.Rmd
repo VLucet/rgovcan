@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Easy access to the Canadian Open Government Portal
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
-[![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)]
+[![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)](https://github.com/VLucet/rgovcan/actions)
 [![Codecov test coverage](https://codecov.io/gh/VLucet/rgovcan/branch/master/graph/badge.svg)](https://codecov.io/gh/VLucet/rgovcan?branch=master)
 
 A R package to interact with the Open Canada API (see <https://open.canada.ca/en/access-our-application-programming-interface-api>), to search and download datasets (see Licence at <https://open.canada.ca/en/open-government-licence-canada>). It is our hope that we will be able to bring this package up to the standard of a `ropensci` packages (see this issue on `ropensci/wishlist` https://github.com/ropensci/wishlist/issues/27).
