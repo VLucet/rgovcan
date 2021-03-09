@@ -6,3 +6,4 @@ data
 data/*
 .DS_Store
 tmp/
+docs

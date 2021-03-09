@@ -5,3 +5,7 @@ README.Rmd
 ^tmp
 .github
 ^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
