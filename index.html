@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rgovcan</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -96,23 +96,11 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://vlucet.github.io/rgovcan/">"rgovcan"</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">## rgovcan package - alpha release - attached</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">## Warning: Failed to parse headers:</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
 <p>If you happen to change the default url, you can reset it back to the default with <code><a href="reference/govcan_setup.html">govcan_setup()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/govcan_setup.html">govcan_setup</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## Warning: Failed to parse headers:</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
 <ol>
 <li>A typical workflow with <code>rgovcan</code> can start with running <code><a href="reference/govcan_search.html">govcan_search()</a></code> on a given set of keywords. This yields a <code>stack</code> of <code>ckan_packages()</code> (object of class <code>ckan_package_stack</code>).</li>
 </ol>
@@ -120,21 +108,9 @@
 <code class="sourceCode R"><span class="va">dfo_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/govcan_search.html">govcan_search</a></span><span class="op">(</span>keywords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dfo"</span><span class="op">)</span>, records <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">## ℹ Searching the Open Portal for records matching: dfo</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## Warning: Failed to parse headers:</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">## Warning: Failed to parse headers:</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="co">## ℹ CKAN query: 412 records found for keywords: dfo</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">## ℹ 412 matching records were found, 10 records were returned</span></span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## ℹ CKAN query: 412 records found for keywords: dfo</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">## ℹ 412 matching records were found, 10 records were returned</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dfo_search</span> <span class="co"># outputs a `ckan_package_stack`</span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## ── &lt;CKAN Package Stack with 10 Packages&gt; ───────────────────────────────────────</span></span>
@@ -160,13 +136,7 @@
 <span class="va">id_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/govcan_get_record.html">govcan_get_record</a></span><span class="op">(</span>record_id <span class="op">=</span> <span class="va">id</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">## Searching for dataset with id: 7ac5fe02-308d-4fff-b805-80194f8ddeb4</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">## Warning: Failed to parse headers:</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="co">## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"</span></span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">id_search</span> <span class="co"># outputs a `ckan_package`</span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## &lt;CKAN Package&gt; 7ac5fe02-308d-4fff-b805-80194f8ddeb4 </span></span>
