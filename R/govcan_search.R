@@ -35,10 +35,10 @@ govcan_search <- function(keywords,
 
   # Perform query
   as <- ifelse(format_results, "table", "list")
-  query_results <- ckanr::package_search(q = keywords_collated,
+  query_results <- suppressWarnings(ckanr::package_search(q = keywords_collated,
                                          rows = records,
                                          as = as,
-                                         ...)
+                                         ...))
                                          
   if (format_results) {
     query_results$results <- dplyr::as_tibble(query_results$results)

@@ -16,7 +16,7 @@ print.ckan_resource_stack <- function(x, ...) {
   cli::cat_line()
   cat("  Resources:  \n")
   cli::cat_line()
-  purrr::map(x[seq_len(dim(x))], print_ckan_resource_custom)
+  Map(print_ckan_resource_custom, x[seq_len(dim(x))])
 }
 
 # Custom printing function for packages inside a stack
