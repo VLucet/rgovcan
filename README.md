@@ -1,11 +1,9 @@
-# rgovcan <img src="inst/rgovcan_hex.png" align="right" width=140/>
+# rgovcan <img src="man/figures/logo.png" align="right" width=140/>
 
 ## Easy access to the Canadian Open Government Portal
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
-[![Travis-CI Build
-Status](https://travis-ci.org/VLucet/rgovcan.svg?branch=master)](https://travis-ci.org/vlucet/rgovcan)
 ![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)
 
 A R package to interact with the Open Canada API (see
@@ -39,13 +37,17 @@ remotes::install_github("vlucet/rgovcan")
 1.  First, load the package. The default `ckanr` url will be set to the
     Open Canada Portal.
 
-<!-- end list -->
-
 ``` r
 library("rgovcan")
 ```
 
     ## rgovcan package - alpha release - attached
+
+    ## Warning: Failed to parse headers:
+    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
+    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
 
     ## ℹ ckanr url set to https://open.canada.ca
 
@@ -56,13 +58,17 @@ default with `govcan_setup()`.
 govcan_setup()
 ```
 
+    ## Warning: Failed to parse headers:
+    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
+    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
+
     ## ℹ ckanr url set to https://open.canada.ca
 
 2.  A typical workflow with `rgovcan` can start with running
     `govcan_search()` on a given set of keywords. This yields a `stack`
     of `ckan_packages()` (object of class `ckan_package_stack`).
-
-<!-- end list -->
 
 ``` r
 dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
@@ -70,35 +76,45 @@ dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 
     ## ℹ Searching the Open Portal for records matching: dfo
 
-    ## ℹ CKAN query: 319 records found for keywords: dfo
+    ## Warning: Failed to parse headers:
+    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
+    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
 
-    ## ℹ 319 matching records were found, 10 records were returned
+    ## Warning: Failed to parse headers:
+    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
+    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
+
+    ## ℹ CKAN query: 412 records found for keywords: dfo
+
+    ## ℹ 412 matching records were found, 10 records were returned
 
 ``` r
 dfo_search # outputs a `ckan_package_stack`
 ```
 
-    ## ── <CKAN Package Stack with 10 Packages> ───────────────────────────────────────────────
+    ## ── <CKAN Package Stack with 10 Packages> ───────────────────────────────────────
     ## 
     ##   First 5 packages:  
     ## 
+    ## <CKAN Package> 5798c4b6-d9d6-4328-9349-f66020403b4c 
+    ##   Title: Ministerial transition binder 2018 (DFO)
+    ## <CKAN Package> 830908ab-6abd-461d-ace9-b2673dd92b30 
+    ##   Title: Ministerial transition binder 2019 (DFO)
     ## <CKAN Package> 5cfd93bd-b3ee-4b0b-8816-33d388f6811d 
     ##   Title: DFO sea lice audits of BC marine finfish aquaculture sites
     ## <CKAN Package> 4dc95665-3d44-428c-bb26-12f981c57060 
     ##   Title: DFO’s fish health monitoring activities at BC aquaculture sites
     ## <CKAN Package> 6c891715-317c-4d4d-9fe8-ea425e01d9d2 
     ##   Title: Results of DFO fish health audits of British Columbian marine finfish aquaculture sites, by facility
-    ## <CKAN Package> c1a54a0c-4eb0-4b50-be1f-01aee632527e 
-    ##   Title: Results of DFO benthic audits of British Columbia marine finfish aquaculture sites
-    ## <CKAN Package> f32ce23d-4a16-4eaa-9648-2f02a98b91af 
-    ##   Title: Oceans Protection Plan Regional Response Planning Extents
 
 see `?govcan_search` for further details.
 
 3.  Another possibility is to start with a package id corresponding to
     an actual record and retrieve a `ckan_package`.
-
-<!-- end list -->
 
 ``` r
 id <- "7ac5fe02-308d-4fff-b805-80194f8ddeb4" # Package ID
@@ -106,6 +122,12 @@ id_search <- govcan_get_record(record_id = id)
 ```
 
     ## Searching for dataset with id: 7ac5fe02-308d-4fff-b805-80194f8ddeb4
+
+    ## Warning: Failed to parse headers:
+    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
+    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
+    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
 
     ## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"
 
@@ -125,8 +147,6 @@ id_search # outputs a `ckan_package`
     `ckan_resource`s contained in the packages (a “resource” is any
     dataset attached to a given record). This outputs a
     `ckan_resource_stack` when called on a unique package.
-
-<!-- end list -->
 
 ``` r
 id_resources <- govcan_get_resources(id_search)
@@ -161,6 +181,30 @@ dfo_resources # outputs a list of `resource_stack`s
 ```
 
     ## [[1]]
+    ## <CKAN Resource Stack with 2 Resource> 
+    ## 
+    ##   Resources:  
+    ## 
+    ## <CKAN Resource> 588f9a30-a588-4b6a-bebd-ef82e1b67680 
+    ##   Name: Ministerial transition binder 2018
+    ##   Format: HTML
+    ## <CKAN Resource> 8acdcfe5-6434-4d11-82e8-70def931c26e 
+    ##   Name: Ministerial transition binder 2018
+    ##   Format: HTML
+    ## 
+    ## [[2]]
+    ## <CKAN Resource Stack with 2 Resource> 
+    ## 
+    ##   Resources:  
+    ## 
+    ## <CKAN Resource> 6c13c5e1-78c9-40db-a729-93d9bd52d037 
+    ##   Name: Ministerial transition binder 2019
+    ##   Format: HTML
+    ## <CKAN Resource> 427e7a83-be9f-4a4e-9777-31ad088252bb 
+    ##   Name: Ministerial transition binder 2019
+    ##   Format: HTML
+    ## 
+    ## [[3]]
     ## <CKAN Resource Stack with 6 Resource> 
     ## 
     ##   Resources:  
@@ -184,7 +228,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: Create a Google Map using latitude and longitude data
     ##   Format: TXT
     ## 
-    ## [[2]]
+    ## [[4]]
     ## <CKAN Resource Stack with 4 Resource> 
     ## 
     ##   Resources:  
@@ -202,7 +246,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: DFO’s fish health monitoring activities at BC aquaculture sites
     ##   Format: CSV
     ## 
-    ## [[3]]
+    ## [[5]]
     ## <CKAN Resource Stack with 6 Resource> 
     ## 
     ##   Resources:  
@@ -226,7 +270,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: Create a Google Map using latitude and longitude data
     ##   Format: TXT
     ## 
-    ## [[4]]
+    ## [[6]]
     ## <CKAN Resource Stack with 6 Resource> 
     ## 
     ##   Resources:  
@@ -250,22 +294,22 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: Create a Google Map using latitude and longitude data 
     ##   Format: TXT
     ## 
-    ## [[5]]
+    ## [[7]]
     ## <CKAN Resource Stack with 3 Resource> 
     ## 
     ##   Resources:  
     ## 
-    ## <CKAN Resource> bb01c294-9f21-44ed-bd73-341f18d25419 
+    ## <CKAN Resource> 0e8ed3c8-d67a-43e8-a4ea-1943b8762c53 
     ##   Name: Oceans Protection Plan Extent- Data Dictionary
-    ##   Format: HTML
-    ## <CKAN Resource> 28555692-fb08-40d4-865e-83dbe4bfd2e6 
+    ##   Format: CSV
+    ## <CKAN Resource> f3fce10e-157a-4638-9934-67a378710955 
     ##   Name: Oceans Protection Plan Regional Response Planning Extents
     ##   Format: ESRI REST
-    ## <CKAN Resource> 26a19e90-f21a-44b5-9f49-405d9b751a33 
+    ## <CKAN Resource> 428186d1-3603-4fd7-ad9d-b5ce7c6c5a3b 
     ##   Name: Oceans Protection Plan Regional Response Planning Extents
     ##   Format: ESRI REST
     ## 
-    ## [[6]]
+    ## [[8]]
     ## <CKAN Resource Stack with 3 Resource> 
     ## 
     ##   Resources:  
@@ -280,7 +324,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: Federal Marine Bioregions
     ##   Format: ESRI REST
     ## 
-    ## [[7]]
+    ## [[9]]
     ## <CKAN Resource Stack with 4 Resource> 
     ## 
     ##   Resources:  
@@ -298,7 +342,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: MSDI Dynamic Current Layer
     ##   Format: HTML
     ## 
-    ## [[8]]
+    ## [[10]]
     ## <CKAN Resource Stack with 7 Resource> 
     ## 
     ##   Resources:  
@@ -324,43 +368,11 @@ dfo_resources # outputs a list of `resource_stack`s
     ## <CKAN Resource> 7116b8ba-d6d8-4c7c-90f4-60389c7f9ad2 
     ##   Name: Coast of Bays ADCP stations 2009-2014
     ##   Format: CSV
-    ## 
-    ## [[9]]
-    ## <CKAN Resource Stack with 4 Resource> 
-    ## 
-    ##   Resources:  
-    ## 
-    ## <CKAN Resource> 299b5db6-a4f8-4905-a16b-4a4b79887f90 
-    ##   Name: Data Dictionary
-    ##   Format: CSV
-    ## <CKAN Resource> 6a344c5f-9919-4f70-9e1b-0a96767390c5 
-    ##   Name: EBSA
-    ##   Format: FGDB/GDB
-    ## <CKAN Resource> 639615c4-b76d-41fa-93db-e4db72ca9f58 
-    ##   Name: EBSA
-    ##   Format: ESRI REST
-    ## <CKAN Resource> f8dc3187-668e-4f4e-8ab6-5c260d204cbd 
-    ##   Name: EBSA
-    ##   Format: ESRI REST
-    ## 
-    ## [[10]]
-    ## <CKAN Resource Stack with 2 Resource> 
-    ## 
-    ##   Resources:  
-    ## 
-    ## <CKAN Resource> 983a70a0-435a-4ba4-aaaf-6efa0def06ac 
-    ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (English)
-    ##   Format: ESRI REST
-    ## <CKAN Resource> c8970b71-7f77-4c24-ab94-f90ec23af81d 
-    ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (French)
-    ##   Format: ESRI REST
 
 5.  Finally, you can download the resources with
     `govcan_dl_resources()`. These can either be stored to a certain
     directory or load into session (\* this option might fail due to
     current issues with `ckanr::ckan_fetch`).
-
-<!-- end list -->
 
 ``` r
 path <- "tmp/data/"
@@ -373,19 +385,19 @@ dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, path = path)
 ```
 
-    ## ℹ Data Dictionary (html) ✔
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ✔
-    ## ℹ Data Dictionary (csv) ✔
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ⚠ skipped (not supported).
-    ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ⚠ skipped (not supported).
+    ## ℹ Data Dictionary (html) ! skipped (already downloaded).
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ! skipped (already downloaded).
+    ## ℹ Data Dictionary (csv) ! skipped (already downloaded).
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ! skipped (not supported).
+    ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ! skipped (not supported).
 
     ## # A tibble: 5 x 7
-    ##   id           package_id       url                    path            fmt   store data 
-    ##   <chr>        <chr>            <chr>                  <chr>           <chr> <chr> <lgl>
-    ## 1 0c1b2697-4b… 7ac5fe02-308d-4… https://pacgis01.dfo-… tmp/data//Data… htm   disk  NA   
-    ## 2 eb138d6a-1a… 7ac5fe02-308d-4… https://pacgis01.dfo-… tmp/data//ise-… zip   disk  NA   
-    ## 3 f3e7fa0f-65… 7ac5fe02-308d-4… https://pacgis01.dfo-… tmp/data//Data… csv   disk  NA   
-    ## 4 9374bf48-9f… 7ac5fe02-308d-4… https://gisp.dfo-mpo.… <NA>            esri… <NA>  NA   
-    ## 5 53b268cb-d7… 7ac5fe02-308d-4… https://gisp.dfo-mpo.… <NA>            esri… <NA>  NA
+    ##   id         package_id      url              path             fmt   store data 
+    ##   <chr>      <chr>           <chr>            <chr>            <chr> <chr> <lgl>
+    ## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   
+    ## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
+    ## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
+    ## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA   
+    ## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA
 
 see `?govcan_dl_resources` for further details.
