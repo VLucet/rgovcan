@@ -4,7 +4,9 @@
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
-![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)
+\[![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)\]
+[![Codecov test
+coverage](https://codecov.io/gh/VLucet/rgovcan/branch/master/graph/badge.svg)](https://codecov.io/gh/VLucet/rgovcan?branch=master)
 
 A R package to interact with the Open Canada API (see
 <https://open.canada.ca/en/access-our-application-programming-interface-api>),
