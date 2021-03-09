@@ -12,7 +12,8 @@ Authors@R: c(
 Imports:
     cli, ckanr, crayon, crul, dplyr
 Suggests: 
-    testthat
+    testthat,
+    covr
 Remotes: 
     ropensci/crul
 License: GPL-3 + file LICENSE

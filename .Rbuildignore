@@ -4,3 +4,4 @@ README.Rmd
 ^\.travis.yml
 ^tmp
 .github
+^codecov\.yml$
