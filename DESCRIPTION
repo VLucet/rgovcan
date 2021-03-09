@@ -1,7 +1,7 @@
 Package: rgovcan
 Type: Package
 Title: A package to search for and download data from the Canadian Open Government portal
-Version: 0.2.0
+Version: 0.2.1
 Description: rgovcan allows users to search for existing datasets on the Canadian Open Government portal (<https://open.canada.ca/en>).
 Authors@R: c(
     person("Valentin", "Lucet", email = "valentin.lucet@mail.mcgill.ca",
@@ -10,12 +10,14 @@ Authors@R: c(
     comment = c(ORCID = "0000-0001-6619-9874"), role = c("ctb"))
     )
 Imports:
-    cli, ckanr, crayon, crul, dplyr
+    cli, 
+    ckanr, 
+    crayon, 
+    crul, 
+    dplyr
 Suggests: 
     testthat,
     covr
-Remotes: 
-    ropensci/crul
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true

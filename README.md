@@ -45,12 +45,6 @@ library("rgovcan")
 
     ## rgovcan package - alpha release - attached
 
-    ## Warning: Failed to parse headers:
-    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
-    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
-
     ## ℹ ckanr url set to https://open.canada.ca
 
 If you happen to change the default url, you can reset it back to the
@@ -59,12 +53,6 @@ default with `govcan_setup()`.
 ``` r
 govcan_setup()
 ```
-
-    ## Warning: Failed to parse headers:
-    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
-    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
 
     ## ℹ ckanr url set to https://open.canada.ca
 
@@ -77,18 +65,6 @@ dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 ```
 
     ## ℹ Searching the Open Portal for records matching: dfo
-
-    ## Warning: Failed to parse headers:
-    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
-    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
-
-    ## Warning: Failed to parse headers:
-    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
-    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
 
     ## ℹ CKAN query: 412 records found for keywords: dfo
 
@@ -124,12 +100,6 @@ id_search <- govcan_get_record(record_id = id)
 ```
 
     ## Searching for dataset with id: 7ac5fe02-308d-4fff-b805-80194f8ddeb4
-
-    ## Warning: Failed to parse headers:
-    ##         style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.gc.ca *.open.canada.ca *.canada.ca fonts.googleapis.com platform.twitter.com cdn.datatables.net cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         font-src 'self' maxcdn.bootstrapcdn.com netdna.bootstrapcdn.com *.open.canada.ca *.canada.ca fonts.googleapis.com fonts.gstatic.com cdn.jsdelivr.net use.fontawesome.com *.foresee.com;
-    ##         object-src 'self' *.open.canada.ca *.canada.ca www.youtube.com youtube.com *.gc.ca;
-    ##         media-src 'self' *.open.canada.ca *.canada.ca *.gc.ca www.youtube.com youtube.com epsg.io
 
     ## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"
 
