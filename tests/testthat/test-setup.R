@@ -1,4 +1,3 @@
-context("Setup")
 
 test_that("check default behavior", {
   govcan_setup("https://open.canada.ca/data/fr")
