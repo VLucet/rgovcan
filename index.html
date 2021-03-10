@@ -5,8 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A package to search for and download data from the Canadian Open 
-    Government portal • rgovcan</title>
+<title>Easy Access to the Canadian Open Government Portal • rgovcan</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -18,10 +17,11 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="A package to search for and download data from the Canadian Open 
-    Government portal">
-<meta property="og:description" content="rgovcan allows users to search for existing datasets on the Canadian 
-    Open Government portal (&lt;https://open.canada.ca/en&gt;).">
+<script src="pkgdown.js"></script><meta property="og:title" content="Easy Access to the Canadian Open Government Portal">
+<meta property="og:description" content="This package allows users to search for existing resources, including 
+    datasets, on the Canadian Open Government portal (&lt;https://open.canada.ca/en&gt;).
+    It is also designed to allow users to easily download a range of files directly 
+    from the portal in a reproducible manner.">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -82,7 +82,7 @@
 </h1></div>
 <div id="easy-access-to-the-canadian-open-government-portal" class="section level2">
 <h2 class="hasAnchor">
-<a href="#easy-access-to-the-canadian-open-government-portal" class="anchor"></a>Easy access to the Canadian Open Government Portal</h2>
+<a href="#easy-access-to-the-canadian-open-government-portal" class="anchor"></a>Easy Access to the Canadian Open Government Portal</h2>
 
 <p>A R package to interact with the Open Canada API (see <a href="https://open.canada.ca/en/access-our-application-programming-interface-api" class="uri">https://open.canada.ca/en/access-our-application-programming-interface-api</a>), to search and download datasets (see Licence at <a href="https://open.canada.ca/en/open-government-licence-canada" class="uri">https://open.canada.ca/en/open-government-licence-canada</a>). It is our hope that we will be able to bring this package up to the standard of a <code>ropensci</code> packages (see this issue on <code>ropensci/wishlist</code> <a href="https://github.com/ropensci/wishlist/issues/27" class="uri">https://github.com/ropensci/wishlist/issues/27</a>).</p>
 <p>This package makes extensive use of <code>ckanr</code> to access the Canadian government’s CKAN REST API.</p>
@@ -381,20 +381,20 @@
 <div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">## Warning in dir.create(path, recursive = TRUE): 'tmp/data' already exists</span></span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/govcan_dl_resources.html">govcan_dl_resources</a></span><span class="op">(</span><span class="va">id_resources</span>, path <span class="op">=</span> <span class="va">path</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">## ℹ Data Dictionary (html) ✓</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ✓</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co">## ℹ Data Dictionary (csv) ✓</span></span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">## ℹ Data Dictionary (html) ! skipped (already downloaded).</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ! skipped (already downloaded).</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">## ℹ Data Dictionary (csv) ! skipped (already downloaded).</span></span>
 <span id="cb21-4"><a href="#cb21-4"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ! skipped (not supported).</span></span>
 <span id="cb21-5"><a href="#cb21-5"></a><span class="co">## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ! skipped (not supported).</span></span>
 <span id="cb21-6"><a href="#cb21-6"></a></span>
 <span id="cb21-7"><a href="#cb21-7"></a><span class="co">## # A tibble: 5 x 7</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a><span class="co">##   id          package_id      url                path          fmt   store data </span></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="co">##   &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;              &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="co">## 1 0c1b2697-4… 7ac5fe02-308d-… https://pacgis01.… tmp/data//Da… htm   disk  NA   </span></span>
-<span id="cb21-11"><a href="#cb21-11"></a><span class="co">## 2 eb138d6a-1… 7ac5fe02-308d-… https://pacgis01.… tmp/data//is… zip   disk  NA   </span></span>
-<span id="cb21-12"><a href="#cb21-12"></a><span class="co">## 3 f3e7fa0f-6… 7ac5fe02-308d-… https://pacgis01.… tmp/data//Da… csv   disk  NA   </span></span>
-<span id="cb21-13"><a href="#cb21-13"></a><span class="co">## 4 9374bf48-9… 7ac5fe02-308d-… https://gisp.dfo-… &lt;NA&gt;          esri… &lt;NA&gt;  NA   </span></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="co">## 5 53b268cb-d… 7ac5fe02-308d-… https://gisp.dfo-… &lt;NA&gt;          esri… &lt;NA&gt;  NA</span></span></code></pre></div>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="co">##   id         package_id      url              path             fmt   store data </span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="co">##   &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   </span></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="co">## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   </span></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co">## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   </span></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="co">## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… &lt;NA&gt;             esri… &lt;NA&gt;  NA   </span></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="co">## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… &lt;NA&gt;             esri… &lt;NA&gt;  NA</span></span></code></pre></div>
 <p>see <code><a href="reference/govcan_dl_resources.html">?govcan_dl_resources</a></code> for further details.</p>
 </div>
 </div>
