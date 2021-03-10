@@ -1,5 +1,5 @@
 
-# includes 1 unknown file, 2 wms, 1 kml, 1 html and 1 ftp link.
+# Includes 1 unknown file, 2 wms, 1 kml, 1 html and 1 ftp link.
 id <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
 dir <- tempdir(check = TRUE)
 res <- govcan_dl_resources(id, path = dir)
@@ -21,4 +21,5 @@ test_that("test download", {
                                     paste0(res5$id[res5$fmt == "csv"], ".", "csv"))))
 })
 
-unlink(dir, recursive = TRUE)
+# Recursive false needed for expect_output tests in test-print to succeed
+unlink(dir, recursive = FALSE)
