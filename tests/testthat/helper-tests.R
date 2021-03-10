@@ -7,6 +7,7 @@ pkg <- govcan_get_record(pid)
 
 # Search
 search_default <- govcan_search("dfo", 10)
+search_small <- govcan_search("dfo", 2)
 search_format <- govcan_search("dfo", 10, format_results = TRUE)
 
 # Resources
