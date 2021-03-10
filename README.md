@@ -1,3 +1,4 @@
+
 # rgovcan <img src="man/figures/logo.png" align="right" width=140/>
 
 ## Easy access to the Canadian Open Government Portal
@@ -357,19 +358,19 @@ dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, path = path)
 ```
 
-    ## ℹ Data Dictionary (html) ! skipped (already downloaded).
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ! skipped (already downloaded).
-    ## ℹ Data Dictionary (csv) ! skipped (already downloaded).
+    ## ℹ Data Dictionary (html) ✓
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ✓
+    ## ℹ Data Dictionary (csv) ✓
     ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ! skipped (not supported).
     ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ! skipped (not supported).
 
     ## # A tibble: 5 x 7
-    ##   id         package_id      url              path             fmt   store data 
-    ##   <chr>      <chr>           <chr>            <chr>            <chr> <chr> <lgl>
-    ## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   
-    ## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
-    ## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
-    ## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA   
-    ## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA
+    ##   id          package_id      url                path          fmt   store data 
+    ##   <chr>       <chr>           <chr>              <chr>         <chr> <chr> <lgl>
+    ## 1 0c1b2697-4… 7ac5fe02-308d-… https://pacgis01.… tmp/data//Da… htm   disk  NA   
+    ## 2 eb138d6a-1… 7ac5fe02-308d-… https://pacgis01.… tmp/data//is… zip   disk  NA   
+    ## 3 f3e7fa0f-6… 7ac5fe02-308d-… https://pacgis01.… tmp/data//Da… csv   disk  NA   
+    ## 4 9374bf48-9… 7ac5fe02-308d-… https://gisp.dfo-… <NA>          esri… <NA>  NA   
+    ## 5 53b268cb-d… 7ac5fe02-308d-… https://gisp.dfo-… <NA>          esri… <NA>  NA
 
 see `?govcan_dl_resources` for further details.
