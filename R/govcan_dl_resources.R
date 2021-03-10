@@ -7,10 +7,14 @@
 #' @param resources An object of class `ckan_package_stack` or `ckan_package`,
 #' or a specific resource id, or (i.e. a CKAN package), or an object of type
 #' `ckan_resource` or `ckan_resource_stack`.
-#' @param excluded (vector of characters) Files of this format(s) will *not* be downloaded (`NULL` ignores this filter and is the default value).
-#' @param included (vector of characters) Only the files of this format(s) will be downloaded (`NULL` ignores this filter and is the default value).
-#' @param path (character) name indicating where to store the data (default is the current working directory).
-#' @param id_as_filename (logical) Use the resource identifier as file name. This is particularly useful when two different resources have the same filename. 
+#' @param excluded (vector of characters) Files of this format(s) will *not* be
+#'     downloaded (`NULL` ignores this filter and is the default value).
+#' @param included (vector of characters) Only the files of this format(s) will
+#'     be downloaded (`NULL` ignores this filter and is the default value).
+#' @param path (character) name indicating where to store the data (default is
+#'     the current working directory).
+#' @param id_as_filename (logical) Use the resource identifier as file name.
+#'     This is particularly useful when two different resources have the same filename.
 #' @param ... Curl arguments passed on to crul::verb-GET (see [ckanr::ckan_fetch()]).
 #'
 #' @details
@@ -52,7 +56,7 @@ govcan_dl_resources.ckan_resource <- function(resources,
       tmp <- fmt %in% tolower(included)
 
     if (tmp) {
-      # extract filename from url 
+      # extract filename from url
       fl <- extract_filename(url)
       if (!is.null(fl)) {
         if (id_as_filename) {
@@ -117,13 +121,11 @@ govcan_dl_resources.ckan_package_stack <- function(resources, ...) {
     do.call(rbind, out)
 }
 
-
-
 # HELPERS
 
-empty_entry <- function(store = NA_character_, 
-                        fmt = NA_character_, 
-                        data = NULL, 
+empty_entry <- function(store = NA_character_,
+                        fmt = NA_character_,
+                        data = NULL,
                         path = NA_character_) {
   list(
     store = store,
@@ -134,10 +136,10 @@ empty_entry <- function(store = NA_character_,
 }
 
 extract_filename <- function(x, sep = "/") {
-  # extract the last part of the path or url 
+  # extract the last part of the path or url
   pat <- paste0(".*", sep, "(.+)$")
   tmp <- sub(pat, "\\1", x)
-  # check whether it contains file basename + file extension 
+  # check whether it contains file basename + file extension
   # the regex below should cover 99% of common file extensions
   if (grepl('[[:graph:]]+\\.[[:alnum:]\\+-\\!]+$', tmp)) {
     tmp
@@ -147,4 +149,3 @@ extract_filename <- function(x, sep = "/") {
 extract_extension <- function(x) {
   sub('[[:graph:]]+\\.([[:alnum:]\\+-\\!]+)$', "\\1", x)
 }
-
