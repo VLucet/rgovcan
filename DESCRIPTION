@@ -24,3 +24,4 @@ LazyData: true
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 URL: https://vlucet.github.io/rgovcan/
+BugReports: https://github.com/VLucet/rgovcan/issues
