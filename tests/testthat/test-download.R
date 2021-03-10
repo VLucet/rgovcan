@@ -14,6 +14,8 @@ test_that("test download", {
   expect_equal(NROW(res), 6)
   expect_equal(sum(is.na(res$path)), 5)
   expect_true(file.exists(res$path[2]))
+  print(res)
+  print(res2)
   expect_true(identical(res, res2))
   expect_true(is.na(res3$path[res3$fmt == "xls"]))
   expect_true(all(is.na(res4$path[res4$fmt != "csv"])))
