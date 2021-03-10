@@ -18,3 +18,9 @@ A object of class \code{ckan_resource_stack} or list of ckan_resource_stack obje
 Display resources attached to a specific record or (i.e. a CKAN package)
 or to a stack of packages
 }
+\examples{
+
+search <- govcan_search("dfo", 10)
+id_resources <- govcan_get_resources(search)
+
+}

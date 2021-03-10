@@ -34,3 +34,9 @@ If format_resources is \code{TRUE}, the resources are formatted to a tibble.
 This function wraps \code{\link[ckanr:package_show]{ckanr::package_show()}} to access a specific record
 (or package, in CKAN terms) given its unique id
 }
+\examples{
+
+pid <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
+pkg <- govcan_get_record(pid)
+
+}

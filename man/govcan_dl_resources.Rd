@@ -48,6 +48,10 @@ This is particularly useful when two different resources have the same filename.
 
 \item{...}{Curl arguments passed on to crul::verb-GET (see \code{\link[ckanr:ckan_fetch]{ckanr::ckan_fetch()}}).}
 }
+\value{
+A tibble of the download metadata (file id, package id, url, download path,
+format, storage location, associated data).
+}
 \description{
 Download resources attached to a specific record or (i.e. a CKAN
 package) or to a stack of packages.
@@ -68,3 +72,10 @@ File names are handled internally.
 \item \code{ckan_package_stack}: Method for \code{ckan_package_stack} objects.
 }}
 
+\examples{
+
+id <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
+dir <- tempdir(check = TRUE)
+res <- govcan_dl_resources(id, path = dir)
+
+}

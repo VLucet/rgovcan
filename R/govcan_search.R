@@ -16,8 +16,16 @@
 #' @return If `only_results` is `TRUE` and `format_results` is `FALSE`
 #' (recommended), will return only the results of the search as a
 #' `CKAN_package_stack`. If `only_results` is `FALSE`, will return a list
-#' including also the query metadata. If `format_results` is `TRUE`, the 
+#' including also the query metadata. If `format_results` is `TRUE`, the
 #' function formats the output as a data.frame (not CKAN packages).
+#'
+#' @examples
+#'
+#' search <- govcan_search("dfo", 10)
+#' search_format <- govcan_search("dfo", 10, format_results = TRUE)
+#' search_list <- govcan_search("dfo", 10, only_results = FALSE)
+#' search_list_format <- govcan_search("dfo", 10, format_results = TRUE,
+#'                                    only_results = FALSE)
 #'
 #' @export
 govcan_search <- function(keywords,
@@ -39,7 +47,7 @@ govcan_search <- function(keywords,
                                          rows = records,
                                          as = as,
                                          ...))
-                                         
+
   if (format_results) {
     query_results$results <- dplyr::as_tibble(query_results$results)
   }

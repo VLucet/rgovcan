@@ -17,6 +17,11 @@
 #' associated with the record queried else it will return all the output of the CKAN query.
 #' If format_resources is `TRUE`, the resources are formatted to a tibble.
 #'
+#' @examples
+#'
+#' pid <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
+#' pkg <- govcan_get_record(pid)
+#'
 #' @export
 govcan_get_record <- function(record_id,
                               format_resources = FALSE,

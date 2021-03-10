@@ -38,3 +38,12 @@ function formats the output as a data.frame (not CKAN packages).
 This function wraps \code{\link[ckanr:package_search]{ckanr::package_search()}} to search for any
 records matching a given set of keywords within the Open Canada Portal
 }
+\examples{
+
+search <- govcan_search("dfo", 10)
+search_format <- govcan_search("dfo", 10, format_results = TRUE)
+search_list <- govcan_search("dfo", 10, only_results = FALSE)
+search_list_format <- govcan_search("dfo", 10, format_results = TRUE,
+                                   only_results = FALSE)
+
+}

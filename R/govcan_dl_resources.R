@@ -19,7 +19,17 @@
 #'
 #' @details
 #' File names are handled internally.
-
+#'
+#' @return
+#' A tibble of the download metadata (file id, package id, url, download path,
+#' format, storage location, associated data).
+#'
+#' @examples
+#'
+#' id <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
+#' dir <- tempdir(check = TRUE)
+#' res <- govcan_dl_resources(id, path = dir)
+#'
 #' @export
 govcan_dl_resources <- function(resources,
                                 excluded,
