@@ -101,7 +101,6 @@ govcan_dl_resources.ckan_resource_stack <- function(resources, ...) {
   do.call(rbind, out)
 }
 
-
 #' @describeIn govcan_dl_resources Method for `character` objects.
 #' @export
 govcan_dl_resources.character <- function(resources, ...) {
