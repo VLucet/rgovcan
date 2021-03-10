@@ -1,10 +1,11 @@
 Package: rgovcan
 Type: Package
-Title: A package to search for and download data from the Canadian Open 
-    Government portal
+Title: Easy Access to the Canadian Open Government Portal
 Version: 0.2.1
-Description: rgovcan allows users to search for existing datasets on the Canadian 
-    Open Government portal (<https://open.canada.ca/en>).
+Description: This package allows users to search for existing resources, including 
+    datasets, on the Canadian Open Government portal (<https://open.canada.ca/en>).
+    It is also designed to allow users to easily download a range of files directly 
+    from the portal in a reproducible manner.
 Authors@R: c(
     person("Valentin", "Lucet", email = "valentin.lucet@gmail.com", 
            role = c("aut", "cre")),

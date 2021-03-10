@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # rgovcan <img src="man/figures/logo.png" align="right" width=140/>
-## Easy access to the Canadian Open Government Portal
+## Easy Access to the Canadian Open Government Portal
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![R-CMD-check](https://github.com/VLucet/rgovcan/workflows/R-CMD-check/badge.svg)](https://github.com/VLucet/rgovcan/actions)
