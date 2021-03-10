@@ -10,4 +10,5 @@ test_that("test format", {
   expect_equal(class(search_list_format), "list")
   expect_equal(class(search_list_format$results)[1], "tbl_df")
   expect_equal(NROW(search_list_format$results), 10)
+
 })
