@@ -189,6 +189,10 @@ This is particularly useful when two different resources have the same filename.
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble of the download metadata (file id, package id, url, download path,
+format, storage location, associated data).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>File names are handled internally.</p>
@@ -203,6 +207,13 @@ This is particularly useful when two different resources have the same filename.
 <li><p><code>ckan_package_stack</code>: Method for <code>ckan_package_stack</code> objects.</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='st'>"b7ca71fa-6265-46e7-a73c-344ded9212b0"</span>
+<span class='va'>dir</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span>check <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_dl_resources</span><span class='op'>(</span><span class='va'>id</span>, path <span class='op'>=</span> <span class='va'>dir</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Searching for dataset with id: b7ca71fa-6265-46e7-a73c-344ded9212b0</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Record found: "Legal Planning Objectives - Current - Point"</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ BC Geographic Warehouse Custom Download (html) </span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>⚠ skipped (not supported).</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ KML Network Link (kml) </span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ Legal Planning Objectives - Current - Point (wms) </span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>⚠ skipped (not supported).</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ Legal Planning Objectives - Current - Point (wms) </span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>⚠ skipped (not supported).</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ Data Dictionaries for Strategic Land and Resource Plans (other) </span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>⚠ skipped (ftp not supported yet).</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ British Columbia Geoportal (html) </span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BBBB00;'>⚠ skipped (not supported).</span><span></span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
