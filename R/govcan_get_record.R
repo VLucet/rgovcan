@@ -40,19 +40,18 @@ govcan_get_record <- function(record_id,
 
   # Only output resources if required
   if (only_resources) {
-    if (as == "list") {
-      query_out <- query_results$resources
-    } else if (as == "table") {
+    if (format_resources) {
       query_out <- dplyr::as_tibble(query_results$resources)
+    } else  {
+      query_out <- query_results$resources
     }
   } else {
-    if (as == "list") {
-      query_out <- query_results
-    } else if (as == "table") {
+    if (format_resources) {
       query_results$resources <- dplyr::as_tibble(query_results$resources)
       query_out <- query_results
+    } else {
+      query_out <- query_results
     }
-    query_out <- query_results
   }
   query_out
 }
