@@ -34,13 +34,17 @@ govcan_dl_resources(resources, excluded, included, path, id_as_filename, ...)
 or a specific resource id, or (i.e. a CKAN package), or an object of type
 \code{ckan_resource} or \code{ckan_resource_stack}.}
 
-\item{excluded}{(vector of characters) Files of this format(s) will \emph{not} be downloaded (\code{NULL} ignores this filter and is the default value).}
+\item{excluded}{(vector of characters) Files of this format(s) will \emph{not} be
+downloaded (\code{NULL} ignores this filter and is the default value).}
 
-\item{included}{(vector of characters) Only the files of this format(s) will be downloaded (\code{NULL} ignores this filter and is the default value).}
+\item{included}{(vector of characters) Only the files of this format(s) will
+be downloaded (\code{NULL} ignores this filter and is the default value).}
 
-\item{path}{(character) name indicating where to store the data (default is the current working directory).}
+\item{path}{(character) name indicating where to store the data (default is
+the current working directory).}
 
-\item{id_as_filename}{(logical) Use the resource identifier as file name. This is particularly useful when two different resources have the same filename.}
+\item{id_as_filename}{(logical) Use the resource identifier as file name.
+This is particularly useful when two different resources have the same filename.}
 
 \item{...}{Curl arguments passed on to crul::verb-GET (see \code{\link[ckanr:ckan_fetch]{ckanr::ckan_fetch()}}).}
 }
