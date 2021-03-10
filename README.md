@@ -44,8 +44,6 @@ remotes::install_github("vlucet/rgovcan")
 library("rgovcan")
 ```
 
-    ## rgovcan package - alpha release - attached
-
     ## ℹ ckanr url set to https://open.canada.ca
 
 If you happen to change the default url, you can reset it back to the
