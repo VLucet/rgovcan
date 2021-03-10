@@ -15,4 +15,5 @@ test_that("test format", {
 
   expect_equal(class(pkg_list_res_format)[1], "tbl_df")
   expect_equal(dim(pkg_list_res_format), c(6, 22))
+
 })
