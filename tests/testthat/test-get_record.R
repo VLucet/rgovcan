@@ -3,7 +3,6 @@ test_that("test format", {
 
   expect_equal(class(pkg), "ckan_package")
   expect_equal(pkg$id, pid)
-  expect_equal(class(), "list")
 
   expect_equal(class(pkg_list_format), "list")
   expect_equal(pkg_list_format$id, pid)
