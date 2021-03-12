@@ -2,16 +2,28 @@
 % Please edit documentation in R/ckan_resource_stack-class.R
 \name{new_ckan_resource_stack}
 \alias{new_ckan_resource_stack}
-\title{ckan_resource_stack class and helpers}
+\title{ckan_resource_stack class}
 \usage{
 new_ckan_resource_stack(x = list())
 }
 \arguments{
-\item{x}{a list.}
+\item{x}{A list of \link[ckanr:as.ckan_resource]{ckan_resources}.}
 
 \item{...}{ignored.}
 }
+\value{
+An object of class ckan_resource_stack
+}
 \description{
-ckan_resource_stack class and helpers
+#' The ckan_resource_stack class is a wrapper around the \link[ckanr:as.ckan_resource]{ckan_resource}
+class from \link{ckanr}, which allows to stack multiple resources together. It
+comes with a custom print function.
+}
+\examples{
+query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
+                                                        rows = 3,
+                                                        as = "list"))
+query_out <- rgovcan:::new_ckan_package_stack(query_results$results)
+Map(govcan_get_resources, query_out)[[1]]
 }
 \keyword{internal}
