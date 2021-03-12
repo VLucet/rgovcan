@@ -1,7 +1,7 @@
 Package: rgovcan
 Type: Package
 Title: Easy Access to the Canadian Open Government Portal
-Version: 1.0.0
+Version: 1.0.1
 Description: Allows to search for existing resources, including datasets, on 
     the Canadian Open Government portal (<https://open.canada.ca/en>). It is 
     also designed to allow users to easily download a range of files directly 
