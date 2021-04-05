@@ -1,8 +1,22 @@
-#' ckan_resource_stack class and helpers
+#' ckan_resource_stack class
 #'
-#' @param x a list.
+#' #' The ckan_resource_stack class is a wrapper around the [ckan_resource][ckanr::as.ckan_resource]
+#' class from [ckanr][ckanr], which allows to stack multiple resources together. It
+#' comes with a custom print function.
+#'
+#' @param x A list of [ckan_resources][ckanr::as.ckan_resource].
 #' @param ... ignored.
 #' @keywords internal
+#'
+#' @return
+#' An object of class ckan_resource_stack
+#'
+#' @examples
+#' query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
+#'                                                         rows = 3,
+#'                                                         as = "list"))
+#' query_out <- rgovcan:::new_ckan_package_stack(query_results$results)
+#' Map(govcan_get_resources, query_out)[[1]]
 
 new_ckan_resource_stack <- function(x = list()){
   structure(x,

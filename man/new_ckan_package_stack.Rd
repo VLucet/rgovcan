@@ -2,14 +2,27 @@
 % Please edit documentation in R/ckan_package_stack-class.R
 \name{new_ckan_package_stack}
 \alias{new_ckan_package_stack}
-\title{ckan_package_stack class and helpers}
+\title{ckan_package_stack class}
 \usage{
 new_ckan_package_stack(x = list())
 }
 \arguments{
-\item{x}{a list}
+\item{x}{A list of \link[ckanr:as.ckan_package]{ckan_packages}.}
+}
+\value{
+An object of class ckan_package_class.
 }
 \description{
-ckan_package_stack class and helpers
+The ckan_package_stack class is a wrapper around the \link[ckanr:as.ckan_package]{ckan_package}
+class from \link{ckanr}, which allows to stack multiple packages together. It
+comes with a custom print function.
+}
+\examples{
+
+query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
+                                                        rows = 3,
+                                                        as = "list"))
+query_out <- rgovcan:::new_ckan_package_stack(query_results$results)
+
 }
 \keyword{internal}

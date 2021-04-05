@@ -5,8 +5,15 @@
 * ubuntu 20.04 (on GitHub Actions), R 4.0.3
 * ubuntu 20.04 (on GitHub Actions), devel
 
+## Resubmission
+Completed incomplete documentation of the S3 classes in the package.
+
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Valentin Lucet <valentin.lucet@gmail.com>’
+  
+New submission
+
