@@ -33,3 +33,13 @@ null_to_na <- function(x) {
         return(ifelse(is.null(x), NA, x))
     }
 }
+
+#
+get_remote_file_size <- function(url) {
+  hdr <- curlGetHeaders(url)
+  tmp <- as.numeric(
+    gsub("\\D", "", hdr[grepl("^Content-Length:", hdr)])
+  )
+  class(tmp) <- "object_size"
+  format(tmp, "auto", standard = "SI")
+}
