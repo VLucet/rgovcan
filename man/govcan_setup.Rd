@@ -10,14 +10,13 @@ govcan_setup(url = "https://open.canada.ca/data/en")
 \item{url}{Open Canada portal URL.}
 }
 \value{
-This function invisibly return the url sent as input
+This function invisibly returns the URL sent as input.
 }
 \description{
 Set or reset the ckanr URL to the Open Canada portal URL
 \url{https://open.canada.ca/data/en}
 }
 \examples{
-
 govcan_setup("https://open.canada.ca/data/en")
 
 }

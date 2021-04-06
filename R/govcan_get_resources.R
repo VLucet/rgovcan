@@ -10,7 +10,6 @@
 #' @return A object of class `ckan_resource_stack` or list of ckan_resource_stack objects.
 #'
 #' @examples
-#'
 #' search <- govcan_search("dfo", 10)
 #' id_resources <- govcan_get_resources(search)
 #'

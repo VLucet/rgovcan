@@ -1,6 +1,6 @@
 #' ckan_resource_stack class
 #'
-#' #' The ckan_resource_stack class is a wrapper around the [ckan_resource][ckanr::as.ckan_resource]
+#' The ckan_resource_stack class is a wrapper around the [ckan_resource][ckanr::as.ckan_resource]
 #' class from [ckanr][ckanr], which allows to stack multiple resources together. It
 #' comes with a custom print function.
 #'

@@ -5,10 +5,9 @@
 #'
 #' @param url Open Canada portal URL.
 #'
-#' @return This function invisibly return the url sent as input
+#' @return This function invisibly returns the URL sent as input.
 #'
 #' @examples
-#'
 #' govcan_setup("https://open.canada.ca/data/en")
 #'
 #' @export

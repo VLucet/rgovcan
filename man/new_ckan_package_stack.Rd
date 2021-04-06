@@ -18,7 +18,6 @@ class from \link{ckanr}, which allows to stack multiple packages together. It
 comes with a custom print function.
 }
 \examples{
-
 query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
                                                         rows = 3,
                                                         as = "list"))

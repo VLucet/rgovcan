@@ -1,26 +1,25 @@
 #' Query OpenCan portal for datasets (CKAN packages) matching keywords
 #'
 #' @description This function wraps [ckanr::package_search()] to search for any
-#' records matching a given set of keywords within the Open Canada Portal
+#' records matching a given set of keywords within the Open Canada Portal.
 #'
-#' @param keywords (character vector) A set of keywords to query
+#' @param keywords (character vector) A set of keywords to query.
 #' @param records (numeric) The number of matching records to return from the
-#' CKAN query (number of rows in the JSON output), default to 10
+#' CKAN query (number of rows in the JSON output), default to 10.
 #' @param only_results (logical) Whether the function should return only the
-#' results without the query metadata (default is `TRUE`)
+#' results without the query metadata (default is `TRUE`).
 #' @param format_results (logical) Whether the function should return a
 #' formatted output of the results as a `tibble` or an unformatted version under
-#' the form of a list of CKAN packages (default is `FALSE`)
-#' @param ... More arguments to be passed on to [ckanr::package_search()]
+#' the form of a list of CKAN packages (default is `FALSE`).
+#' @param ... More arguments to be passed on to [ckanr::package_search()].
 #'
 #' @return If `only_results` is `TRUE` and `format_results` is `FALSE`
 #' (recommended), will return only the results of the search as a
 #' `CKAN_package_stack`. If `only_results` is `FALSE`, will return a list
 #' including also the query metadata. If `format_results` is `TRUE`, the
-#' function formats the output as a data.frame (not CKAN packages).
+#' function formats the output as a data frame (not CKAN packages).
 #'
 #' @examples
-#'
 #' search <- govcan_search("dfo", 10)
 #' search_format <- govcan_search("dfo", 10, format_results = TRUE)
 #' search_list <- govcan_search("dfo", 10, only_results = FALSE)
@@ -61,7 +60,6 @@ govcan_search <- function(keywords,
     msgInfo(style_bold(query_results$count), "matching records were found,",
             style_bold(records), "records were returned")
   }
-
 
   # Only output results if required
   if (only_results) {
