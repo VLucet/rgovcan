@@ -27,9 +27,9 @@ new_ckan_resource_stack <- function(x = list()){
 #' @export
 print.ckan_resource_stack <- function(x, ...) {
   cat("<CKAN Resource Stack with", dim(x), "Resource> \n")
-  cli::cat_line()
+  cat_line()
   cat("  Resources:  \n")
-  cli::cat_line()
+  cat_line()
   Map(print_ckan_resource_custom, x[seq_len(dim(x))])
 }
 
