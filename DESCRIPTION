@@ -20,8 +20,7 @@ Imports:
     utils
 Suggests: 
     testthat,
-    covr,
-    vcr
+    covr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
