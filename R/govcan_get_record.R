@@ -45,13 +45,13 @@ govcan_get_record <- function(record_id,
   # Only output resources if required
   if (only_resources) {
     if (format_resources) {
-      query_out <- dplyr::as_tibble(query_results$resources)
+      query_out <- tibble::as_tibble(query_results$resources)
     } else  {
       query_out <- query_results$resources
     }
   } else {
     if (format_resources) {
-      query_results$resources <- dplyr::as_tibble(query_results$resources)
+      query_results$resources <- tibble::as_tibble(query_results$resources)
       query_out <- query_results
     } else {
       query_out <- query_results

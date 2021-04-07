@@ -48,7 +48,7 @@ govcan_search <- function(keywords,
                                          ...))
 
   if (format_results) {
-    query_results$results <- dplyr::as_tibble(query_results$results)
+    query_results$results <- tibble::as_tibble(query_results$results)
   }
 
   # Message how many records were found

@@ -16,7 +16,7 @@ Imports:
     ckanr, 
     crayon, 
     crul, 
-    dplyr,
+    tibble,
     utils
 Suggests: 
     testthat,
