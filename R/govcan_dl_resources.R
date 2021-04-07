@@ -95,8 +95,7 @@ govcan_dl_resources.ckan_resource <- function(resources,
   out$package_id <- resources$package_id
   out$id <- resources$id
   out <- null_to_na(out)
-  out <- as.data.frame(out)
-  class(out) <- c("tbl_df", "tbl", "data.frame")
+  out <- structure(as.data.frame(out), class = c("tbl_df", "tbl", "data.frame"))
   ord <- c("id", "package_id", "url", "path", "fmt")
   out[, c(ord, setdiff(names(out), ord))]
 }
@@ -126,6 +125,7 @@ govcan_dl_resources.ckan_package_stack <- function(resources, ...) {
     out <- lapply(lapply(resources, `[[`, "id"), govcan_dl_resources, ...)
     do.call(rbind, out)
 }
+
 
 # HELPERS
 

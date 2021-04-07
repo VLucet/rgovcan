@@ -28,17 +28,22 @@ Hex Logo done with `hexSticker`:
 
 ## Installation
 
-Until release to CRAN, you will need to use `remotes` to install from
+Until release to CRAN, you will need to use
+[`remotes`](https://CRAN.R-project.org/package=remotes) to install from
 source.
 
 ``` r
+install.packages("remotes")
 remotes::install_github("vlucet/rgovcan")
 ```
 
 ## Usage
 
-1.  First, load the package. The default `ckanr` url will be set to the
-    Open Canada Portal.
+1.  First, load the package. The default
+    [`ckanr`](https://CRAN.R-project.org/package=ckanr) url will be set
+    to the Open Canada Portal.
+
+<!-- end list -->
 
 ``` r
 library("rgovcan")
@@ -59,21 +64,23 @@ govcan_setup()
     `govcan_search()` on a given set of keywords. This yields a `stack`
     of `ckan_packages()` (object of class `ckan_package_stack`).
 
+<!-- end list -->
+
 ``` r
 dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 ```
 
     ## ℹ Searching the Open Portal for records matching: dfo
 
-    ## ℹ CKAN query: 412 records found for keywords: dfo
+    ## ℹ CKAN query: 423 records found for keywords: dfo
 
-    ## ℹ 412 matching records were found, 10 records were returned
+    ## ℹ 423 matching records were found, 10 records were returned
 
 ``` r
 dfo_search # outputs a `ckan_package_stack`
 ```
 
-    ## ── <CKAN Package Stack with 10 Packages> ───────────────────────────────────────
+    ## ── <CKAN Package Stack with 10 Packages> ────────────────────────────────────
     ## 
     ##   First 5 packages:  
     ## 
@@ -92,6 +99,8 @@ see `?govcan_search` for further details.
 
 3.  Another possibility is to start with a package id corresponding to
     an actual record and retrieve a `ckan_package`.
+
+<!-- end list -->
 
 ``` r
 id <- "7ac5fe02-308d-4fff-b805-80194f8ddeb4" # Package ID
@@ -118,6 +127,8 @@ id_search # outputs a `ckan_package`
     `ckan_resource`s contained in the packages (a “resource” is any
     dataset attached to a given record). This outputs a
     `ckan_resource_stack` when called on a unique package.
+
+<!-- end list -->
 
 ``` r
 id_resources <- govcan_get_resources(id_search)
@@ -266,6 +277,30 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Format: TXT
     ## 
     ## [[7]]
+    ## <CKAN Resource Stack with 2 Resource> 
+    ## 
+    ##   Resources:  
+    ## 
+    ## <CKAN Resource> ce3527ab-d761-40db-8903-9c5c2eaaa3ab 
+    ##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO
+    ##   Format: HTML
+    ## <CKAN Resource> 7c013997-618c-45c0-a274-097bcb721901 
+    ##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO
+    ##   Format: HTML
+    ## 
+    ## [[8]]
+    ## <CKAN Resource Stack with 2 Resource> 
+    ## 
+    ##   Resources:  
+    ## 
+    ## <CKAN Resource> 128952da-d4be-4c47-9aff-c5fb7413d18e 
+    ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (English)
+    ##   Format: ESRI REST
+    ## <CKAN Resource> a8915f28-c6a5-4a27-a660-bc3ea0f42276 
+    ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (French)
+    ##   Format: ESRI REST
+    ## 
+    ## [[9]]
     ## <CKAN Resource Stack with 3 Resource> 
     ## 
     ##   Resources:  
@@ -280,7 +315,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: Oceans Protection Plan Regional Response Planning Extents
     ##   Format: ESRI REST
     ## 
-    ## [[8]]
+    ## [[10]]
     ## <CKAN Resource Stack with 3 Resource> 
     ## 
     ##   Resources:  
@@ -294,56 +329,13 @@ dfo_resources # outputs a list of `resource_stack`s
     ## <CKAN Resource> 00f0c169-ed9f-4b3e-a20b-03fe465f3814 
     ##   Name: Federal Marine Bioregions
     ##   Format: ESRI REST
-    ## 
-    ## [[9]]
-    ## <CKAN Resource Stack with 4 Resource> 
-    ## 
-    ##   Resources:  
-    ## 
-    ## <CKAN Resource> 1ad4cc94-25fa-4a77-8820-4f90a1826569 
-    ##   Name: MSDI Dynamic Current Layer
-    ##   Format: CSV
-    ## <CKAN Resource> 6810bde3-74a3-44d7-92bd-1c7435e0e04f 
-    ##   Name: MSDI Dynamic Current Layer
-    ##   Format: ESRI REST
-    ## <CKAN Resource> e0446817-be17-4bc2-abc9-304f9cc8e4d7 
-    ##   Name: MSDI Dynamic Current Layer
-    ##   Format: HTML
-    ## <CKAN Resource> 3c601e26-562f-4a80-8cb4-43d24e76f01e 
-    ##   Name: MSDI Dynamic Current Layer
-    ##   Format: HTML
-    ## 
-    ## [[10]]
-    ## <CKAN Resource Stack with 7 Resource> 
-    ## 
-    ##   Resources:  
-    ## 
-    ## <CKAN Resource> a5d3af15-dade-4aa6-a4c5-7396c1ac5915 
-    ##   Name: Science Advisory Report 2016/039
-    ##   Format: HTML
-    ## <CKAN Resource> 3d2e4fee-4bfb-4ffe-970d-68e70a214fbb 
-    ##   Name: Terms of Reference
-    ##   Format: HTML
-    ## <CKAN Resource> cbee4a17-8af0-4ab7-9ade-1676c0281b0e 
-    ##   Name: Proceedings 2017/043
-    ##   Format: HTML
-    ## <CKAN Resource> 71c936bd-2519-4b3c-baf9-77ff0a4a60fa 
-    ##   Name: Acoustic Doppler Current Profiler data from the Coast of Bays, Newfoundland
-    ##   Format: ESRI REST
-    ## <CKAN Resource> fcca9fe8-eccd-4e4b-81a9-6f81538bfe7c 
-    ##   Name: Acoustic Doppler Current Profiler data from the Coast of Bays, Newfoundland
-    ##   Format: ESRI REST
-    ## <CKAN Resource> 9b7c9269-aa21-4d3d-9979-d3a840c24f60 
-    ##   Name: ADCP Data
-    ##   Format: ZIP
-    ## <CKAN Resource> 7116b8ba-d6d8-4c7c-90f4-60389c7f9ad2 
-    ##   Name: Coast of Bays ADCP stations 2009-2014
-    ##   Format: CSV
 
 5.  Finally, you can download the resources with
     `govcan_dl_resources()`. These can either be stored to a certain
     directory or load into session (\* this option might fail due to
     current issues with `ckanr::ckan_fetch`).
+
+<!-- end list -->
 
 ``` r
 path <- "tmp/data/"
@@ -356,18 +348,18 @@ dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, path = path)
 ```
 
-    ## ℹ Data Dictionary (html) ! skipped (already downloaded).
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ! skipped (already downloaded).
-    ## ℹ Data Dictionary (csv) ! skipped (already downloaded).
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ! skipped (not supported).
-    ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ! skipped (not supported).
+    ## ℹ Data Dictionary (html) ⚠ skipped (already downloaded).
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ⚠ skipped (already downloaded).
+    ## ℹ Data Dictionary (csv) ⚠ skipped (already downloaded).
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ⚠ skipped (not supported).
+    ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ⚠ skipped (not supported).
 
     ## # A tibble: 5 x 7
     ##   id         package_id      url              path             fmt   store data 
     ##   <chr>      <chr>           <chr>            <chr>            <chr> <chr> <lgl>
-    ## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   
-    ## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
-    ## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
+    ## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/kevcaz/Pr… html  disk  NA   
+    ## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/kevcaz/Pr… csv   disk  NA   
+    ## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/kevcaz/Pr… csv   disk  NA   
     ## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA   
     ## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA
 
