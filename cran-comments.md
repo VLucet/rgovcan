@@ -8,6 +8,7 @@
 
 ## Resubmission
 * Completed incomplete documentation of the S3 classes in the package.
+* Examples that query the API were wrapped with dontrun keyword to avoid querying the web API from CRAN servers.
 
 ## R CMD check results
 

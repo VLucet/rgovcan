@@ -1,6 +1,8 @@
 
 test_that("test format", {
 
+  skip_on_cran()
+
   expect_equal(class(pkg), "ckan_package")
   expect_equal(pkg$id, pid)
 
