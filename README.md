@@ -43,8 +43,6 @@ remotes::install_github("vlucet/rgovcan")
     [`ckanr`](https://CRAN.R-project.org/package=ckanr) url will be set
     to the Open Canada Portal.
 
-<!-- end list -->
-
 ``` r
 library("rgovcan")
 ```
@@ -64,50 +62,46 @@ govcan_setup()
     `govcan_search()` on a given set of keywords. This yields a `stack`
     of `ckan_packages()` (object of class `ckan_package_stack`).
 
-<!-- end list -->
-
 ``` r
 dfo_search <- govcan_search(keywords = c("dfo"), records = 10)
 ```
 
     ## ℹ Searching the Open Portal for records matching: dfo
 
-    ## ℹ CKAN query: 423 records found for keywords: dfo
+    ## ℹ CKAN query: 437 records found for keywords: dfo
 
-    ## ℹ 423 matching records were found, 10 records were returned
+    ## ℹ 437 matching records were found, 10 records were returned
 
 ``` r
 dfo_search # outputs a `ckan_package_stack`
 ```
 
-    ## ── <CKAN Package Stack with 10 Packages> ────────────────────────────────────
+    ## ── <CKAN Package Stack with 10 Packages> ───────────────────────────────────────
     ## 
     ##   First 5 packages:  
     ## 
-    ## <CKAN Package> 5798c4b6-d9d6-4328-9349-f66020403b4c 
+    ## → <CKAN Package> 5798c4b6-d9d6-4328-9349-f66020403b4c
     ##   Title: Ministerial transition binder 2018 (DFO)
-    ## <CKAN Package> 830908ab-6abd-461d-ace9-b2673dd92b30 
+    ## → <CKAN Package> 830908ab-6abd-461d-ace9-b2673dd92b30
     ##   Title: Ministerial transition binder 2019 (DFO)
-    ## <CKAN Package> 5cfd93bd-b3ee-4b0b-8816-33d388f6811d 
+    ## → <CKAN Package> 5cfd93bd-b3ee-4b0b-8816-33d388f6811d
     ##   Title: DFO sea lice audits of BC marine finfish aquaculture sites
-    ## <CKAN Package> 4dc95665-3d44-428c-bb26-12f981c57060 
+    ## → <CKAN Package> 4dc95665-3d44-428c-bb26-12f981c57060
     ##   Title: DFO’s fish health monitoring activities at BC aquaculture sites
-    ## <CKAN Package> 6c891715-317c-4d4d-9fe8-ea425e01d9d2 
-    ##   Title: Results of DFO fish health audits of British Columbian marine finfish aquaculture sites, by facility
+    ## → <CKAN Package> c1a54a0c-4eb0-4b50-be1f-01aee632527e
+    ##   Title: Results of DFO benthic audits of British Columbia marine finfish aquaculture sites
 
 see `?govcan_search` for further details.
 
 3.  Another possibility is to start with a package id corresponding to
     an actual record and retrieve a `ckan_package`.
 
-<!-- end list -->
-
 ``` r
 id <- "7ac5fe02-308d-4fff-b805-80194f8ddeb4" # Package ID
 id_search <- govcan_get_record(record_id = id)
 ```
 
-    ## Searching for dataset with id: 7ac5fe02-308d-4fff-b805-80194f8ddeb4
+    ## ℹ Searching for dataset with id:  7ac5fe02-308d-4fff-b805-80194f8ddeb4
 
     ## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"
 
@@ -127,8 +121,6 @@ id_search # outputs a `ckan_package`
     `ckan_resource`s contained in the packages (a “resource” is any
     dataset attached to a given record). This outputs a
     `ckan_resource_stack` when called on a unique package.
-
-<!-- end list -->
 
 ``` r
 id_resources <- govcan_get_resources(id_search)
@@ -233,30 +225,6 @@ dfo_resources # outputs a list of `resource_stack`s
     ## 
     ##   Resources:  
     ## 
-    ## <CKAN Resource> b49ab71b-ec00-4e85-813b-d508c32166db 
-    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
-    ##   Format: CSV
-    ## <CKAN Resource> 8681da09-ba23-40aa-a928-5fda929712fd 
-    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
-    ##   Format: CSV
-    ## <CKAN Resource> 7bd96bb4-1608-4bea-b432-329d5ef469ec 
-    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
-    ##   Format: CSV
-    ## <CKAN Resource> bb164f09-f6af-4bb2-bcf8-f2c34e9c8313 
-    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
-    ##   Format: CSV
-    ## <CKAN Resource> 95b916b1-25a9-480d-9388-97ab68abec8b 
-    ##   Name: Create a Google Map using latitude and longitude data
-    ##   Format: TXT
-    ## <CKAN Resource> a1b27546-5b73-419f-a8cd-6e5c35184413 
-    ##   Name: Create a Google Map using latitude and longitude data
-    ##   Format: TXT
-    ## 
-    ## [[6]]
-    ## <CKAN Resource Stack with 6 Resource> 
-    ## 
-    ##   Resources:  
-    ## 
     ## <CKAN Resource> f51236a0-4ccc-4fd1-9fd0-f4a109065732 
     ##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing
     ##   Format: CSV
@@ -276,7 +244,7 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: Create a Google Map using latitude and longitude data 
     ##   Format: TXT
     ## 
-    ## [[7]]
+    ## [[6]]
     ## <CKAN Resource Stack with 2 Resource> 
     ## 
     ##   Resources:  
@@ -288,15 +256,39 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO
     ##   Format: HTML
     ## 
+    ## [[7]]
+    ## <CKAN Resource Stack with 6 Resource> 
+    ## 
+    ##   Resources:  
+    ## 
+    ## <CKAN Resource> b49ab71b-ec00-4e85-813b-d508c32166db 
+    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
+    ##   Format: CSV
+    ## <CKAN Resource> 8681da09-ba23-40aa-a928-5fda929712fd 
+    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
+    ##   Format: CSV
+    ## <CKAN Resource> 7bd96bb4-1608-4bea-b432-329d5ef469ec 
+    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
+    ##   Format: CSV
+    ## <CKAN Resource> bb164f09-f6af-4bb2-bcf8-f2c34e9c8313 
+    ##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing
+    ##   Format: CSV
+    ## <CKAN Resource> 95b916b1-25a9-480d-9388-97ab68abec8b 
+    ##   Name: Create a Google Map using latitude and longitude data
+    ##   Format: TXT
+    ## <CKAN Resource> a1b27546-5b73-419f-a8cd-6e5c35184413 
+    ##   Name: Create a Google Map using latitude and longitude data
+    ##   Format: TXT
+    ## 
     ## [[8]]
     ## <CKAN Resource Stack with 2 Resource> 
     ## 
     ##   Resources:  
     ## 
-    ## <CKAN Resource> 128952da-d4be-4c47-9aff-c5fb7413d18e 
+    ## <CKAN Resource> 29f7b107-3d62-4f1e-a037-cb17e1162110 
     ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (English)
     ##   Format: ESRI REST
-    ## <CKAN Resource> a8915f28-c6a5-4a27-a660-bc3ea0f42276 
+    ## <CKAN Resource> 0637be9d-e93c-4512-9c34-2e8d78094b7e 
     ##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (French)
     ##   Format: ESRI REST
     ## 
@@ -316,26 +308,27 @@ dfo_resources # outputs a list of `resource_stack`s
     ##   Format: ESRI REST
     ## 
     ## [[10]]
-    ## <CKAN Resource Stack with 3 Resource> 
+    ## <CKAN Resource Stack with 4 Resource> 
     ## 
     ##   Resources:  
     ## 
-    ## <CKAN Resource> baa41cff-9357-4d41-86f1-26cf4d330040 
-    ##   Name: Federal Marine Bioregions
-    ##   Format: FGDB/GDB
-    ## <CKAN Resource> 68fdd715-7376-4ff5-a2a2-c758bb1936e1 
-    ##   Name: Federal Marine Bioregions
+    ## <CKAN Resource> 1ad4cc94-25fa-4a77-8820-4f90a1826569 
+    ##   Name: MSDI Dynamic Current Layer
+    ##   Format: CSV
+    ## <CKAN Resource> 6810bde3-74a3-44d7-92bd-1c7435e0e04f 
+    ##   Name: MSDI Dynamic Current Layer
     ##   Format: ESRI REST
-    ## <CKAN Resource> 00f0c169-ed9f-4b3e-a20b-03fe465f3814 
-    ##   Name: Federal Marine Bioregions
-    ##   Format: ESRI REST
+    ## <CKAN Resource> e0446817-be17-4bc2-abc9-304f9cc8e4d7 
+    ##   Name: MSDI Dynamic Current Layer
+    ##   Format: HTML
+    ## <CKAN Resource> 3c601e26-562f-4a80-8cb4-43d24e76f01e 
+    ##   Name: MSDI Dynamic Current Layer
+    ##   Format: HTML
 
 5.  Finally, you can download the resources with
     `govcan_dl_resources()`. These can either be stored to a certain
     directory or load into session (\* this option might fail due to
     current issues with `ckanr::ckan_fetch`).
-
-<!-- end list -->
 
 ``` r
 path <- "tmp/data/"
@@ -348,18 +341,18 @@ dir.create(path, recursive = TRUE)
 govcan_dl_resources(id_resources, path = path)
 ```
 
-    ## ℹ Data Dictionary (html) ⚠ skipped (already downloaded).
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (csv) ⚠ skipped (already downloaded).
-    ## ℹ Data Dictionary (csv) ⚠ skipped (already downloaded).
-    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (esri rest) ⚠ skipped (not supported).
-    ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (esri rest) ⚠ skipped (not supported).
+    ## ℹ Data Dictionary (format: html - size: 63.4 Kb) ! skipped (already downloaded).
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (format: csv - size: 41.4 Kb) ! skipped (already downloaded).
+    ## ℹ Data Dictionary (format: csv - size: 1.6 Kb) ! skipped (already downloaded).
+    ## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (format: esri rest - size: 0 bytes) ! skipped (not supported).
+    ## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (format: esri rest - size: 0 bytes) ! skipped (not supported).
 
     ## # A tibble: 5 x 7
     ##   id         package_id      url              path             fmt   store data 
     ##   <chr>      <chr>           <chr>            <chr>            <chr> <chr> <lgl>
-    ## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/kevcaz/Pr… html  disk  NA   
-    ## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/kevcaz/Pr… csv   disk  NA   
-    ## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/kevcaz/Pr… csv   disk  NA   
+    ## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   
+    ## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
+    ## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   
     ## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA   
     ## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… <NA>             esri… <NA>  NA
 
