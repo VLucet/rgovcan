@@ -18,4 +18,3 @@ checking CRAN incoming feasibility ... NOTE
 Maintainer: ‘Valentin Lucet <valentin.lucet@gmail.com>’
   
 New submission
-
