@@ -25,9 +25,11 @@
 #' format, storage location, associated data).
 #'
 #' @examples
+#' \dontrun{
 #' id <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
 #' dir <- tempdir(check = TRUE)
 #' res <- govcan_dl_resources(id, path = dir)
+#' }
 #'
 #' @export
 govcan_dl_resources <- function(resources,
@@ -46,11 +48,11 @@ govcan_dl_resources.ckan_resource <- function(resources,
                                               included = NULL,
                                               path = ".",
                                               id_as_filename = FALSE,
-                                              ...) {                                        
+                                              ...) {
   fmt <- tolower(resources$format)
   url <- resources$url
   msgDownload(url, fmt, resources$name)
-  
+
   if (grepl("^ftp://", url)) {
     out <- empty_entry()
     msgWarning("skipped (ftp not supported yet).")
@@ -61,7 +63,7 @@ govcan_dl_resources.ckan_resource <- function(resources,
       tmp <- !(fmt %in% tolower(excluded))
     if (!is.null(included))
       tmp <- fmt %in% tolower(included)
-  
+
     if (tmp) {
       # extract filename from url
       fl <- extract_filename(url)
@@ -90,7 +92,7 @@ govcan_dl_resources.ckan_resource <- function(resources,
       msgWarning("skipped (format not selected).")
     }
   }
-  
+
   out$url <- url
   out$package_id <- resources$package_id
   out$id <- resources$id

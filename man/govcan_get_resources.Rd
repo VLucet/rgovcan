@@ -19,7 +19,9 @@ Display resources attached to a specific record or (i.e. a CKAN package)
 or to a stack of packages
 }
 \examples{
+\dontrun{
 search <- govcan_search("dfo", 10)
 id_resources <- govcan_get_resources(search)
+}
 
 }

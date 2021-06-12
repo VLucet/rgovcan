@@ -8,7 +8,9 @@
 #' @return This function invisibly returns the URL sent as input.
 #'
 #' @examples
+#' \dontrun{
 #' govcan_setup("https://open.canada.ca/data/en")
+#' }
 #'
 #' @export
 

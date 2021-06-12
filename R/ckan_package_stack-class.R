@@ -11,11 +11,12 @@
 #' An object of class ckan_package_class.
 #'
 #' @examples
+#' \dontrun{
 #' query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
 #'                                                         rows = 3,
 #'                                                         as = "list"))
 #' query_out <- rgovcan:::new_ckan_package_stack(query_results$results)
-#'
+#' }
 
 new_ckan_package_stack <- function(x = list()){
   structure(x,

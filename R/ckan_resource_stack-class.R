@@ -12,11 +12,13 @@
 #' An object of class ckan_resource_stack
 #'
 #' @examples
+#' \dontrun{
 #' query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
 #'                                                         rows = 3,
 #'                                                         as = "list"))
 #' query_out <- rgovcan:::new_ckan_package_stack(query_results$results)
 #' Map(govcan_get_resources, query_out)[[1]]
+#' }
 
 new_ckan_resource_stack <- function(x = list()){
   structure(x,

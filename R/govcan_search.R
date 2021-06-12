@@ -20,11 +20,13 @@
 #' function formats the output as a data frame (not CKAN packages).
 #'
 #' @examples
+#' \dontrun{
 #' search <- govcan_search("dfo", 10)
 #' search_format <- govcan_search("dfo", 10, format_results = TRUE)
 #' search_list <- govcan_search("dfo", 10, only_results = FALSE)
 #' search_list_format <- govcan_search("dfo", 10, format_results = TRUE,
 #'                                    only_results = FALSE)
+#' }
 #'
 #' @export
 govcan_search <- function(keywords,

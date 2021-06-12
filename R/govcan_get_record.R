@@ -18,8 +18,10 @@
 #' If format_resources is `TRUE`, the resources are formatted to a tibble.
 #'
 #' @examples
+#' \dontrun{
 #' pid <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
 #' pkg <- govcan_get_record(pid)
+#' }
 #'
 #' @export
 govcan_get_record <- function(record_id,
