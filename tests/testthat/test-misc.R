@@ -1,6 +1,8 @@
 
 test_that("Misc functions work as expected", {
 
+  skip_on_cran()
+
   expect_message(rgovcan:::msgError("Error"), "Error")
   expect_message(rgovcan:::msgSuccess("Success"), "Success")
   expect_message(rgovcan:::msgWarning("Warning"), "Warning")

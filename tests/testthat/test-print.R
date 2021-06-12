@@ -1,5 +1,8 @@
 
 test_that("print as expected", {
+
+  skip_on_cran()
+
   expect_output(print(pkg),
                 "<CKAN Package> b7ca71fa-6265-46e7-a73c-344ded9212b0")
   expect_output(print(search_default),

@@ -1,5 +1,8 @@
 
 test_that("test format", {
+
+  skip_on_cran()
+
   expect_equal(length(search_default), 10)
   expect_equal(NROW(search_format), 10)
 
