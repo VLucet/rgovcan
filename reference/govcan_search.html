@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Query OpenCan portal for datasets (CKAN packages) matching keywords — govcan_search" />
 <meta property="og:description" content="This function wraps ckanr::package_search() to search for any
-records matching a given set of keywords within the Open Canada Portal" />
+records matching a given set of keywords within the Open Canada Portal." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -124,7 +124,7 @@ records matching a given set of keywords within the Open Canada Portal" />
 
     <div class="ref-description">
     <p>This function wraps <code><a href='https://docs.ropensci.org/ckanr/reference/package_search.html'>ckanr::package_search()</a></code> to search for any
-records matching a given set of keywords within the Open Canada Portal</p>
+records matching a given set of keywords within the Open Canada Portal.</p>
     </div>
 
     <pre class="usage"><span class='fu'>govcan_search</span><span class='op'>(</span>
@@ -140,27 +140,27 @@ records matching a given set of keywords within the Open Canada Portal</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>keywords</th>
-      <td><p>(character vector) A set of keywords to query</p></td>
+      <td><p>(character vector) A set of keywords to query.</p></td>
     </tr>
     <tr>
       <th>records</th>
       <td><p>(numeric) The number of matching records to return from the
-CKAN query (number of rows in the JSON output), default to 10</p></td>
+CKAN query (number of rows in the JSON output), default to 10.</p></td>
     </tr>
     <tr>
       <th>only_results</th>
       <td><p>(logical) Whether the function should return only the
-results without the query metadata (default is <code>TRUE</code>)</p></td>
+results without the query metadata (default is <code>TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>format_results</th>
       <td><p>(logical) Whether the function should return a
 formatted output of the results as a <code>tibble</code> or an unformatted version under
-the form of a list of CKAN packages (default is <code>FALSE</code>)</p></td>
+the form of a list of CKAN packages (default is <code>FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>More arguments to be passed on to <code><a href='https://docs.ropensci.org/ckanr/reference/package_search.html'>ckanr::package_search()</a></code></p></td>
+      <td><p>More arguments to be passed on to <code><a href='https://docs.ropensci.org/ckanr/reference/package_search.html'>ckanr::package_search()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -170,17 +170,16 @@ the form of a list of CKAN packages (default is <code>FALSE</code>)</p></td>
 (recommended), will return only the results of the search as a
 <code>CKAN_package_stack</code>. If <code>only_results</code> is <code>FALSE</code>, will return a list
 including also the query metadata. If <code>format_results</code> is <code>TRUE</code>, the
-function formats the output as a data.frame (not CKAN packages).</p>
+function formats the output as a data frame (not CKAN packages).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>search</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> records found for keywords: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB;font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span><span></span></div><div class='input'><span class='va'>search_format</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span>, format_results <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> records found for keywords: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB;font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span><span></span></div><div class='input'><span class='va'>search_list</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span>, only_results <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> records found for keywords: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB;font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span><span></span></div><div class='input'><span class='va'>search_list_format</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span>, format_results <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    <pre class="examples"><div class='input'><span class='va'>search</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> records found for keywords: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB; font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span></span></div><div class='input'><span class='va'>search_format</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span>, format_results <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> records found for keywords: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB; font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span></span></div><div class='input'><span class='va'>search_list</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span>, only_results <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> records found for keywords: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB; font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span></span></div><div class='input'><span class='va'>search_list_format</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_search</span><span class='op'>(</span><span class='st'>"dfo"</span>, <span class='fl'>10</span>, format_results <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                    only_results <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> records found for keywords: dfo</span><span></span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB;font-weight: bold;'>412</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB;font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span><span></span></div><div class='input'>
-</div></span></pre>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Searching the Open Portal for records matching: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ CKAN query: </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> records found for keywords: dfo</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ </span><span style='color: #0000BB; font-weight: bold;'>437</span><span style='color: #0000BB;'> matching records were found, </span><span style='color: #0000BB; font-weight: bold;'>10</span><span style='color: #0000BB;'> records were returned</span></span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
