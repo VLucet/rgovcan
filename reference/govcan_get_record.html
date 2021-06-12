@@ -167,9 +167,11 @@ associated with the record queried else it will return all the output of the CKA
 If format_resources is <code>TRUE</code>, the resources are formatted to a tibble.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>pid</span> <span class='op'>&lt;-</span> <span class='st'>"b7ca71fa-6265-46e7-a73c-344ded9212b0"</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>pid</span> <span class='op'>&lt;-</span> <span class='st'>"b7ca71fa-6265-46e7-a73c-344ded9212b0"</span>
 <span class='va'>pkg</span> <span class='op'>&lt;-</span> <span class='fu'>govcan_get_record</span><span class='op'>(</span><span class='va'>pid</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Searching for dataset with id:  b7ca71fa-6265-46e7-a73c-344ded9212b0</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #0000BB;'>ℹ Record found: "Legal Planning Objectives - Current - Point"</span></span></div><div class='input'>
+<span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
