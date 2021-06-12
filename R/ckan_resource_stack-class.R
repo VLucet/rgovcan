@@ -1,6 +1,6 @@
 #' ckan_resource_stack class
 #'
-#' #' The ckan_resource_stack class is a wrapper around the [ckan_resource][ckanr::as.ckan_resource]
+#' The ckan_resource_stack class is a wrapper around the [ckan_resource][ckanr::as.ckan_resource]
 #' class from [ckanr][ckanr], which allows to stack multiple resources together. It
 #' comes with a custom print function.
 #'
@@ -27,9 +27,9 @@ new_ckan_resource_stack <- function(x = list()){
 #' @export
 print.ckan_resource_stack <- function(x, ...) {
   cat("<CKAN Resource Stack with", dim(x), "Resource> \n")
-  cli::cat_line()
+  cat_line()
   cat("  Resources:  \n")
-  cli::cat_line()
+  cat_line()
   Map(print_ckan_resource_custom, x[seq_len(dim(x))])
 }
 

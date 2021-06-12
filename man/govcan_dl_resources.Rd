@@ -73,7 +73,6 @@ File names are handled internally.
 }}
 
 \examples{
-
 id <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
 dir <- tempdir(check = TRUE)
 res <- govcan_dl_resources(id, path = dir)

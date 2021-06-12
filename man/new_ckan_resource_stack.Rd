@@ -15,7 +15,7 @@ new_ckan_resource_stack(x = list())
 An object of class ckan_resource_stack
 }
 \description{
-#' The ckan_resource_stack class is a wrapper around the \link[ckanr:as.ckan_resource]{ckan_resource}
+The ckan_resource_stack class is a wrapper around the \link[ckanr:as.ckan_resource]{ckan_resource}
 class from \link{ckanr}, which allows to stack multiple resources together. It
 comes with a custom print function.
 }

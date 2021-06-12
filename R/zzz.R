@@ -1,5 +1,6 @@
 #' @importFrom crayon blue red green yellow
-#' @importFrom cli style_bold style_underline
+#' @importFrom cli style_bold style_underline cat_rule cat_line cat_bullet
+#' @import utils
 
 msgInfo <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$info, ...)
@@ -19,6 +20,13 @@ msgSuccess <- function(..., appendLF = TRUE) {
   invisible(txt)
 }
 
+# x is a resource 
+msgDownload <- function(url, fmt, name) {
+  sz <- ifelse(fmt != "other", get_remote_file_size(url), "unknown")
+  msgInfo(name, paste0("(format: ", fmt, " - size: ", sz, ") "), 
+    appendLF = FALSE)
+}
+
 msgWarning <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$warning, ...)
   message(yellow(txt), appendLF = appendLF)
@@ -32,4 +40,15 @@ null_to_na <- function(x) {
     } else {
         return(ifelse(is.null(x), NA, x))
     }
+}
+
+#
+get_remote_file_size <- function(url) {
+  hdr <- curlGetHeaders(url)
+  tmp <- as.numeric(
+    gsub("\\D", "", hdr[grepl("^Content-Length:", hdr)])
+  )
+  if (length(tmp)) {
+    format(structure(tmp, class = "object_size"), units = "auto")
+  } else "unknown"
 }

@@ -18,7 +18,6 @@
 #' If format_resources is `TRUE`, the resources are formatted to a tibble.
 #'
 #' @examples
-#'
 #' pid <- "b7ca71fa-6265-46e7-a73c-344ded9212b0"
 #' pkg <- govcan_get_record(pid)
 #'
@@ -28,7 +27,7 @@ govcan_get_record <- function(record_id,
                               only_resources = FALSE,
                               ... = NULL){
   # Search message
-  message("Searching for dataset with id: ", record_id)
+  msgInfo("Searching for dataset with id: ", record_id)
 
   # Perform the query
   if (format_resources) {
@@ -46,13 +45,13 @@ govcan_get_record <- function(record_id,
   # Only output resources if required
   if (only_resources) {
     if (format_resources) {
-      query_out <- dplyr::as_tibble(query_results$resources)
+      query_out <- tibble::as_tibble(query_results$resources)
     } else  {
       query_out <- query_results$resources
     }
   } else {
     if (format_resources) {
-      query_results$resources <- dplyr::as_tibble(query_results$resources)
+      query_results$resources <- tibble::as_tibble(query_results$resources)
       query_out <- query_results
     } else {
       query_out <- query_results

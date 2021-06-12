@@ -11,7 +11,6 @@
 #' An object of class ckan_package_class.
 #'
 #' @examples
-#'
 #' query_results <- suppressWarnings(ckanr::package_search(q = "dfo",
 #'                                                         rows = 3,
 #'                                                         as = "list"))
@@ -26,21 +25,21 @@ new_ckan_package_stack <- function(x = list()){
 
 #' @export
 print.ckan_package_stack <- function(x, ...) {
-  cli::cat_rule(paste("<CKAN Package Stack with", dim(x), "Packages>"))
-  cli::cat_line()
+  cat_rule(paste("<CKAN Package Stack with", dim(x), "Packages>"))
+  cat_line()
   if (dim(x) > 5) {
     cat("  First 5 packages:  \n")
-    cli::cat_line()
+    cat_line()
     Map(print_ckan_package_custom, x[seq_len(5)])
   } else {
-    cat("  Packages:  \n")
-    cli::cat_line()
+    cat("  Packages: ")
+    cat_line()
     Map(print_ckan_package_custom, x[seq_len(dim(x))])
   }
 }
 
 # Custom printing function for packages inside a stack
 print_ckan_package_custom <- function(x, ...) {
-  cat(paste0("<CKAN Package> ", x$id), "\n")
+  cat_bullet(paste0("<CKAN Package> ", x$id), bullet = "arrow_right")
   cat("  Title: ", x$title, "\n", sep = "")
 }
