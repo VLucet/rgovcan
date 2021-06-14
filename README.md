@@ -28,9 +28,15 @@ Hex Logo done with `hexSticker`:
 
 ## Installation
 
-Until release to CRAN, you will need to use
+You can install `rgovcan` from CRAN like so:
+
+``` r
+install.packages("rgovcan")
+```
+
+For the development version, you will need to use
 [`remotes`](https://CRAN.R-project.org/package=remotes) to install from
-source.
+source:
 
 ``` r
 install.packages("remotes")
