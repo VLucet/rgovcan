@@ -95,11 +95,8 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install <code>rgovcan</code> from CRAN like so:</p>
+<p>Until release to CRAN, you will need to use <a href="https://CRAN.R-project.org/package=remotes"><code>remotes</code></a> to install from source.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rgovcan"</span><span class="op">)</span></code></pre></div>
-<p>For the development version, you will need to use <a href="https://CRAN.R-project.org/package=remotes"><code>remotes</code></a> to install from source:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"vlucet/rgovcan"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -109,279 +106,279 @@
 <ol>
 <li>First, load the package. The default <a href="https://CRAN.R-project.org/package=ckanr"><code>ckanr</code></a> url will be set to the Open Canada Portal.</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://vlucet.github.io/rgovcan/">"rgovcan"</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
 <p>If you happen to change the default url, you can reset it back to the default with <code><a href="reference/govcan_setup.html">govcan_setup()</a></code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/govcan_setup.html">govcan_setup</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## ℹ ckanr url set to https://open.canada.ca</span></span></code></pre></div>
 <ol>
 <li>A typical workflow with <code>rgovcan</code> can start with running <code><a href="reference/govcan_search.html">govcan_search()</a></code> on a given set of keywords. This yields a <code>stack</code> of <code>ckan_packages()</code> (object of class <code>ckan_package_stack</code>).</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dfo_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/govcan_search.html">govcan_search</a></span><span class="op">(</span>keywords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dfo"</span><span class="op">)</span>, records <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">## ℹ Searching the Open Portal for records matching: dfo</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">## ℹ CKAN query: 437 records found for keywords: dfo</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">## ℹ 437 matching records were found, 10 records were returned</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">## ℹ Searching the Open Portal for records matching: dfo</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## ℹ CKAN query: 437 records found for keywords: dfo</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">## ℹ 437 matching records were found, 10 records were returned</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dfo_search</span> <span class="co"># outputs a `ckan_package_stack`</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">## ── &lt;CKAN Package Stack with 10 Packages&gt; ───────────────────────────────────────</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co">## </span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="co">##   First 5 packages:  </span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co">## </span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co">## → &lt;CKAN Package&gt; 5798c4b6-d9d6-4328-9349-f66020403b4c</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="co">##   Title: Ministerial transition binder 2018 (DFO)</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="co">## → &lt;CKAN Package&gt; 830908ab-6abd-461d-ace9-b2673dd92b30</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co">##   Title: Ministerial transition binder 2019 (DFO)</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="co">## → &lt;CKAN Package&gt; 5cfd93bd-b3ee-4b0b-8816-33d388f6811d</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="co">##   Title: DFO sea lice audits of BC marine finfish aquaculture sites</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="co">## → &lt;CKAN Package&gt; 4dc95665-3d44-428c-bb26-12f981c57060</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="co">##   Title: DFO’s fish health monitoring activities at BC aquaculture sites</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="co">## → &lt;CKAN Package&gt; c1a54a0c-4eb0-4b50-be1f-01aee632527e</span></span>
-<span id="cb10-14"><a href="#cb10-14"></a><span class="co">##   Title: Results of DFO benthic audits of British Columbia marine finfish aquaculture sites</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## ── &lt;CKAN Package Stack with 10 Packages&gt; ───────────────────────────────────────</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">## </span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">##   First 5 packages:  </span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">## </span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">## → &lt;CKAN Package&gt; 5798c4b6-d9d6-4328-9349-f66020403b4c</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">##   Title: Ministerial transition binder 2018 (DFO)</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">## → &lt;CKAN Package&gt; 830908ab-6abd-461d-ace9-b2673dd92b30</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">##   Title: Ministerial transition binder 2019 (DFO)</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">## → &lt;CKAN Package&gt; 5cfd93bd-b3ee-4b0b-8816-33d388f6811d</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">##   Title: DFO sea lice audits of BC marine finfish aquaculture sites</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">## → &lt;CKAN Package&gt; 4dc95665-3d44-428c-bb26-12f981c57060</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">##   Title: DFO’s fish health monitoring activities at BC aquaculture sites</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">## → &lt;CKAN Package&gt; c1a54a0c-4eb0-4b50-be1f-01aee632527e</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">##   Title: Results of DFO benthic audits of British Columbia marine finfish aquaculture sites</span></span></code></pre></div>
 <p>see <code><a href="reference/govcan_search.html">?govcan_search</a></code> for further details.</p>
 <ol>
 <li>Another possibility is to start with a package id corresponding to an actual record and retrieve a <code>ckan_package</code>.</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">id</span> <span class="op">&lt;-</span> <span class="st">"7ac5fe02-308d-4fff-b805-80194f8ddeb4"</span> <span class="co"># Package ID</span>
 <span class="va">id_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/govcan_get_record.html">govcan_get_record</a></span><span class="op">(</span>record_id <span class="op">=</span> <span class="va">id</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">## ℹ Searching for dataset with id:  7ac5fe02-308d-4fff-b805-80194f8ddeb4</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co">## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">## ℹ Searching for dataset with id:  7ac5fe02-308d-4fff-b805-80194f8ddeb4</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">## ℹ Record found: "Pacific Region Commercial Salmon Fishery In-season Catch Estimates"</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">id_search</span> <span class="co"># outputs a `ckan_package`</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">## &lt;CKAN Package&gt; 7ac5fe02-308d-4fff-b805-80194f8ddeb4 </span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">##   Title: Pacific Region Commercial Salmon Fishery In-season Catch Estimates</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">##   Creator/Modified: 2018-09-21T12:18:04.128562 / 2020-04-30T17:49:14.169519</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">##   Resources (up to 5): Data Dictionary, Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019, Data Dictionary, Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019, Pacific Region Commercial Salmon Fishery In-season Catch Estimates</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">##   Tags (up to 5): </span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">##   Groups (up to 5):</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## &lt;CKAN Package&gt; 7ac5fe02-308d-4fff-b805-80194f8ddeb4 </span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">##   Title: Pacific Region Commercial Salmon Fishery In-season Catch Estimates</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">##   Creator/Modified: 2018-09-21T12:18:04.128562 / 2020-04-30T17:49:14.169519</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">##   Resources (up to 5): Data Dictionary, Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019, Data Dictionary, Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019, Pacific Region Commercial Salmon Fishery In-season Catch Estimates</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">##   Tags (up to 5): </span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">##   Groups (up to 5):</span></span></code></pre></div>
 <ol>
 <li>Once the packages have been retrieved from the portal, you can use <code>govcan_get_resources</code> on those results to display the <code>ckan_resource</code>s contained in the packages (a “resource” is any dataset attached to a given record). This outputs a <code>ckan_resource_stack</code> when called on a unique package.</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">id_resources</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/govcan_get_resources.html">govcan_get_resources</a></span><span class="op">(</span><span class="va">id_search</span><span class="op">)</span>
 <span class="va">id_resources</span> <span class="co"># outputs a `resource_stack`</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">## &lt;CKAN Resource Stack with 5 Resource&gt; </span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co">## </span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">##   Resources:  </span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co">## </span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="co">## &lt;CKAN Resource&gt; 0c1b2697-4ba6-4b66-b70f-72445d00443b </span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="co">##   Name: Data Dictionary</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a><span class="co">## &lt;CKAN Resource&gt; eb138d6a-1a8b-4907-af91-c9c728fe9531 </span></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="co">##   Name: Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a><span class="co">## &lt;CKAN Resource&gt; f3e7fa0f-65d5-408d-919c-0e31a26251f2 </span></span>
-<span id="cb16-12"><a href="#cb16-12"></a><span class="co">##   Name: Data Dictionary</span></span>
-<span id="cb16-13"><a href="#cb16-13"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb16-14"><a href="#cb16-14"></a><span class="co">## &lt;CKAN Resource&gt; 9374bf48-9f71-4216-9b2a-ddf295b30046 </span></span>
-<span id="cb16-15"><a href="#cb16-15"></a><span class="co">##   Name: Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019</span></span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="co">##   Format: ESRI REST</span></span>
-<span id="cb16-17"><a href="#cb16-17"></a><span class="co">## &lt;CKAN Resource&gt; 53b268cb-d734-4432-8798-aa9f6ddbd637 </span></span>
-<span id="cb16-18"><a href="#cb16-18"></a><span class="co">##   Name: Pacific Region Commercial Salmon Fishery In-season Catch Estimates</span></span>
-<span id="cb16-19"><a href="#cb16-19"></a><span class="co">##   Format: ESRI REST</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">## &lt;CKAN Resource Stack with 5 Resource&gt; </span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co">## </span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">##   Resources:  </span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">## </span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">## &lt;CKAN Resource&gt; 0c1b2697-4ba6-4b66-b70f-72445d00443b </span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">##   Name: Data Dictionary</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">## &lt;CKAN Resource&gt; eb138d6a-1a8b-4907-af91-c9c728fe9531 </span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">##   Name: Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">## &lt;CKAN Resource&gt; f3e7fa0f-65d5-408d-919c-0e31a26251f2 </span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">##   Name: Data Dictionary</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">## &lt;CKAN Resource&gt; 9374bf48-9f71-4216-9b2a-ddf295b30046 </span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co">##   Name: Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="co">##   Format: ESRI REST</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="co">## &lt;CKAN Resource&gt; 53b268cb-d734-4432-8798-aa9f6ddbd637 </span></span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="co">##   Name: Pacific Region Commercial Salmon Fishery In-season Catch Estimates</span></span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="co">##   Format: ESRI REST</span></span></code></pre></div>
 <p>Or a list of stacks if called onto a <code>ckan_package_stack</code>.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dfo_resources</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/govcan_get_resources.html">govcan_get_resources</a></span><span class="op">(</span><span class="va">dfo_search</span><span class="op">)</span>
 <span class="va">dfo_resources</span> <span class="co"># outputs a list of `resource_stack`s</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">## [[1]]</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="co">## </span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="co">## </span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="co">## &lt;CKAN Resource&gt; 588f9a30-a588-4b6a-bebd-ef82e1b67680 </span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="co">##   Name: Ministerial transition binder 2018</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-9"><a href="#cb18-9"></a><span class="co">## &lt;CKAN Resource&gt; 8acdcfe5-6434-4d11-82e8-70def931c26e </span></span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="co">##   Name: Ministerial transition binder 2018</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a><span class="co">## </span></span>
-<span id="cb18-13"><a href="#cb18-13"></a><span class="co">## [[2]]</span></span>
-<span id="cb18-14"><a href="#cb18-14"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
-<span id="cb18-15"><a href="#cb18-15"></a><span class="co">## </span></span>
-<span id="cb18-16"><a href="#cb18-16"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-17"><a href="#cb18-17"></a><span class="co">## </span></span>
-<span id="cb18-18"><a href="#cb18-18"></a><span class="co">## &lt;CKAN Resource&gt; 6c13c5e1-78c9-40db-a729-93d9bd52d037 </span></span>
-<span id="cb18-19"><a href="#cb18-19"></a><span class="co">##   Name: Ministerial transition binder 2019</span></span>
-<span id="cb18-20"><a href="#cb18-20"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-21"><a href="#cb18-21"></a><span class="co">## &lt;CKAN Resource&gt; 427e7a83-be9f-4a4e-9777-31ad088252bb </span></span>
-<span id="cb18-22"><a href="#cb18-22"></a><span class="co">##   Name: Ministerial transition binder 2019</span></span>
-<span id="cb18-23"><a href="#cb18-23"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-24"><a href="#cb18-24"></a><span class="co">## </span></span>
-<span id="cb18-25"><a href="#cb18-25"></a><span class="co">## [[3]]</span></span>
-<span id="cb18-26"><a href="#cb18-26"></a><span class="co">## &lt;CKAN Resource Stack with 6 Resource&gt; </span></span>
-<span id="cb18-27"><a href="#cb18-27"></a><span class="co">## </span></span>
-<span id="cb18-28"><a href="#cb18-28"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-29"><a href="#cb18-29"></a><span class="co">## </span></span>
-<span id="cb18-30"><a href="#cb18-30"></a><span class="co">## &lt;CKAN Resource&gt; 96852f26-a35d-4c4a-abe0-20a77aee8c93 </span></span>
-<span id="cb18-31"><a href="#cb18-31"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites, 2011 ongoing</span></span>
-<span id="cb18-32"><a href="#cb18-32"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-33"><a href="#cb18-33"></a><span class="co">## &lt;CKAN Resource&gt; bc58d577-d47c-4df7-9627-b35a892368fa </span></span>
-<span id="cb18-34"><a href="#cb18-34"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites, 2011 ongoing</span></span>
-<span id="cb18-35"><a href="#cb18-35"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-36"><a href="#cb18-36"></a><span class="co">## &lt;CKAN Resource&gt; 001e49c7-0a70-4087-bb78-6094c445667e </span></span>
-<span id="cb18-37"><a href="#cb18-37"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites</span></span>
-<span id="cb18-38"><a href="#cb18-38"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-39"><a href="#cb18-39"></a><span class="co">## &lt;CKAN Resource&gt; 17d5ab8c-2b68-413a-8a11-734a1b8e8cf1 </span></span>
-<span id="cb18-40"><a href="#cb18-40"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites</span></span>
-<span id="cb18-41"><a href="#cb18-41"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-42"><a href="#cb18-42"></a><span class="co">## &lt;CKAN Resource&gt; bdcdd26f-5e7e-4cc3-b6d8-77d36e9401e4 </span></span>
-<span id="cb18-43"><a href="#cb18-43"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
-<span id="cb18-44"><a href="#cb18-44"></a><span class="co">##   Format: TXT</span></span>
-<span id="cb18-45"><a href="#cb18-45"></a><span class="co">## &lt;CKAN Resource&gt; b1cc58cf-8edf-4264-9078-470d69c446d5 </span></span>
-<span id="cb18-46"><a href="#cb18-46"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
-<span id="cb18-47"><a href="#cb18-47"></a><span class="co">##   Format: TXT</span></span>
-<span id="cb18-48"><a href="#cb18-48"></a><span class="co">## </span></span>
-<span id="cb18-49"><a href="#cb18-49"></a><span class="co">## [[4]]</span></span>
-<span id="cb18-50"><a href="#cb18-50"></a><span class="co">## &lt;CKAN Resource Stack with 4 Resource&gt; </span></span>
-<span id="cb18-51"><a href="#cb18-51"></a><span class="co">## </span></span>
-<span id="cb18-52"><a href="#cb18-52"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-53"><a href="#cb18-53"></a><span class="co">## </span></span>
-<span id="cb18-54"><a href="#cb18-54"></a><span class="co">## &lt;CKAN Resource&gt; 26c2c849-b033-4092-8993-e1f50514d096 </span></span>
-<span id="cb18-55"><a href="#cb18-55"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites, 2011 and ongoing</span></span>
-<span id="cb18-56"><a href="#cb18-56"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-57"><a href="#cb18-57"></a><span class="co">## &lt;CKAN Resource&gt; ed82597d-a30c-4f55-a4e2-71d7ac8b7fff </span></span>
-<span id="cb18-58"><a href="#cb18-58"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites, 2011 and ongoing</span></span>
-<span id="cb18-59"><a href="#cb18-59"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-60"><a href="#cb18-60"></a><span class="co">## &lt;CKAN Resource&gt; 2bd87c89-a755-4885-b6c5-d14beddc952b </span></span>
-<span id="cb18-61"><a href="#cb18-61"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites</span></span>
-<span id="cb18-62"><a href="#cb18-62"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-63"><a href="#cb18-63"></a><span class="co">## &lt;CKAN Resource&gt; cb52f0bf-dae7-4a97-baef-a45bb40dfa73 </span></span>
-<span id="cb18-64"><a href="#cb18-64"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites</span></span>
-<span id="cb18-65"><a href="#cb18-65"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-66"><a href="#cb18-66"></a><span class="co">## </span></span>
-<span id="cb18-67"><a href="#cb18-67"></a><span class="co">## [[5]]</span></span>
-<span id="cb18-68"><a href="#cb18-68"></a><span class="co">## &lt;CKAN Resource Stack with 6 Resource&gt; </span></span>
-<span id="cb18-69"><a href="#cb18-69"></a><span class="co">## </span></span>
-<span id="cb18-70"><a href="#cb18-70"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-71"><a href="#cb18-71"></a><span class="co">## </span></span>
-<span id="cb18-72"><a href="#cb18-72"></a><span class="co">## &lt;CKAN Resource&gt; f51236a0-4ccc-4fd1-9fd0-f4a109065732 </span></span>
-<span id="cb18-73"><a href="#cb18-73"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
-<span id="cb18-74"><a href="#cb18-74"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-75"><a href="#cb18-75"></a><span class="co">## &lt;CKAN Resource&gt; 220ce25f-534d-46ca-955f-41c8e8046be9 </span></span>
-<span id="cb18-76"><a href="#cb18-76"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
-<span id="cb18-77"><a href="#cb18-77"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-78"><a href="#cb18-78"></a><span class="co">## &lt;CKAN Resource&gt; 010b3ad4-21b0-49b5-9269-0946f832818c </span></span>
-<span id="cb18-79"><a href="#cb18-79"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
-<span id="cb18-80"><a href="#cb18-80"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-81"><a href="#cb18-81"></a><span class="co">## &lt;CKAN Resource&gt; 57de280e-2516-4309-bac4-170d73f893a5 </span></span>
-<span id="cb18-82"><a href="#cb18-82"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
-<span id="cb18-83"><a href="#cb18-83"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-84"><a href="#cb18-84"></a><span class="co">## &lt;CKAN Resource&gt; 8d4eeaee-ead7-432f-a109-10873f8f208d </span></span>
-<span id="cb18-85"><a href="#cb18-85"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data </span></span>
-<span id="cb18-86"><a href="#cb18-86"></a><span class="co">##   Format: TXT</span></span>
-<span id="cb18-87"><a href="#cb18-87"></a><span class="co">## &lt;CKAN Resource&gt; 18cb5078-7add-41f2-98e9-8b8ea2e01ce2 </span></span>
-<span id="cb18-88"><a href="#cb18-88"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data </span></span>
-<span id="cb18-89"><a href="#cb18-89"></a><span class="co">##   Format: TXT</span></span>
-<span id="cb18-90"><a href="#cb18-90"></a><span class="co">## </span></span>
-<span id="cb18-91"><a href="#cb18-91"></a><span class="co">## [[6]]</span></span>
-<span id="cb18-92"><a href="#cb18-92"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
-<span id="cb18-93"><a href="#cb18-93"></a><span class="co">## </span></span>
-<span id="cb18-94"><a href="#cb18-94"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-95"><a href="#cb18-95"></a><span class="co">## </span></span>
-<span id="cb18-96"><a href="#cb18-96"></a><span class="co">## &lt;CKAN Resource&gt; ce3527ab-d761-40db-8903-9c5c2eaaa3ab </span></span>
-<span id="cb18-97"><a href="#cb18-97"></a><span class="co">##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO</span></span>
-<span id="cb18-98"><a href="#cb18-98"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-99"><a href="#cb18-99"></a><span class="co">## &lt;CKAN Resource&gt; 7c013997-618c-45c0-a274-097bcb721901 </span></span>
-<span id="cb18-100"><a href="#cb18-100"></a><span class="co">##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO</span></span>
-<span id="cb18-101"><a href="#cb18-101"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-102"><a href="#cb18-102"></a><span class="co">## </span></span>
-<span id="cb18-103"><a href="#cb18-103"></a><span class="co">## [[7]]</span></span>
-<span id="cb18-104"><a href="#cb18-104"></a><span class="co">## &lt;CKAN Resource Stack with 6 Resource&gt; </span></span>
-<span id="cb18-105"><a href="#cb18-105"></a><span class="co">## </span></span>
-<span id="cb18-106"><a href="#cb18-106"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-107"><a href="#cb18-107"></a><span class="co">## </span></span>
-<span id="cb18-108"><a href="#cb18-108"></a><span class="co">## &lt;CKAN Resource&gt; b49ab71b-ec00-4e85-813b-d508c32166db </span></span>
-<span id="cb18-109"><a href="#cb18-109"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
-<span id="cb18-110"><a href="#cb18-110"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-111"><a href="#cb18-111"></a><span class="co">## &lt;CKAN Resource&gt; 8681da09-ba23-40aa-a928-5fda929712fd </span></span>
-<span id="cb18-112"><a href="#cb18-112"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
-<span id="cb18-113"><a href="#cb18-113"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-114"><a href="#cb18-114"></a><span class="co">## &lt;CKAN Resource&gt; 7bd96bb4-1608-4bea-b432-329d5ef469ec </span></span>
-<span id="cb18-115"><a href="#cb18-115"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
-<span id="cb18-116"><a href="#cb18-116"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-117"><a href="#cb18-117"></a><span class="co">## &lt;CKAN Resource&gt; bb164f09-f6af-4bb2-bcf8-f2c34e9c8313 </span></span>
-<span id="cb18-118"><a href="#cb18-118"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
-<span id="cb18-119"><a href="#cb18-119"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-120"><a href="#cb18-120"></a><span class="co">## &lt;CKAN Resource&gt; 95b916b1-25a9-480d-9388-97ab68abec8b </span></span>
-<span id="cb18-121"><a href="#cb18-121"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
-<span id="cb18-122"><a href="#cb18-122"></a><span class="co">##   Format: TXT</span></span>
-<span id="cb18-123"><a href="#cb18-123"></a><span class="co">## &lt;CKAN Resource&gt; a1b27546-5b73-419f-a8cd-6e5c35184413 </span></span>
-<span id="cb18-124"><a href="#cb18-124"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
-<span id="cb18-125"><a href="#cb18-125"></a><span class="co">##   Format: TXT</span></span>
-<span id="cb18-126"><a href="#cb18-126"></a><span class="co">## </span></span>
-<span id="cb18-127"><a href="#cb18-127"></a><span class="co">## [[8]]</span></span>
-<span id="cb18-128"><a href="#cb18-128"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
-<span id="cb18-129"><a href="#cb18-129"></a><span class="co">## </span></span>
-<span id="cb18-130"><a href="#cb18-130"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-131"><a href="#cb18-131"></a><span class="co">## </span></span>
-<span id="cb18-132"><a href="#cb18-132"></a><span class="co">## &lt;CKAN Resource&gt; 29f7b107-3d62-4f1e-a037-cb17e1162110 </span></span>
-<span id="cb18-133"><a href="#cb18-133"></a><span class="co">##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (English)</span></span>
-<span id="cb18-134"><a href="#cb18-134"></a><span class="co">##   Format: ESRI REST</span></span>
-<span id="cb18-135"><a href="#cb18-135"></a><span class="co">## &lt;CKAN Resource&gt; 0637be9d-e93c-4512-9c34-2e8d78094b7e </span></span>
-<span id="cb18-136"><a href="#cb18-136"></a><span class="co">##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (French)</span></span>
-<span id="cb18-137"><a href="#cb18-137"></a><span class="co">##   Format: ESRI REST</span></span>
-<span id="cb18-138"><a href="#cb18-138"></a><span class="co">## </span></span>
-<span id="cb18-139"><a href="#cb18-139"></a><span class="co">## [[9]]</span></span>
-<span id="cb18-140"><a href="#cb18-140"></a><span class="co">## &lt;CKAN Resource Stack with 3 Resource&gt; </span></span>
-<span id="cb18-141"><a href="#cb18-141"></a><span class="co">## </span></span>
-<span id="cb18-142"><a href="#cb18-142"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-143"><a href="#cb18-143"></a><span class="co">## </span></span>
-<span id="cb18-144"><a href="#cb18-144"></a><span class="co">## &lt;CKAN Resource&gt; 0e8ed3c8-d67a-43e8-a4ea-1943b8762c53 </span></span>
-<span id="cb18-145"><a href="#cb18-145"></a><span class="co">##   Name: Oceans Protection Plan Extent- Data Dictionary</span></span>
-<span id="cb18-146"><a href="#cb18-146"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-147"><a href="#cb18-147"></a><span class="co">## &lt;CKAN Resource&gt; f3fce10e-157a-4638-9934-67a378710955 </span></span>
-<span id="cb18-148"><a href="#cb18-148"></a><span class="co">##   Name: Oceans Protection Plan Regional Response Planning Extents</span></span>
-<span id="cb18-149"><a href="#cb18-149"></a><span class="co">##   Format: ESRI REST</span></span>
-<span id="cb18-150"><a href="#cb18-150"></a><span class="co">## &lt;CKAN Resource&gt; 428186d1-3603-4fd7-ad9d-b5ce7c6c5a3b </span></span>
-<span id="cb18-151"><a href="#cb18-151"></a><span class="co">##   Name: Oceans Protection Plan Regional Response Planning Extents</span></span>
-<span id="cb18-152"><a href="#cb18-152"></a><span class="co">##   Format: ESRI REST</span></span>
-<span id="cb18-153"><a href="#cb18-153"></a><span class="co">## </span></span>
-<span id="cb18-154"><a href="#cb18-154"></a><span class="co">## [[10]]</span></span>
-<span id="cb18-155"><a href="#cb18-155"></a><span class="co">## &lt;CKAN Resource Stack with 4 Resource&gt; </span></span>
-<span id="cb18-156"><a href="#cb18-156"></a><span class="co">## </span></span>
-<span id="cb18-157"><a href="#cb18-157"></a><span class="co">##   Resources:  </span></span>
-<span id="cb18-158"><a href="#cb18-158"></a><span class="co">## </span></span>
-<span id="cb18-159"><a href="#cb18-159"></a><span class="co">## &lt;CKAN Resource&gt; 1ad4cc94-25fa-4a77-8820-4f90a1826569 </span></span>
-<span id="cb18-160"><a href="#cb18-160"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
-<span id="cb18-161"><a href="#cb18-161"></a><span class="co">##   Format: CSV</span></span>
-<span id="cb18-162"><a href="#cb18-162"></a><span class="co">## &lt;CKAN Resource&gt; 6810bde3-74a3-44d7-92bd-1c7435e0e04f </span></span>
-<span id="cb18-163"><a href="#cb18-163"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
-<span id="cb18-164"><a href="#cb18-164"></a><span class="co">##   Format: ESRI REST</span></span>
-<span id="cb18-165"><a href="#cb18-165"></a><span class="co">## &lt;CKAN Resource&gt; e0446817-be17-4bc2-abc9-304f9cc8e4d7 </span></span>
-<span id="cb18-166"><a href="#cb18-166"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
-<span id="cb18-167"><a href="#cb18-167"></a><span class="co">##   Format: HTML</span></span>
-<span id="cb18-168"><a href="#cb18-168"></a><span class="co">## &lt;CKAN Resource&gt; 3c601e26-562f-4a80-8cb4-43d24e76f01e </span></span>
-<span id="cb18-169"><a href="#cb18-169"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
-<span id="cb18-170"><a href="#cb18-170"></a><span class="co">##   Format: HTML</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">## [[1]]</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">## </span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co">## </span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="co">## &lt;CKAN Resource&gt; 588f9a30-a588-4b6a-bebd-ef82e1b67680 </span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co">##   Name: Ministerial transition binder 2018</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="co">## &lt;CKAN Resource&gt; 8acdcfe5-6434-4d11-82e8-70def931c26e </span></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="co">##   Name: Ministerial transition binder 2018</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="co">## </span></span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="co">## [[2]]</span></span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="co">## </span></span>
+<span id="cb17-16"><a href="#cb17-16"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-17"><a href="#cb17-17"></a><span class="co">## </span></span>
+<span id="cb17-18"><a href="#cb17-18"></a><span class="co">## &lt;CKAN Resource&gt; 6c13c5e1-78c9-40db-a729-93d9bd52d037 </span></span>
+<span id="cb17-19"><a href="#cb17-19"></a><span class="co">##   Name: Ministerial transition binder 2019</span></span>
+<span id="cb17-20"><a href="#cb17-20"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-21"><a href="#cb17-21"></a><span class="co">## &lt;CKAN Resource&gt; 427e7a83-be9f-4a4e-9777-31ad088252bb </span></span>
+<span id="cb17-22"><a href="#cb17-22"></a><span class="co">##   Name: Ministerial transition binder 2019</span></span>
+<span id="cb17-23"><a href="#cb17-23"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-24"><a href="#cb17-24"></a><span class="co">## </span></span>
+<span id="cb17-25"><a href="#cb17-25"></a><span class="co">## [[3]]</span></span>
+<span id="cb17-26"><a href="#cb17-26"></a><span class="co">## &lt;CKAN Resource Stack with 6 Resource&gt; </span></span>
+<span id="cb17-27"><a href="#cb17-27"></a><span class="co">## </span></span>
+<span id="cb17-28"><a href="#cb17-28"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-29"><a href="#cb17-29"></a><span class="co">## </span></span>
+<span id="cb17-30"><a href="#cb17-30"></a><span class="co">## &lt;CKAN Resource&gt; 96852f26-a35d-4c4a-abe0-20a77aee8c93 </span></span>
+<span id="cb17-31"><a href="#cb17-31"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites, 2011 ongoing</span></span>
+<span id="cb17-32"><a href="#cb17-32"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-33"><a href="#cb17-33"></a><span class="co">## &lt;CKAN Resource&gt; bc58d577-d47c-4df7-9627-b35a892368fa </span></span>
+<span id="cb17-34"><a href="#cb17-34"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites, 2011 ongoing</span></span>
+<span id="cb17-35"><a href="#cb17-35"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-36"><a href="#cb17-36"></a><span class="co">## &lt;CKAN Resource&gt; 001e49c7-0a70-4087-bb78-6094c445667e </span></span>
+<span id="cb17-37"><a href="#cb17-37"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites</span></span>
+<span id="cb17-38"><a href="#cb17-38"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-39"><a href="#cb17-39"></a><span class="co">## &lt;CKAN Resource&gt; 17d5ab8c-2b68-413a-8a11-734a1b8e8cf1 </span></span>
+<span id="cb17-40"><a href="#cb17-40"></a><span class="co">##   Name: DFO sea lice audits of BC marine finfish aquaculture sites</span></span>
+<span id="cb17-41"><a href="#cb17-41"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-42"><a href="#cb17-42"></a><span class="co">## &lt;CKAN Resource&gt; bdcdd26f-5e7e-4cc3-b6d8-77d36e9401e4 </span></span>
+<span id="cb17-43"><a href="#cb17-43"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
+<span id="cb17-44"><a href="#cb17-44"></a><span class="co">##   Format: TXT</span></span>
+<span id="cb17-45"><a href="#cb17-45"></a><span class="co">## &lt;CKAN Resource&gt; b1cc58cf-8edf-4264-9078-470d69c446d5 </span></span>
+<span id="cb17-46"><a href="#cb17-46"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
+<span id="cb17-47"><a href="#cb17-47"></a><span class="co">##   Format: TXT</span></span>
+<span id="cb17-48"><a href="#cb17-48"></a><span class="co">## </span></span>
+<span id="cb17-49"><a href="#cb17-49"></a><span class="co">## [[4]]</span></span>
+<span id="cb17-50"><a href="#cb17-50"></a><span class="co">## &lt;CKAN Resource Stack with 4 Resource&gt; </span></span>
+<span id="cb17-51"><a href="#cb17-51"></a><span class="co">## </span></span>
+<span id="cb17-52"><a href="#cb17-52"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-53"><a href="#cb17-53"></a><span class="co">## </span></span>
+<span id="cb17-54"><a href="#cb17-54"></a><span class="co">## &lt;CKAN Resource&gt; 26c2c849-b033-4092-8993-e1f50514d096 </span></span>
+<span id="cb17-55"><a href="#cb17-55"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites, 2011 and ongoing</span></span>
+<span id="cb17-56"><a href="#cb17-56"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-57"><a href="#cb17-57"></a><span class="co">## &lt;CKAN Resource&gt; ed82597d-a30c-4f55-a4e2-71d7ac8b7fff </span></span>
+<span id="cb17-58"><a href="#cb17-58"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites, 2011 and ongoing</span></span>
+<span id="cb17-59"><a href="#cb17-59"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-60"><a href="#cb17-60"></a><span class="co">## &lt;CKAN Resource&gt; 2bd87c89-a755-4885-b6c5-d14beddc952b </span></span>
+<span id="cb17-61"><a href="#cb17-61"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites</span></span>
+<span id="cb17-62"><a href="#cb17-62"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-63"><a href="#cb17-63"></a><span class="co">## &lt;CKAN Resource&gt; cb52f0bf-dae7-4a97-baef-a45bb40dfa73 </span></span>
+<span id="cb17-64"><a href="#cb17-64"></a><span class="co">##   Name: DFO’s fish health monitoring activities at BC aquaculture sites</span></span>
+<span id="cb17-65"><a href="#cb17-65"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-66"><a href="#cb17-66"></a><span class="co">## </span></span>
+<span id="cb17-67"><a href="#cb17-67"></a><span class="co">## [[5]]</span></span>
+<span id="cb17-68"><a href="#cb17-68"></a><span class="co">## &lt;CKAN Resource Stack with 6 Resource&gt; </span></span>
+<span id="cb17-69"><a href="#cb17-69"></a><span class="co">## </span></span>
+<span id="cb17-70"><a href="#cb17-70"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-71"><a href="#cb17-71"></a><span class="co">## </span></span>
+<span id="cb17-72"><a href="#cb17-72"></a><span class="co">## &lt;CKAN Resource&gt; f51236a0-4ccc-4fd1-9fd0-f4a109065732 </span></span>
+<span id="cb17-73"><a href="#cb17-73"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
+<span id="cb17-74"><a href="#cb17-74"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-75"><a href="#cb17-75"></a><span class="co">## &lt;CKAN Resource&gt; 220ce25f-534d-46ca-955f-41c8e8046be9 </span></span>
+<span id="cb17-76"><a href="#cb17-76"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
+<span id="cb17-77"><a href="#cb17-77"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-78"><a href="#cb17-78"></a><span class="co">## &lt;CKAN Resource&gt; 010b3ad4-21b0-49b5-9269-0946f832818c </span></span>
+<span id="cb17-79"><a href="#cb17-79"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
+<span id="cb17-80"><a href="#cb17-80"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-81"><a href="#cb17-81"></a><span class="co">## &lt;CKAN Resource&gt; 57de280e-2516-4309-bac4-170d73f893a5 </span></span>
+<span id="cb17-82"><a href="#cb17-82"></a><span class="co">##   Name: Results of DFO benthic monitoring audits of BC marine finfish aquaculture sites, 2011 and ongoing</span></span>
+<span id="cb17-83"><a href="#cb17-83"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-84"><a href="#cb17-84"></a><span class="co">## &lt;CKAN Resource&gt; 8d4eeaee-ead7-432f-a109-10873f8f208d </span></span>
+<span id="cb17-85"><a href="#cb17-85"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data </span></span>
+<span id="cb17-86"><a href="#cb17-86"></a><span class="co">##   Format: TXT</span></span>
+<span id="cb17-87"><a href="#cb17-87"></a><span class="co">## &lt;CKAN Resource&gt; 18cb5078-7add-41f2-98e9-8b8ea2e01ce2 </span></span>
+<span id="cb17-88"><a href="#cb17-88"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data </span></span>
+<span id="cb17-89"><a href="#cb17-89"></a><span class="co">##   Format: TXT</span></span>
+<span id="cb17-90"><a href="#cb17-90"></a><span class="co">## </span></span>
+<span id="cb17-91"><a href="#cb17-91"></a><span class="co">## [[6]]</span></span>
+<span id="cb17-92"><a href="#cb17-92"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
+<span id="cb17-93"><a href="#cb17-93"></a><span class="co">## </span></span>
+<span id="cb17-94"><a href="#cb17-94"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-95"><a href="#cb17-95"></a><span class="co">## </span></span>
+<span id="cb17-96"><a href="#cb17-96"></a><span class="co">## &lt;CKAN Resource&gt; ce3527ab-d761-40db-8903-9c5c2eaaa3ab </span></span>
+<span id="cb17-97"><a href="#cb17-97"></a><span class="co">##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO</span></span>
+<span id="cb17-98"><a href="#cb17-98"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-99"><a href="#cb17-99"></a><span class="co">## &lt;CKAN Resource&gt; 7c013997-618c-45c0-a274-097bcb721901 </span></span>
+<span id="cb17-100"><a href="#cb17-100"></a><span class="co">##   Name: House of Commons committee of the whole on 2020-21 Main Estimates – DFO</span></span>
+<span id="cb17-101"><a href="#cb17-101"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-102"><a href="#cb17-102"></a><span class="co">## </span></span>
+<span id="cb17-103"><a href="#cb17-103"></a><span class="co">## [[7]]</span></span>
+<span id="cb17-104"><a href="#cb17-104"></a><span class="co">## &lt;CKAN Resource Stack with 6 Resource&gt; </span></span>
+<span id="cb17-105"><a href="#cb17-105"></a><span class="co">## </span></span>
+<span id="cb17-106"><a href="#cb17-106"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-107"><a href="#cb17-107"></a><span class="co">## </span></span>
+<span id="cb17-108"><a href="#cb17-108"></a><span class="co">## &lt;CKAN Resource&gt; b49ab71b-ec00-4e85-813b-d508c32166db </span></span>
+<span id="cb17-109"><a href="#cb17-109"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
+<span id="cb17-110"><a href="#cb17-110"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-111"><a href="#cb17-111"></a><span class="co">## &lt;CKAN Resource&gt; 8681da09-ba23-40aa-a928-5fda929712fd </span></span>
+<span id="cb17-112"><a href="#cb17-112"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
+<span id="cb17-113"><a href="#cb17-113"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-114"><a href="#cb17-114"></a><span class="co">## &lt;CKAN Resource&gt; 7bd96bb4-1608-4bea-b432-329d5ef469ec </span></span>
+<span id="cb17-115"><a href="#cb17-115"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
+<span id="cb17-116"><a href="#cb17-116"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-117"><a href="#cb17-117"></a><span class="co">## &lt;CKAN Resource&gt; bb164f09-f6af-4bb2-bcf8-f2c34e9c8313 </span></span>
+<span id="cb17-118"><a href="#cb17-118"></a><span class="co">##   Name: Results of DFO fish health audits of BC marine finfish aquaculture sites, by facility 2011 and ongoing</span></span>
+<span id="cb17-119"><a href="#cb17-119"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-120"><a href="#cb17-120"></a><span class="co">## &lt;CKAN Resource&gt; 95b916b1-25a9-480d-9388-97ab68abec8b </span></span>
+<span id="cb17-121"><a href="#cb17-121"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
+<span id="cb17-122"><a href="#cb17-122"></a><span class="co">##   Format: TXT</span></span>
+<span id="cb17-123"><a href="#cb17-123"></a><span class="co">## &lt;CKAN Resource&gt; a1b27546-5b73-419f-a8cd-6e5c35184413 </span></span>
+<span id="cb17-124"><a href="#cb17-124"></a><span class="co">##   Name: Create a Google Map using latitude and longitude data</span></span>
+<span id="cb17-125"><a href="#cb17-125"></a><span class="co">##   Format: TXT</span></span>
+<span id="cb17-126"><a href="#cb17-126"></a><span class="co">## </span></span>
+<span id="cb17-127"><a href="#cb17-127"></a><span class="co">## [[8]]</span></span>
+<span id="cb17-128"><a href="#cb17-128"></a><span class="co">## &lt;CKAN Resource Stack with 2 Resource&gt; </span></span>
+<span id="cb17-129"><a href="#cb17-129"></a><span class="co">## </span></span>
+<span id="cb17-130"><a href="#cb17-130"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-131"><a href="#cb17-131"></a><span class="co">## </span></span>
+<span id="cb17-132"><a href="#cb17-132"></a><span class="co">## &lt;CKAN Resource&gt; 29f7b107-3d62-4f1e-a037-cb17e1162110 </span></span>
+<span id="cb17-133"><a href="#cb17-133"></a><span class="co">##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (English)</span></span>
+<span id="cb17-134"><a href="#cb17-134"></a><span class="co">##   Format: ESRI REST</span></span>
+<span id="cb17-135"><a href="#cb17-135"></a><span class="co">## &lt;CKAN Resource&gt; 0637be9d-e93c-4512-9c34-2e8d78094b7e </span></span>
+<span id="cb17-136"><a href="#cb17-136"></a><span class="co">##   Name: Mailing address and contact details for primary offices for Fisheries and Oceans Canada (French)</span></span>
+<span id="cb17-137"><a href="#cb17-137"></a><span class="co">##   Format: ESRI REST</span></span>
+<span id="cb17-138"><a href="#cb17-138"></a><span class="co">## </span></span>
+<span id="cb17-139"><a href="#cb17-139"></a><span class="co">## [[9]]</span></span>
+<span id="cb17-140"><a href="#cb17-140"></a><span class="co">## &lt;CKAN Resource Stack with 3 Resource&gt; </span></span>
+<span id="cb17-141"><a href="#cb17-141"></a><span class="co">## </span></span>
+<span id="cb17-142"><a href="#cb17-142"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-143"><a href="#cb17-143"></a><span class="co">## </span></span>
+<span id="cb17-144"><a href="#cb17-144"></a><span class="co">## &lt;CKAN Resource&gt; 0e8ed3c8-d67a-43e8-a4ea-1943b8762c53 </span></span>
+<span id="cb17-145"><a href="#cb17-145"></a><span class="co">##   Name: Oceans Protection Plan Extent- Data Dictionary</span></span>
+<span id="cb17-146"><a href="#cb17-146"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-147"><a href="#cb17-147"></a><span class="co">## &lt;CKAN Resource&gt; f3fce10e-157a-4638-9934-67a378710955 </span></span>
+<span id="cb17-148"><a href="#cb17-148"></a><span class="co">##   Name: Oceans Protection Plan Regional Response Planning Extents</span></span>
+<span id="cb17-149"><a href="#cb17-149"></a><span class="co">##   Format: ESRI REST</span></span>
+<span id="cb17-150"><a href="#cb17-150"></a><span class="co">## &lt;CKAN Resource&gt; 428186d1-3603-4fd7-ad9d-b5ce7c6c5a3b </span></span>
+<span id="cb17-151"><a href="#cb17-151"></a><span class="co">##   Name: Oceans Protection Plan Regional Response Planning Extents</span></span>
+<span id="cb17-152"><a href="#cb17-152"></a><span class="co">##   Format: ESRI REST</span></span>
+<span id="cb17-153"><a href="#cb17-153"></a><span class="co">## </span></span>
+<span id="cb17-154"><a href="#cb17-154"></a><span class="co">## [[10]]</span></span>
+<span id="cb17-155"><a href="#cb17-155"></a><span class="co">## &lt;CKAN Resource Stack with 4 Resource&gt; </span></span>
+<span id="cb17-156"><a href="#cb17-156"></a><span class="co">## </span></span>
+<span id="cb17-157"><a href="#cb17-157"></a><span class="co">##   Resources:  </span></span>
+<span id="cb17-158"><a href="#cb17-158"></a><span class="co">## </span></span>
+<span id="cb17-159"><a href="#cb17-159"></a><span class="co">## &lt;CKAN Resource&gt; 1ad4cc94-25fa-4a77-8820-4f90a1826569 </span></span>
+<span id="cb17-160"><a href="#cb17-160"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
+<span id="cb17-161"><a href="#cb17-161"></a><span class="co">##   Format: CSV</span></span>
+<span id="cb17-162"><a href="#cb17-162"></a><span class="co">## &lt;CKAN Resource&gt; 6810bde3-74a3-44d7-92bd-1c7435e0e04f </span></span>
+<span id="cb17-163"><a href="#cb17-163"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
+<span id="cb17-164"><a href="#cb17-164"></a><span class="co">##   Format: ESRI REST</span></span>
+<span id="cb17-165"><a href="#cb17-165"></a><span class="co">## &lt;CKAN Resource&gt; e0446817-be17-4bc2-abc9-304f9cc8e4d7 </span></span>
+<span id="cb17-166"><a href="#cb17-166"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
+<span id="cb17-167"><a href="#cb17-167"></a><span class="co">##   Format: HTML</span></span>
+<span id="cb17-168"><a href="#cb17-168"></a><span class="co">## &lt;CKAN Resource&gt; 3c601e26-562f-4a80-8cb4-43d24e76f01e </span></span>
+<span id="cb17-169"><a href="#cb17-169"></a><span class="co">##   Name: MSDI Dynamic Current Layer</span></span>
+<span id="cb17-170"><a href="#cb17-170"></a><span class="co">##   Format: HTML</span></span></code></pre></div>
 <ol>
 <li>Finally, you can download the resources with <code><a href="reference/govcan_dl_resources.html">govcan_dl_resources()</a></code>. These can either be stored to a certain directory or load into session (* this option might fail due to current issues with <code><a href="https://docs.ropensci.org/ckanr/reference/ckan_fetch.html">ckanr::ckan_fetch</a></code>).</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"tmp/data/"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">path</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">## Warning in dir.create(path, recursive = TRUE): 'tmp/data' already exists</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">## Warning in dir.create(path, recursive = TRUE): 'tmp/data' already exists</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/govcan_dl_resources.html">govcan_dl_resources</a></span><span class="op">(</span><span class="va">id_resources</span>, path <span class="op">=</span> <span class="va">path</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">## ℹ Data Dictionary (format: html - size: 63.4 Kb) ! skipped (already downloaded).</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (format: csv - size: 41.4 Kb) ! skipped (already downloaded).</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="co">## ℹ Data Dictionary (format: csv - size: 1.6 Kb) ! skipped (already downloaded).</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (format: esri rest - size: 0 bytes) ! skipped (not supported).</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="co">## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (format: esri rest - size: 0 bytes) ! skipped (not supported).</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a></span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="co">## # A tibble: 5 x 7</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="co">##   id         package_id      url              path             fmt   store data </span></span>
-<span id="cb22-9"><a href="#cb22-9"></a><span class="co">##   &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="co">## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   </span></span>
-<span id="cb22-11"><a href="#cb22-11"></a><span class="co">## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   </span></span>
-<span id="cb22-12"><a href="#cb22-12"></a><span class="co">## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   </span></span>
-<span id="cb22-13"><a href="#cb22-13"></a><span class="co">## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… &lt;NA&gt;             esri… &lt;NA&gt;  NA   </span></span>
-<span id="cb22-14"><a href="#cb22-14"></a><span class="co">## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… &lt;NA&gt;             esri… &lt;NA&gt;  NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">## ℹ Data Dictionary (format: html - size: 63.4 Kb) ! skipped (already downloaded).</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (format: csv - size: 41.4 Kb) ! skipped (already downloaded).</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">## ℹ Data Dictionary (format: csv - size: 1.6 Kb) ! skipped (already downloaded).</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co">## ℹ Commercial Salmon In-Season Catch Estimates (In Pieces) From 2004 To 2019 (format: esri rest - size: 0 bytes) ! skipped (not supported).</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co">## ℹ Pacific Region Commercial Salmon Fishery In-season Catch Estimates (format: esri rest - size: 0 bytes) ! skipped (not supported).</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="co">## # A tibble: 5 x 7</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="co">##   id         package_id      url              path             fmt   store data </span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="co">##   &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">## 1 0c1b2697-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… html  disk  NA   </span></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="co">## 2 eb138d6a-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   </span></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co">## 3 f3e7fa0f-… 7ac5fe02-308d-… https://pacgis0… /home/vlucet/Do… csv   disk  NA   </span></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="co">## 4 9374bf48-… 7ac5fe02-308d-… https://gisp.df… &lt;NA&gt;             esri… &lt;NA&gt;  NA   </span></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="co">## 5 53b268cb-… 7ac5fe02-308d-… https://gisp.df… &lt;NA&gt;             esri… &lt;NA&gt;  NA</span></span></code></pre></div>
 <p>see <code><a href="reference/govcan_dl_resources.html">?govcan_dl_resources</a></code> for further details.</p>
 </div>
 </div>
