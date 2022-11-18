@@ -20,10 +20,10 @@ msgSuccess <- function(..., appendLF = TRUE) {
   invisible(txt)
 }
 
-# x is a resource 
+# x is a resource
 msgDownload <- function(url, fmt, name) {
   sz <- ifelse(fmt != "other", get_remote_file_size(url), "unknown")
-  msgInfo(name, paste0("(format: ", fmt, " - size: ", sz, ") "), 
+  msgInfo(name, paste0("(format: ", fmt, " - size: ", sz, ") "),
     appendLF = FALSE)
 }
 
@@ -48,7 +48,10 @@ get_remote_file_size <- function(url) {
   tmp <- as.numeric(
     gsub("\\D", "", hdr[grepl("^Content-Length:", hdr)])
   )
-  if (length(tmp)) {
+  # browser()
+  if (length(tmp) == 1) {
     format(structure(tmp, class = "object_size"), units = "auto")
+  } else if (length(tmp) == 2) {
+    format(structure(tmp[2], class = "object_size"), units = "auto")
   } else "unknown"
 }
